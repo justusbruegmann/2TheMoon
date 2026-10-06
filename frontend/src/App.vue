@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import {ref} from "vue";
 
-const count = ref(0)
-
-function countUp() {
-  count.value++
-}
 </script>
 
 <template>
-  <button :value="count" @click="countUp" class="bg-gray-600 m-128 p-2">{{ count }}</button>
+<nav class="p-4 gap-4">
+  <router-link to="/portfolio">Portfolio</router-link>
+  <router-link to="/stocks/TSLA">TSLA</router-link>
+  <router-link to="/stocks">Stocks</router-link>
+  <router-link to="/login">Login</router-link>
+  <router-link to="/register">Register</router-link>
+</nav>
+
+  <router-view/>
 </template>
