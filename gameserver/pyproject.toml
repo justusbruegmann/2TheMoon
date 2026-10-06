@@ -1,0 +1,13 @@
+[project]
+name = "gameserver"
+version = "0.1.0"
+description = "Market simulation and game events for 2TheMoon."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "numpy>=2.5.3",
+    "shared",
+]
+
+[tool.uv.sources]
+shared = { path = "../shared", editable = true }
