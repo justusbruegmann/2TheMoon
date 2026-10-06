@@ -8,5 +8,10 @@ Clone the repository, create the .venv, install all dependencies from uv.lock, a
 git clone https://github.com/justusbruegmann/2TheMoon.git
 cd 2TheMoon
 uv sync
-run fastapi dev
+```
+
+## Running the application
+
+```commandline
+uv run fastapi dev
 ```
