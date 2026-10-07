@@ -32,4 +32,10 @@ app.include_router(
 ####################################################
 @app.get("/")
 async def root():
-    return {"health": "ok"}
+    return {
+        "success": True,
+        "message": "healthy"
+    }
+
+
+# ToDo: Unify response structure: {success: bool, message: str (Description of result), data: Any}

@@ -8,7 +8,7 @@ from .supabase_client import get_secret_client
 ###############################
 # Database Tables
 ###############################
-TEST = "test"
+TEST = "testing-table"
 
 
 
@@ -30,12 +30,12 @@ class Database:
     # Add database requests here
     ###############################
 
-    def test_request(self, test_id: str):
+    def test_request(self, id: int):
         try:
             return (self._client
                     .table(TEST)
                     .select("*")
-                    .eq("asdf", test_id)
+                    .eq("id", id)
                     .execute()
                     )
         except (APIError, httpx.HTTPError) as exc:
