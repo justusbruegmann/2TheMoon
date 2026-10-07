@@ -7,6 +7,7 @@ import StocksOverviewPage from "../pages/StocksOverviewPage.vue";
 import LoginPage from "../pages/LoginPage.vue";
 import RegisterPage from "../pages/RegisterPage.vue";
 import LeaderBoardPage from "../pages/LeaderBoardPage.vue";
+import NotFound from "../pages/NotFound.vue";
 
 const routes = [
     { path: "/", redirect: "/portfolio" },
@@ -16,7 +17,7 @@ const routes = [
     {path: "/login", name: "2TheMoon | Login", component: LoginPage},
     {path: "/register", name: "2TheMoon | Register", component: RegisterPage},
     {path: "/Leaderboard", name: "2TheMoon | Leaderboard", component: LeaderBoardPage},
-
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ]
 
 
