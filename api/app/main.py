@@ -4,8 +4,10 @@ from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, HTTPException
+
 from .dependencies import check_header_token
+from .exception_handlers import exception_handler
 from .routers import test_router
 
 
@@ -13,6 +15,7 @@ from .routers import test_router
 # App
 ####################################################
 app = FastAPI()
+app.add_exception_handler(HTTPException, exception_handler)
 
 
 ####################################################

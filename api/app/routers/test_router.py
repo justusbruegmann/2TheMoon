@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 
+from app.util.response import success_response, error_response
 from shared.database import DatabaseError, db
 
 
@@ -19,9 +20,6 @@ async def get_test():
 async def get_database_test():
     try:
         res = db.test_request(1)
-    except DatabaseError as exc:
-        raise HTTPException(status_code=503, detail="Database request failed") from exc
-    return {
-        "success": True,
-        "data": res.data
-    }
+    except DatabaseError:
+        raise error_response(status_code=503, message="Database request failed")
+    return success_response(data=res.data)

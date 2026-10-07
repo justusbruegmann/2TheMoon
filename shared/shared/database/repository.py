@@ -32,16 +32,15 @@ class Database:
 
     def test_request(self, id: int):
         try:
-            return (self._client
-                    .table(TEST)
-                    .select("*")
-                    .eq("id", id)
-                    .execute()
-                    )
-        except (APIError, httpx.HTTPError) as exc:
-            raise DatabaseError(
-                f"Query to table '{TEST}' failed"
-            ) from exc
+            return (
+                self._client
+                .table(TEST)
+                .select("*")
+                .eq("id", id)
+                .execute()
+            )
+        except (APIError, httpx.HTTPError):
+            raise DatabaseError(f"Query to table '{TEST}' failed")
 
 
 db = Database(get_secret_client())
