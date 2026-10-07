@@ -1,6 +1,6 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
-from shared.database import db
+from shared.database import DatabaseError, db
 
 
 
@@ -14,5 +14,8 @@ async def get_test():
 
 @router.get("/database", tags=["PLACEHOLDER"])
 async def get_database_test():
-    res = db.test_request("hallo")
+    try:
+        res = db.test_request("hallo")
+    except DatabaseError as exc:
+        raise HTTPException(status_code=503, detail="Database request failed") from exc
     return {"database response": res}
