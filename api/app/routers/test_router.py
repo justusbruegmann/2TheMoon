@@ -1,13 +1,18 @@
 from fastapi import APIRouter
 
+from shared.database import db
+
+
+
 router = APIRouter()
 
 
-@router.get("/test/", tags=["PLACEHOLDER"])
+@router.get("/", tags=["PLACEHOLDER"])
 async def get_test():
     return [{"a": "b"}, {"c": "d"}]
 
 
-@router.get("/test/really", tags=["PLACEHOLDER"])
-async def get_test_really():
-    return {"here": "you go", "mr": "green"}
+@router.get("/database", tags=["PLACEHOLDER"])
+async def get_database_test():
+    res = db.test_request("hallo")
+    return {"database response": res}

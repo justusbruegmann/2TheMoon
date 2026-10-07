@@ -1,6 +1,6 @@
 from enum import Enum
 
-from database.supabase_client import get_secret_client
+from .supabase_client import get_secret_client
 
 
 
