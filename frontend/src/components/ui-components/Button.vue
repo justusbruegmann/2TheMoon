@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {computed} from "vue";
+import {computed, useAttrs} from "vue";
 
 const props = withDefaults(defineProps<{
   variant?: "primary" | "success" | "info" | "warning" | "danger";
@@ -11,6 +11,8 @@ const props = withDefaults(defineProps<{
   label:"",
   loading:false,
 })
+
+const attrs = useAttrs()
 
 const base = "inline-flex items-center justify-center font-medium focus:outline-none transition rounded-md p-2"
 const variantClasses: Record<string,string> = {
@@ -37,7 +39,7 @@ function handleClick(e: MouseEvent) {
 
 <template>
 <div>
-  <button :class="classes" @click="handleClick">{{label}}</button>
+  <button :class="[classes, attrs.class]" @click="handleClick">{{label}}</button>
 </div>
 </template>
 
