@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+@theme {
+    --color-bg:            #0A1029;
+    --color-surface:       #111A38;
+    --color-surface-hover: #18234A;
+    --color-line:          #28335A;
+
+    --color-text:          #EEF0F7;
+    --color-text-muted:    #8C96B8;
+
+    --color-primary:       #38BDF8;  /* Cyan */
+    --color-primary-hover: #0EA5E9;
+    --color-on-primary:    #0A1029;  /* dunkler Text auf Cyan */
+
+    --color-gain:          #2BD97F;
+    --color-loss:          #F04A5C;
+    --color-warning:       #F5A524;
+
+    --color-buy:           #2BD97F;
+    --color-buy-hover:     #22C26F;
+    --color-on-buy:        #0A1029;
+    --color-sell:          #E03A4D;
+    --color-sell-hover:    #C92F41;
+    --color-on-sell:       #FFFFFF;
+}
+
+body {
+    background-color: #0A1029;
+    color: #EEF0F7;
+}
