@@ -26,10 +26,6 @@ class Database:
 
     def test_request(self, id: int):
 
-        print(TESTING_TABLE.name)
-        print(TESTING_TABLE.col("id"))
-        select_fields = ["id", "table_bool", "text"]
-
         try:
             return (
                 self._client
