@@ -8,7 +8,7 @@ dependencies = [
     "httpx>=0.28.1",
     "postgrest>=2.32.0",
     "pydantic-settings>=2.15.0",
-    "sqlalchemy>=2.1.3",
+    "sqlalchemy==2.1.4",
     "supabase>=2.32.0",
 ]
 
@@ -19,3 +19,9 @@ build-backend = "uv_build"
 [tool.uv.build-backend]
 module-root = ""
 module-name = ["shared"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16.10",
+    "supabase-pydantic>=0.26.28",
+]

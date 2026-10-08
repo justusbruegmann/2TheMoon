@@ -12,6 +12,13 @@ cd 2TheMoon/shared
 uv sync --locked
 ```
 
+Update supabase types.
+You can find the [DB CONNECTION STRING] on Discord (documents channel).
+
+```bash
+uv run sb-pydantic gen --type pydantic --db-url "[DB CONNECTION STRING]" --dir shared/database/models
+```
+
 ## Usage
 
 This package is installed automatically when running `uv sync` in `api/` or `gameserver/`. Editable installation makes Python code changes available without reinstalling; restart running processes to load them.
