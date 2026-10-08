@@ -15,11 +15,15 @@ class CustomModel(BaseModel):
 
 class CustomModelInsert(CustomModel):
     """Base model for insert operations with common features."""
+    def to_payload(self) -> dict:
+        return self.model_dump(by_alias=True, exclude_unset=True, mode="json")
 
 
 
 class CustomModelUpdate(CustomModel):
     """Base model for update operations with common features."""
+    def to_payload(self) -> dict:
+        return self.model_dump(by_alias=True, exclude_unset=True, mode="json")
 
 
 
