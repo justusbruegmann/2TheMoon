@@ -23,9 +23,9 @@ function handleClick() {
       </div>
       <div class="ml-auto flex flex-row">
         <nav class="flex flex-row w-full mt-4.5 mr-4 gap-2">
-          <router-link class="text-primary" to="/portfolio">Portfolio</router-link>
-          <router-link class="text-primary" to="/stocks">Stocks</router-link>
-          <router-link class="text-primary" to="/leaderboard">Leaderboard</router-link>
+          <router-link class="text-text-muted" to="/portfolio">Portfolio</router-link>
+          <router-link class="text-text-muted" to="/stocks">Stocks</router-link>
+          <router-link class="text-text-muted" to="/leaderboard">Leaderboard</router-link>
         </nav>
         <Button class="mt-1.5 mr-4" :label='isLoggedIn ?"Logout" : "Login"' @click="handleClick"/>
       </div>
