@@ -8,9 +8,10 @@ import LoginPage from "../pages/LoginPage.vue";
 import RegisterPage from "../pages/RegisterPage.vue";
 import LeaderBoardPage from "../pages/LeaderBoardPage.vue";
 import NotFound from "../pages/NotFound.vue";
+import HomePage from "../pages/HomePage.vue";
 
 const routes = [
-    { path: "/", redirect: "/portfolio" },
+    { path: "/", name: "2TheMoon | Home" , component: HomePage },
     {path: "/portfolio", name: "2TheMoon | Portfolio", component: PortfolioPage},
     {path: "/stocks", name: "2TheMoon | Stocks", component: StocksOverviewPage},
     {path: "/stocks/:symbol", name: "2TheMoon | Stock", component: StocksDetailsPage, props: true},

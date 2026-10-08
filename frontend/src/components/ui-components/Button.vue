@@ -3,7 +3,7 @@
 import {computed, useAttrs} from "vue";
 
 const props = withDefaults(defineProps<{
-  variant?: "primary" | "success" | "info" | "warning" | "danger";
+  variant?: "primary" | "success" | "info" | "warning" | "danger"| "ghost";
   label?: string;
   loading?: boolean;
 }>(), {
@@ -21,6 +21,7 @@ const variantClasses: Record<string,string> = {
   info: 'bg-blue-500 text-white hover:bg-blue-600',
   warning: 'bg-yellow-500 text-black hover:bg-yellow-600',
   danger: 'bg-red-600 text-white hover:bg-red-700',
+  ghost: "bg-transparent text-white hover:bg-transparent border-primary border-1",
 }
 
 const classes = computed(() => [
