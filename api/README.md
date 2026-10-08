@@ -10,6 +10,14 @@ cd 2TheMoon/api
 uv sync --locked
 ```
 
+Create .env and fill in the [supabase keys](https://supabase.com/dashboard/project/ryunncblswchrbxygtvq/settings/api-keys)
+
+```dotenv
+SUPABASE_URL=
+SUPABASE_PUBLISHABLE_KEY=
+SUPABASE_SECRET_KEY=
+```
+
 ## Running the application
 
 ```bash
