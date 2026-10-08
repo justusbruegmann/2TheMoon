@@ -1,14 +1,8 @@
 import httpx
 from postgrest.exceptions import APIError
 
+from .models.db_schema_helper import TESTING_TABLE
 from .supabase_client import get_secret_client
-
-
-
-###############################
-# Database Tables
-###############################
-TEST = "testing-table"
 
 
 
@@ -31,16 +25,25 @@ class Database:
     ###############################
 
     def test_request(self, id: int):
+
+        print(TESTING_TABLE.name)
+        print(TESTING_TABLE.col("id"))
+        select_fields = ["id", "table_bool", "text"]
+
         try:
             return (
                 self._client
-                .table(TEST)
-                .select("*")
-                .eq("id", id)
+                .table(TESTING_TABLE.name)
+                .select(TESTING_TABLE.cols(
+                    "id",
+                    "bool",
+                    "text"
+                ))
+                .eq(TESTING_TABLE.col("id"), id)
                 .execute()
             )
         except (APIError, httpx.HTTPError):
-            raise DatabaseError(f"Query to table '{TEST}' failed")
+            raise DatabaseError(f"Query to table '{TESTING_TABLE.name}' failed")
 
 
 db = Database(get_secret_client())
