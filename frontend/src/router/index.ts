@@ -26,7 +26,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
     let dynamicTitle: string | {}
 
     if (to.meta.title) {
