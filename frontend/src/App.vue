@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import Header from "./components/Header.vue";
+import {useRoute} from "vue-router";
+import {computed} from "vue";
+const route = useRoute();
 
-const count = ref(0)
-
-function countUp() {
-  count.value++
-}
+const currentPath = computed(() => String(route.name).split(" ")[2]);
 </script>
 
 <template>
-  <button :value="count" @click="countUp" class="bg-gray-600 m-128 p-2">{{ count }}</button>
+<Header :label="currentPath"/>
+
+  <router-view/>
 </template>
