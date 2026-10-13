@@ -13,11 +13,11 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v3
         with:
+          version: "0.13.0"
           enable-cache: true
           cache-dependency-glob: |
             api/uv.lock
             shared/uv.lock
-          python-version-file: api/pyproject.toml
 
       - name: Install api dependencies
         working-directory: api
