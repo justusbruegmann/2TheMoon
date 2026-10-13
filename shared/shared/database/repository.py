@@ -26,13 +26,13 @@ class Database:
     # Add database requests here
     ###############################
 
-    def test_select(self, id: int):
+    def test_select(self, row_id: int):
         try:
             res = (
                 self._client
                 .table(TESTING_TABLE.name)
                 .select(TESTING_TABLE.columns)
-                .eq(TESTING_TABLE.col("id"), id)
+                .eq(TESTING_TABLE.col("id"), row_id)
                 .limit(1)
                 .execute()
             )
@@ -86,13 +86,13 @@ class Database:
 
 
 
-    def test_delete(self, id: int) -> list[TestingTableBaseSchema]:
+    def test_delete(self, row_id: int) -> list[TestingTableBaseSchema]:
         try:
             res = (
                 self._client
                 .table(TESTING_TABLE.name)
                 .delete()
-                .eq(TESTING_TABLE.col("id"), id)
+                .eq(TESTING_TABLE.col("id"), row_id)
                 .execute()
             )
             return TESTING_TABLE.parse(res.data)

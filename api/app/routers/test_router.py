@@ -18,7 +18,7 @@ def test_get_all():
     return success_response(data=[r.model_dump(by_alias=True, mode="json") for r in rows])
 
 
-@router.get("/database/{id}")
+@router.get("/database/{element_id}")
 def test_get_one(element_id: int):
     try:
         row = db.test_select(element_id)
@@ -38,7 +38,7 @@ def test_post(payload: TestingTableInsert):
     return success_response(data=row.model_dump(by_alias=True, mode="json"))
 
 
-@router.patch("/database/{id}")
+@router.patch("/database/{element_id}")
 def test_patch(element_id: int, payload: TestingTableUpdate):
     if not payload.model_fields_set:
         raise error_response(status_code=400, message="No fields to update")
@@ -51,7 +51,7 @@ def test_patch(element_id: int, payload: TestingTableUpdate):
     return success_response(data=rows[0].model_dump(by_alias=True, mode="json"))
 
 
-@router.delete("/database/{id}")
+@router.delete("/database/{element_id}")
 def test_delete(element_id: int):
     try:
         rows = db.test_delete(element_id)

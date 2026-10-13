@@ -1306,6 +1306,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "pytest", specifier = ">=9.1.1" },
     { name = "ruff", specifier = ">=0.16.10" },
     { name = "supabase-pydantic", specifier = ">=0.26.28" },
 ]
