@@ -20,7 +20,7 @@ async function signUpNewUser() {
      }
   }).then((data) => {
      console.log(data)
-     if (data?.error?.code== "weak_password"){
+     if (data?.error?.code == "weak_password"){
        errorRef.value = true
        return;
      }

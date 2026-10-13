@@ -19,7 +19,7 @@ async function signInWithEmail() {
     password: password.value,
   }).then((data: any) => {
     console.log(data)
-    if (data.error.code== "invalid_credentials"){
+    if (data?.error?.code == "invalid_credentials"){
       errorRef.value = true
       return;
     }
