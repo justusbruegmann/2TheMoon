@@ -17,12 +17,21 @@ async function signInWithEmail() {
   await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value,
-  }).then(() => {
-    router.push('/portfolio')
+  }).then((data: any) => {
+    console.log(data)
+    if (data.error.code== "invalid_credentials"){
+      errorRef.value = true
+      return;
+    }
+    errorRef.value = false
+      router.push('/portfolio')
   }).catch(e => {
     console.log(e)
   })
 }
+
+const errorRef = ref<boolean>(false);
+
 
 </script>
 
@@ -39,6 +48,7 @@ async function signInWithEmail() {
      <input v-model="password" type="password" class="w-full bg-border border border-text-muted rounded text-text pl-1" placeholder="Password" />
    </div>
    <div class="py-2">
+     <p v-if="errorRef" class="text-loss pb-2">Invalid Credentials</p>
      <Button label="Login" variant="primary" class="h-8 w-full" @click="signInWithEmail()"/>
    </div>
    <p class="text-text-muted" >Forgot Password?</p>

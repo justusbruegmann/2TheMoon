@@ -17,15 +17,21 @@ async function signUpNewUser() {
     password: password.value,
      options: {
        data: { display_name: username.value },
-
      }
-  }).then(() => {
+  }).then((data) => {
+     console.log(data)
+     if (data?.error?.code== "weak_password"){
+       errorRef.value = true
+       return;
+     }
+     errorRef.value = false
     router.push('/portfolio')
    }).catch(e => {
      console.log(e)
    })
 }
 
+const errorRef = ref<boolean>(false);
 
 </script>
 
@@ -46,6 +52,7 @@ async function signUpNewUser() {
         <input v-model="password" type="password" class="w-full bg-border border border-text-muted rounded text-text pl-1" placeholder="Password" />
       </div>
       <div class="py-2">
+        <p v-if="errorRef" class="text-loss pb-2">Password needs 8 characters. capital, lowercase, numbers and a special symbol </p>
         <Button label="Sign up" variant="primary" class="h-8 w-full" @click="signUpNewUser()"/>
       </div>
       <hr/>
