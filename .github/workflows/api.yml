@@ -6,9 +6,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: api
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -17,13 +14,29 @@ jobs:
         uses: astral-sh/setup-uv@v3
         with:
           enable-cache: true
-          cache-dependency-glob: "api/uv.lock"
+          cache-dependency-glob: |
+            api/uv.lock
+            shared/uv.lock
           python-version-file: api/pyproject.toml
 
-      - name: Install dependencies
+      - name: Install api dependencies
+        working-directory: api
         run: uv sync --locked --dev
 
-      - name: Run tests
+      - name: Run api tests
+        working-directory: api
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+        run: uv run pytest tests
+
+      - name: Install shared dependencies
+        working-directory: shared
+        run: uv sync --locked --dev
+
+      - name: Run shared tests
+        working-directory: shared
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
