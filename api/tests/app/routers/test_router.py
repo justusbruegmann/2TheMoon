@@ -1,6 +1,4 @@
-from asyncio import log
 from datetime import datetime, timezone
-from email import header
 
 import pytest
 from fastapi.testclient import TestClient
@@ -49,10 +47,8 @@ def test_post_valid_payload():
     assert response.status_code == 201
     # Store newly created id to be referenced in other tests
     r = response.json()
-    print(r)
     global NEWLY_CREATED_ROW_ID
     NEWLY_CREATED_ROW_ID = r["data"]["id"]
-    print(NEWLY_CREATED_ROW_ID)
 
 def test_post_invalid_payload():
     response = client.post("/test/database", json={"number": "asdf"}, headers=VALID_HEADERS)
@@ -60,10 +56,37 @@ def test_post_invalid_payload():
 
 def test_get_one_valid_id():
     if NEWLY_CREATED_ROW_ID is None:
-        pytest.skip("No row was created yet")
-    response = client.get(f"/test/database/${NEWLY_CREATED_ROW_ID}", headers=VALID_HEADERS)
+        pytest.skip("NEWLY_CREATED_ROW_ID is None")
+    response = client.get(f"/test/database/{NEWLY_CREATED_ROW_ID}", headers=VALID_HEADERS)
     assert response.status_code == 200
 
 def test_get_one_invalid_id():
     response = client.get("/test/database/-1", headers=VALID_HEADERS)
+    assert response.status_code == 404
+
+def test_patch_valid_payload():
+    if NEWLY_CREATED_ROW_ID is None:
+        pytest.skip("NEWLY_CREATED_ROW_ID is None")
+    response = client.patch(f"/test/database/{NEWLY_CREATED_ROW_ID}", json={"number": 123}, headers=VALID_HEADERS)
+    assert response.status_code == 200
+    assert response.json()["data"]["number"] == "123"
+
+def test_patch_invalid_payload():
+    if NEWLY_CREATED_ROW_ID is None:
+        pytest.skip("NEWLY_CREATED_ROW_ID is None")
+    response = client.patch(f"/test/database/{NEWLY_CREATED_ROW_ID}", json={"number": "asdf"}, headers=VALID_HEADERS)
+    assert response.status_code == 422
+
+
+def test_delete_valid_id():
+    if NEWLY_CREATED_ROW_ID is None:
+        pytest.skip("NEWLY_CREATED_ROW_ID is None")
+    response = client.delete(f"/test/database/{NEWLY_CREATED_ROW_ID}", headers=VALID_HEADERS)
+    assert response.status_code == 200
+
+
+def test_delete_invalid_id():
+    if NEWLY_CREATED_ROW_ID is None:
+        pytest.skip("NEWLY_CREATED_ROW_ID is None")
+    response = client.delete(f"/test/database/{NEWLY_CREATED_ROW_ID}", headers=VALID_HEADERS)
     assert response.status_code == 404
