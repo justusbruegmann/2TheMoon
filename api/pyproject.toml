@@ -17,3 +17,8 @@ entrypoint = "app.main:app"
 
 [tool.uv.sources]
 shared = { path = "../shared", editable = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
