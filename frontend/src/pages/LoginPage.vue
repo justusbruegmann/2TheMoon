@@ -11,9 +11,11 @@ const password = ref<string>('')
 const router = useRouter();
 
 
-//TODO: Header inplementation
-//TODO: error when unsuccesfull With Team fly in or inside card
 async function signInWithEmail() {
+  if (!email.value || !password.value) {
+    errorRef.value = true;
+    return;
+  }
   await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value,
@@ -40,12 +42,12 @@ const errorRef = ref<boolean>(false);
  <Card title="Login" width="20rem">
    <div class="py-4">
      <p>Email</p>
-     <input v-model="email" type="text" class="w-full bg-border border border-text-muted rounded text-text pl-1" placeholder="Email" />
+     <input v-model="email" type="text" class="w-full bg-border border border-text-muted rounded text-text pl-1" placeholder="Email" @keyup.enter="signInWithEmail()" />
    </div>
 
    <div class="py-4">
      <p>Password</p>
-     <input v-model="password" type="password" class="w-full bg-border border border-text-muted rounded text-text pl-1" placeholder="Password" />
+     <input v-model="password" type="password" class="w-full bg-border border border-text-muted rounded text-text pl-1" placeholder="Password" @keyup.enter="signInWithEmail()" />
    </div>
    <div class="py-2">
      <p v-if="errorRef" class="text-loss pb-2">Invalid Credentials</p>

@@ -12,6 +12,10 @@ const username = ref<string>('')
 const router = useRouter();
 
 async function signUpNewUser() {
+  if (!email.value || !password.value || !username.value) {
+    errorRef.value = true;
+    return;
+  }
    await supabase.auth.signUp({
     email: email.value,
     password: password.value,
@@ -40,20 +44,20 @@ const errorRef = ref<boolean>(false);
     <Card title="Sign up" width="20rem">
       <div class="py-2">
         <p>Email</p>
-        <input v-model="email" type="text" class="w-full bg-border border border-text-muted rounded text-text pl-1" placeholder="Email" />
+        <input v-model="email" type="text" class="w-full bg-border border border-text-muted rounded text-text pl-1" placeholder="Email" @keyup.enter="signUpNewUser()" />
       </div>
       <div class="py-2">
         <p>Username</p>
-        <input v-model="username" type="text" class="w-full bg-border border border-text-muted rounded text-text pl-1" placeholder="Username" />
+        <input v-model="username" type="text" class="w-full bg-border border border-text-muted rounded text-text pl-1" placeholder="Username" @keyup.enter="signUpNewUser()" />
       </div>
 
       <div class="py-2">
         <p>Password</p>
-        <input v-model="password" type="password" class="w-full bg-border border border-text-muted rounded text-text pl-1" placeholder="Password" />
+        <input v-model="password" type="password" class="w-full bg-border border border-text-muted rounded text-text pl-1" placeholder="Password" @keyup.enter="signUpNewUser()" />
       </div>
       <div class="py-2">
         <p v-if="errorRef" class="text-loss pb-2">Password needs 8 characters. capital, lowercase, numbers and a special symbol </p>
-        <Button label="Sign up" variant="primary" class="h-8 w-full" @click="signUpNewUser()"/>
+        <Button label="Sign up" variant="primary" class="h-8 w-full" @click="signUpNewUser()" />
       </div>
       <hr/>
       <div class="py-2">

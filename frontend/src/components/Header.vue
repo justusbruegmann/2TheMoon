@@ -2,7 +2,7 @@
 import * as userManagement from "../scripts/userManagement.ts";
 
 import Button from "./ui-components/Button.vue";
-import {computed, onMounted, ref} from "vue";
+import {onMounted, onUnmounted, ref} from "vue";
 import {supabase} from "../lib/supabaseClient.ts";
 import {useRouter} from "vue-router";
 
@@ -13,23 +13,24 @@ defineProps<{
 }>()
 
 const isLoggedIn = ref<boolean>();
+const {data: authListener} = supabase.auth.onAuthStateChange((_event, session) => {
+  isLoggedIn.value = !!session;
+})
 
 onMounted(async () => {
   isLoggedIn.value = await userManagement.isLoggedIn();
 })
 
-computed(() => {
- userManagement.isLoggedIn().then(e => isLoggedIn.value = e);
-})
+onUnmounted(() => authListener.subscription.unsubscribe())
 
 
 async function signOut() {
   await supabase.auth.signOut()
   isLoggedIn.value = false
+  router.push("/");
 
 }
 
-//TODO: Change it to real Login
 async function handleClick() {
   if (isLoggedIn.value) {
     await signOut();

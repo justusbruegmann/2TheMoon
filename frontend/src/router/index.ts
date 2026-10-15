@@ -9,15 +9,16 @@ import RegisterPage from "../pages/RegisterPage.vue";
 import LeaderBoardPage from "../pages/LeaderBoardPage.vue";
 import NotFound from "../pages/NotFound.vue";
 import HomePage from "../pages/HomePage.vue";
+import {isLoggedIn} from "../scripts/userManagement.ts";
 
 const routes = [
     {path: "/", name: "2TheMoon | Home", component: HomePage, meta: {title: "Home"}},
-    {path: "/portfolio", name: "2TheMoon | Portfolio", component: PortfolioPage, meta: {title: "Portfolio"}},
-    {path: "/stocks", name: "2TheMoon | Stocks", component: StocksOverviewPage,meta: {title: "Stocks"}},
-    {path: "/stocks/:symbol", name: "2TheMoon | Stock", component: StocksDetailsPage, props: true,meta: {title: "Stocks Details"}},
+    {path: "/portfolio", name: "2TheMoon | Portfolio", component: PortfolioPage, meta: {title: "Portfolio", requiresAuth: true}},
+    {path: "/stocks", name: "2TheMoon | Stocks", component: StocksOverviewPage,meta: {title: "Stocks", requiresAuth: true}},
+    {path: "/stocks/:symbol", name: "2TheMoon | Stock", component: StocksDetailsPage, props: true,meta: {title: "Stocks Details", requiresAuth: true}},
     {path: "/login", name: "2TheMoon | Login", component: LoginPage,meta: {title: "Login"}},
     {path: "/register", name: "2TheMoon | Register", component: RegisterPage,meta: {title: "Register"}},
-    {path: "/Leaderboard", name: "2TheMoon | Leaderboard", component: LeaderBoardPage, meta: {title: "Leaderboard"}},
+    {path: "/Leaderboard", name: "2TheMoon | Leaderboard", component: LeaderBoardPage, meta: {title: "Leaderboard", requiresAuth: true}},
     {path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound,meta: {title: "404 Not Found"}},
 ]
 
@@ -26,7 +27,12 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
-router.beforeEach((to, _from, next) => {
+router.beforeEach(async (to, _from, next) => {
+    if (to.meta.requiresAuth && !(await isLoggedIn())) {
+        next("/login")
+        return
+    }
+
     let dynamicTitle: string | {}
 
     if (to.meta.title) {
