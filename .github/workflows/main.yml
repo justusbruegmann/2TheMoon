@@ -1,0 +1,25 @@
+name: Sync YouTrack KB
+on:
+  schedule:
+    - cron: "0 * * * *"   # hourly
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install requests
+      - run: rm -rf kb && python scripts/sync_kb.py
+        env:
+          YOUTRACK_URL: ${{ secrets.YOUTRACK_URL }}
+          YOUTRACK_TOKEN: ${{ secrets.YOUTRACK_TOKEN }}
+      - run: |
+          git config user.name "kb-sync-bot"
+          git config user.email "kb-sync-bot@users.noreply.github.com"
+          git add kb
+          git diff --cached --quiet || git commit -m "Sync YouTrack KB"
+          git push
