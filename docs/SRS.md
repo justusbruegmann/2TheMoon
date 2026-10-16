@@ -1,8 +1,8 @@
-# [Project Name] — Software Requirements Specification
+# 2TheMoon — Software Requirements Specification
 
 <!--
 HOW TO USE THIS TEMPLATE
-- Copy the whole docs/ folder into your repository.
+- ✓ Copy the whole docs/ folder into your repository.
 - Replace every [placeholder] in square brackets. Comments like this one are guidance: they
   are invisible on GitHub, and you may delete them once a section is done.
 - Keep every heading and its number. If a section does not apply, write
@@ -13,9 +13,9 @@ HOW TO USE THIS TEMPLATE
   https://cin.ufpe.br/~if682/RUP/webtmpl/templates/req/rup_srs.htm
 -->
 
-| Team | Version | Last change |
-| ---- | ------- | ----------- |
-| [Team name] | [0.1] | [dd.mm.yyyy] |
+| Team   | Version | Last change |
+|--------|---------|-------------|
+| Team 5 | 1.0     | 16.10.2026  |
 
 The Git history of this file is the revision history.
 
@@ -30,68 +30,82 @@ The Git history of this file is the revision history.
 
 ### 1.1 Purpose
 
-*Author: [first name]*
+*Author: Sebastian*
 
-<!-- One paragraph: what this document describes and who reads it
-     (your team, the lecturer as investor, the developer who takes over). -->
-
-This document specifies the requirements of [project name]. […]
+This document specifies the requirements of the stock market simulation and trading game **2TheMoon**.
+It is to be used by the developers in Team 5 as a reference document during development,
+by the lecturer as informational material and possibly other stakeholders in the future as systems documentation.
 
 ### 1.2 Scope
 
-*Author: [first name]*
+*Author: Sebastian*
 
 <!-- What the software does and for whom, in two or three sentences.
      Then split explicitly into in scope and out of scope, each with a reason.
      Out of scope = your MoSCoW "won't have this time". Document later changes here. -->
 
-[Two or three sentences.]
+| In scope                                   | Reason                                                          |
+|--------------------------------------------|-----------------------------------------------------------------|
+| Trading stocks                             | core functionality of the game                                  |
+| Analyzing the market                       | core functionality of the game                                  |
+| Comparing with other players (leaderboard) | keeps the players hooked on the game                            |
+| Chatting with other players                | make the game feel more alive and interesting in the short-term |
+| Season-system for game rounds              | gives the game long-term replayability                          |
 
-| In scope | Reason |
-| -------- | ------ |
-| [feature] | [why] |
-
-| Out of scope | Reason |
-| ------------ | ------ |
-| [feature] | [why not, or not now] |
+| Out of scope                           | Reason                                                                                                               |
+|----------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| Trading with real money on real assets | not permissible as a DHBW project; legal requirements too high                                                       |
+| Teaching how to trade                  | we are unqualified to provide financial guidance and do not want to be legally held accountable for potential losses |
 
 ### 1.3 Definitions, acronyms and abbreviations
 
-*Author: [first name]*
+*Author: Sebastian*
 
-| Term | Meaning |
-| ---- | ------- |
-| SRS | Software Requirements Specification |
-| UC | Use case |
-| NFR | Non-functional requirement (quality requirement or constraint) |
-| [term] | [meaning] |
+| Term | Meaning                                                        |
+|------|----------------------------------------------------------------|
+| SRS  | Software Requirements Specification                            |
+| UC   | Use case                                                       |
+| NFR  | Non-functional requirement (quality requirement or constraint) |
+| US   | User Story                                                     |
+| SME  | Subject Matter Expert                                          |
 
 ### 1.4 References
 
-*Author: [first name]*
+*Author: Sebastian*
 
-| Title | Link |
-| ----- | ---- |
-| Blog | [link to your GitHub Discussions] |
-| Board | [link to your GitHub Projects board] |
-| [other document] | [link] |
+| Title          | Link                                                              |
+|----------------|-------------------------------------------------------------------|
+| Blog           | [GitHub](https://github.com/justusbruegmann/2TheMoon/discussions) |
+| Board          | [YouTrack](https://2themoon.youtrack.cloud/agiles/)               |
+| Knowledge Base | [YouTrack](https://2themoon.youtrack.cloud/articles)              |
 
 ### 1.5 Overview
 
 Section 2 describes the product as a whole: vision and use case diagram. Section 3 lists the
-specific requirements: the use cases (3.1) and the quality requirements and constraints
-(3.2 to 3.12).
+specific requirements: the use cases (3.1) and the quality requirements and constraints (3.2 to 3.12).
 
 ## 2 Overall description
 
 ### 2.1 Vision
 
-*Author: [first name]*
+*Author: Sebastian*
 
 <!-- Your vision from Task 1, updated: the problem, the target group and the stakeholders,
      the value, and how you differ from alternatives. The investor should get it in two minutes. -->
 
-[…]
+**2TheMoon** is a massively multiplayer online real-time trading game based on a market simulation inspired by
+the real world stock market.
+
+Players manage virtual portfolios that all equally start out with a given starting value in each season. The goal is to
+accumulate wealth through buying and selling stocks and crypto, while the trading patterns of other players affect the
+market state and prices. Randomized global events carry big boons or disruptions to the market and can greatly alter the
+standings on the global leaderboards.
+
+The game is marketed at novices in the trading space that can explore the subject hands-on in a gamified, low-stakes environment.
+
+Competitors usually follow the real market with their trading games – 2TheMoon is unchained from the limitations and
+boring patterns of reality and can potentially add differently themed settings and events for each new season 
+(e.g. Bottle cap trading in a Fallout setting).
 
 ### 2.2 Use case diagram
 
@@ -149,26 +163,26 @@ specific requirements: the use cases (3.1) and the quality requirements and cons
 
 ### 3.2 Usability
 
-| ID | Requirement | Author |
-| -- | ----------- | ------ |
+| ID       | Requirement              | Author       |
+|----------|--------------------------|--------------|
 | NFR-U-01 | [measurable requirement] | [first name] |
 
 ### 3.3 Reliability
 
-| ID | Requirement | Author |
-| -- | ----------- | ------ |
+| ID       | Requirement              | Author       |
+|----------|--------------------------|--------------|
 | NFR-R-01 | [measurable requirement] | [first name] |
 
 ### 3.4 Performance
 
-| ID | Requirement | Author |
-| -- | ----------- | ------ |
+| ID       | Requirement              | Author       |
+|----------|--------------------------|--------------|
 | NFR-P-01 | [measurable requirement] | [first name] |
 
 ### 3.5 Supportability
 
-| ID | Requirement | Author |
-| -- | ----------- | ------ |
+| ID       | Requirement              | Author       |
+|----------|--------------------------|--------------|
 | NFR-S-01 | [measurable requirement] | [first name] |
 
 ### 3.6 Design constraints
@@ -177,11 +191,11 @@ specific requirements: the use cases (3.1) and the quality requirements and cons
 
 <!-- Decisions that are fixed, not chosen per feature: your stack. -->
 
-| ID | Constraint |
-| -- | ---------- |
-| DC-01 | Frontend: [JavaScript/TypeScript, framework] |
+| ID    | Constraint                                                  |
+|-------|-------------------------------------------------------------|
+| DC-01 | Frontend: [JavaScript/TypeScript, framework]                |
 | DC-02 | Backend: [Java, JavaScript/TypeScript or Python, framework] |
-| DC-03 | Database: […] |
+| DC-03 | Database: […]                                               |
 
 ### 3.7 Online user documentation and help system requirements
 
