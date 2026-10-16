@@ -24,7 +24,7 @@ app.add_exception_handler(HTTPException, exception_handler)
 app.include_router(
     test_router.router,
     prefix="/test",
-    tags=["test-tag"],
+    tags=["API Test"],
     dependencies=[Depends(check_header_token)],
     responses={418: {"description": "I'm a teapot"}},
 )
