@@ -1,4 +1,4 @@
-# UC-03 Use global Chat
+# UC-04 Compete in Seasons
 
 <!--
 HOW TO USE THIS TEMPLATE
@@ -14,7 +14,7 @@ HOW TO USE THIS TEMPLATE
 
 | Author | Estimate | User stories |
 | ------ | -------- | ------------ |
-| Max | 13 | **2TM-67** Send filtered messages in the global chat, **2TM-73** Access and read the global chat|
+| Max | 13+8 | **2TM-67** Send filtered messages in the global chat, **2TM-73** Access and read the global chat|
 
 ## 1 Brief description
 

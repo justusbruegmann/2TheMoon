@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="season" name="UC-04 Compete in seasons">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" arrows="1" connect="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="UC-04 — Compete in seasons" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="15" width="800" height="40" />
+        </mxCell>
+        <mxCell id="3" value="loop [during the current season]" style="rounded=0;html=1;fillColor=none;strokeColor=#64748b;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;fontSize=14;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="260" width="1100" height="360" />
+        </mxCell>
+        <mxCell id="4" value="alt [reset completed successfully]" style="rounded=0;html=1;fillColor=none;strokeColor=#64748b;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;fontSize=14;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="800" width="1100" height="650" />
+        </mxCell>
+        <mxCell id="5" value="alt [player is connected]" style="rounded=0;html=1;fillColor=none;strokeColor=#64748b;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;fontSize=14;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="65" y="1010" width="1050" height="260" />
+        </mxCell>
+        <mxCell id="6" value="Player" style="rounded=0;html=1;fillColor=#e2e8f0;strokeColor=#475569;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="130" y="70" width="180" height="50" />
+        </mxCell>
+        <mxCell id="7" value="" style="edgeStyle=none;html=1;endArrow=none;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;dashed=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="220" y="120" />
+            <mxPoint as="targetPoint" x="220" y="1530" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="Server" style="rounded=0;html=1;fillColor=#e2e8f0;strokeColor=#475569;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="660" y="70" width="180" height="50" />
+        </mxCell>
+        <mxCell id="9" value="" style="edgeStyle=none;html=1;endArrow=none;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;dashed=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="120" />
+            <mxPoint as="targetPoint" x="750" y="1530" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="Access application" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="220" y="165" />
+            <mxPoint as="targetPoint" x="750" y="165" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="Display current season and player state (automatic participation)" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="225" />
+            <mxPoint as="targetPoint" x="220" y="225" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="Perform seasonal activity (e.g. trade assets)" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="220" y="335" />
+            <mxPoint as="targetPoint" x="750" y="335" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="Validate activity and update seasonal game state" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="380" />
+            <mxPoint as="targetPoint" x="750" y="410" />
+            <Array as="points">
+              <mxPoint x="840" y="380" />
+              <mxPoint x="840" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="Confirm activity and updated state" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="455" />
+            <mxPoint as="targetPoint" x="220" y="455" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="View season overview" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="220" y="520" />
+            <mxPoint as="targetPoint" x="750" y="520" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="Display dates, remaining time, and seasonal performance" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="585" />
+            <mxPoint as="targetPoint" x="220" y="585" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="Detect configured season boundary" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="670" />
+            <mxPoint as="targetPoint" x="750" y="700" />
+            <Array as="points">
+              <mxPoint x="840" y="670" />
+              <mxPoint x="840" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="Prevent seasonal actions during reset" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="735" />
+            <mxPoint as="targetPoint" x="750" y="765" />
+            <Array as="points">
+              <mxPoint x="840" y="735" />
+              <mxPoint x="840" y="765" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="Reset defined seasonal state for ALL players, including offline players" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="860" />
+            <mxPoint as="targetPoint" x="750" y="890" />
+            <Array as="points">
+              <mxPoint x="840" y="860" />
+              <mxPoint x="840" y="890" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="Activate new season and enable seasonal actions" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="935" />
+            <mxPoint as="targetPoint" x="750" y="965" />
+            <Array as="points">
+              <mxPoint x="840" y="935" />
+              <mxPoint x="840" y="965" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="Notify season change and display reset game state" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="1085" />
+            <mxPoint as="targetPoint" x="220" y="1085" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="22" value="" style="edgeStyle=none;html=1;endArrow=none;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;dashed=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="65" y="1120" />
+            <mxPoint as="targetPoint" x="1115" y="1120" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="[player was offline during the reset]" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="1125" width="700" height="30" />
+        </mxCell>
+        <mxCell id="24" value="Access application after season change" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="220" y="1190" />
+            <mxPoint as="targetPoint" x="750" y="1190" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="Display new season, reset state, and notification" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="1245" />
+            <mxPoint as="targetPoint" x="220" y="1245" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="" style="edgeStyle=none;html=1;endArrow=none;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;dashed=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="40" y="1310" />
+            <mxPoint as="targetPoint" x="1140" y="1310" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27" value="[reset failed]" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="55" y="1315" width="650" height="30" />
+        </mxCell>
+        <mxCell id="28" value="Keep seasonal actions unavailable; recover and retry reset" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="1360" />
+            <mxPoint as="targetPoint" x="750" y="1390" />
+            <Array as="points">
+              <mxPoint x="840" y="1360" />
+              <mxPoint x="840" y="1390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="29" value="If connected: indicate season change is still in progress" style="edgeStyle=none;html=1;endArrow=open;endFill=0;fontSize=14;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="1420" />
+            <mxPoint as="targetPoint" x="220" y="1420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30" value="After successful recovery, continue with new-season activation and notification.&#10;Old-season actions must not modify the new season." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff7d6;strokeColor=#a38a35;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="45" y="1470" width="1090" height="70" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
