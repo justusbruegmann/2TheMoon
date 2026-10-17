@@ -101,29 +101,31 @@ accumulate wealth through buying and selling stocks and crypto, while the tradin
 market state and prices. Randomized global events carry big boons or disruptions to the market and can greatly alter the
 standings on the global leaderboards.
 
-The game is marketed at novices in the trading space that can explore the subject hands-on in a gamified, low-stakes environment.
+The game is marketed at novices in the trading space that can explore the subject hands-on in a gamified, low-stakes
+environment.
 
 Competitors usually follow the real market with their trading games – 2TheMoon is unchained from the limitations and
-boring patterns of reality and can potentially add differently themed settings and events for each new season 
-(e.g. Bottle cap trading in a Fallout setting).
+boring patterns of reality and can potentially add differently themed settings and events for each new season (e.g.
+Bottle cap trading in a Fallout setting).
 
 ### 2.2 Use case diagram
 
-*Author: [first name]*
+*Author: Sebastian*
 
 <!-- One UML use case diagram for the whole application, at least five high-level use cases;
      login and registration do not count. Commit the source file next to the image. -->
 
-![Use case diagram](diagrams/use-case-diagram.png)
+![Use case diagram](diagrams/use_case_diagram.png)
 
 ### 2.3 Assumptions and dependencies
 
-*Author: [first name]*
+*Author: Sebastian*
 
 <!-- Optional: what you assume (e.g., users have a DHBW account) and what you depend on
      (e.g., an external API). Delete the comment and write "None" if there are none. -->
 
-[…]
+The market simulation depends on Real-World trading data as an initial state (at least for the first season).
+It will then be simulated independently of the live data.
 
 ## 3 Specific requirements
 
@@ -134,25 +136,30 @@ boring patterns of reality and can potentially add differently themed settings a
      Task 3: at least one specified use case per team member (four entries with a link below).
      List every use case of your diagram; mark the ones not specified yet as "planned". -->
 
-#### 3.1.1 UC-01 [Verb object]
+#### 3.1.1 UC-01 Analyze Portfolio
 
-*Author: [first name]* · [One sentence.] · [Specification](use_cases/UC-01_[name].md)
+*Author: Justus* · An overview page shows the player their portfolio: The stock they own, its performance over time and
+how much money they have to invest. · [Specification](use_cases/UC-01_Analyze_Portfolio.md)
 
-#### 3.1.2 UC-02 [Verb object]
+#### 3.1.2 UC-02 Compare Player Performance
 
-*Author: [first name]* · [One sentence.] · [Specification](use_cases/UC-02_[name].md)
+*Author: Mika* · A leaderboard page shows the portfolio performance of all players so that rivalries can make the game more engaging. · [Specification](use_cases/UC-02_Compare_Player_Performance.md)
 
-#### 3.1.3 UC-03 [Verb object]
+#### 3.1.3 UC-03 Use global Chat
 
-*Author: [first name]* · [One sentence.] · [Specification](use_cases/UC-03_[name].md)
+*Author: Max* · A global chat enables players to communicate among each other as well as broadcast system-wide messages to all users. · [Specification](use_cases/UC-03_Use_Global_Chat.md)
 
-#### 3.1.4 UC-04 [Verb object]
+#### 3.1.4 UC-04 Compete in Seasons
 
-*Author: [first name]* · [One sentence.] · [Specification](use_cases/UC-04_[name].md)
+*Author: Max* · The game runs in seasons after which the winners are crowned, progress is wiped, and all players start anew in a new (possibly differently themed) market. · [Specification](use_cases/UC-04_Compete_in_Seasons.md)
 
-#### 3.1.5 UC-05 [Verb object]
+#### 3.1.5 UC-05 Trade Assets
 
-*Author: [first name]* · [One sentence.] · planned
+*Author: Justus* · Players can buy and sell assets (stocks or crypto). · [Specification](use_cases/UC-05_Trade_Assets.md)
+
+#### 3.1.6 UC-06 [Verb object]
+
+*Author: Sebastian* · [One sentence.] · [Specification](use_cases/UC-04_[name].md)
 
 <!-- QUALITY REQUIREMENTS (3.2 to 3.5)
      At least one per section. Each one: an ID, one sentence with "shall", a number you can

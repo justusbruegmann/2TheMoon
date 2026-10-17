@@ -12,8 +12,8 @@ HOW TO USE THIS TEMPLATE
   https://cin.ufpe.br/~if682/RUP/webtmpl/templates/req/rup_ucspec.htm
 -->
 
-| Author | Estimate | User stories |
-| ------ | -------- | ------------ |
+| Author       | Estimate       | User stories                                                        |
+|--------------|----------------|---------------------------------------------------------------------|
 | [first name] | [story points] | [#12, #13 — and write "Implements UC-NN" into each of these issues] |
 
 ## 1 Brief description

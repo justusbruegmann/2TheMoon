@@ -12,13 +12,14 @@ HOW TO USE THIS TEMPLATE
   https://cin.ufpe.br/~if682/RUP/webtmpl/templates/req/rup_ucspec.htm
 -->
 
-| Author | Estimate | User stories |
-| ------ | -------- | ------------ |
-| Max | 13+8 | **2TM-67** Send filtered messages in the global chat, **2TM-73** Access and read the global chat|
+| Author | Estimate | User stories                                                                                     |
+|--------|----------|--------------------------------------------------------------------------------------------------|
+| Max    | 13+8     | **2TM-67** Send filtered messages in the global chat, **2TM-73** Access and read the global chat |
 
 ## 1 Brief description
 
-A player exchanges text messages with other players in the global chat. The system displays available messages, accepts new messages, and displays incoming messages. This allows players to communicate during the game.
+A player exchanges text messages with other players in the global chat. The system displays available messages, accepts
+new messages, and displays incoming messages. This allows players to communicate during the game.
 
 ## 2 Actors
 
@@ -42,7 +43,7 @@ A player exchanges text messages with other players in the global chat. The syst
 5. The system stores the message with timestamp and sender
 6. Other palyers send messages.
 7. The system displays incoming messages with timestamp and sender
-Repeat 3-7
+   Repeat 3-7
 8. The player leaves the chat.
 
 ### 4.2 Alternative flows
@@ -53,15 +54,20 @@ Repeat 3-7
      where it can start: "Extension point: …". If this use case always uses another one
      («include»), write it into the step: "(includes UC-07)". -->
 
-**2a · Chat cannot be loaded.** At step 2, the system cannot retrieve messages. It informs the player and offers another attempt. If the player retries, the flow continues at step 1. Otherwise, the use case ends.
+**2a · Chat cannot be loaded.** At step 2, the system cannot retrieve messages. It informs the player and offers another
+attempt. If the player retries, the flow continues at step 1. Otherwise, the use case ends.
 
 **3a · Leave without sending.** At step 3, the player leaves without submitting a message. The use case ends.
 
-**4a · Empty message.** At step 4, the submitted text is empty or contains only whitespace. The system rejects it and explains that the message must contain text. The flow continues at step 3.
+**4a · Empty message.** At step 4, the submitted text is empty or contains only whitespace. The system rejects it and
+explains that the message must contain text. The flow continues at step 3.
 
-**5a · Storage failure.** At step 5, storage fails and the message is not committed. The system reports that sending failed and preserves the message text. No message is published. The flow continues at step 3.
+**5a · Storage failure.** At step 5, storage fails and the message is not committed. The system reports that sending
+failed and preserves the message text. No message is published. The flow continues at step 3.
 
-**7a · Incoming connection interrupted.** At step 7, the system cannot receive updates. It indicates that the conversation may be out of date. After reconnection, it retrieves missed messages and continues at step 7. The player may leave at step 8.
+**7a · Incoming connection interrupted.** At step 7, the system cannot receive updates. It indicates that the
+conversation may be out of date. After reconnection, it retrieves missed messages and continues at step 7. The player
+may leave at step 8.
 
 ### 4.3 Sequence diagram
 
@@ -78,7 +84,9 @@ Repeat 3-7
      NFR-P-02 — The confirmation shall appear within 1 s for 95 % of the bookings.
      System-wide ones go into SRS sections 3.2 to 3.5. Write "None" if there are none. -->
 
- **SR-CHAT-01 — Message filtering:** The server shall check every submitted message against a configured list of blocked words before storing or distributing it. Matching shall be case-insensitive and based on whole words. Messages containing at least one blocked word shall be rejected, and the sender shall be informed.
+**SR-CHAT-01 — Message filtering:** The server shall check every submitted message against a configured list of blocked
+words before storing or distributing it. Matching shall be case-insensitive and based on whole words. Messages
+containing at least one blocked word shall be rejected, and the sender shall be informed.
 
 ## 6 Preconditions
 

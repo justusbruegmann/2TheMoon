@@ -1,4 +1,4 @@
-# UC-03 Use global Chat
+# UC-04 Compete in Seasons
 
 <!--
 HOW TO USE THIS TEMPLATE
@@ -12,13 +12,13 @@ HOW TO USE THIS TEMPLATE
   https://cin.ufpe.br/~if682/RUP/webtmpl/templates/req/rup_ucspec.htm
 -->
 
-| Author | Estimate | User stories |
-| ------ | -------- | ------------ |
-| Max | 13 + 8 | **2TM-79** Review the current season, **2TM-80** Start fresh in a new season|
+| Author | Estimate | User stories                                                                 |
+|--------|----------|------------------------------------------------------------------------------|
+| Max    | 13 + 8   | **2TM-79** Review the current season, **2TM-80** Start fresh in a new season |
 
 ## 1 Brief description
 
-A player exchanges text messages with other players in the global chat. The system displays available messages, accepts new messages, and displays incoming messages. This allows players to communicate during the game.
+The game runs in seasons after which the winners are crowned, progress is wiped, and all players start anew in a new market. Each season may carry a theme and change the stocks on offer and money in circulation. At the beginning of each season, all players start with the same balance and otherwise empty portfolios.
 
 ## 2 Actors
 
@@ -36,11 +36,13 @@ A player exchanges text messages with other players in the global chat. The syst
 <!-- The success case, 3 to 9 numbered steps (Cockburn). Actor and system take turns. -->
 
 1. The player accesses the application.
-2. The system displays the remaining time in the season and the player’s seasonal game state. Participation is automatic.
+2. The system displays the remaining time in the season and the player’s seasonal game state. Participation is
+   automatic.
 3. The player performs activities that contribute to seasonal performance, such as trading assets.
 4. The system updates the player’s seasonal game state.
-Repeat 1-4
-5. At the configured season end date the system resets the defined seasonal game state for all players and activates the new season with the configured starting conditions.
+   Repeat 1-4
+5. At the configured season end date the system resets the defined seasonal game state for all players and activates the
+   new season with the configured starting conditions.
 6. The system informs the player of the season change and displays the new seasonal game state.
 
 ### 4.2 Alternative flows
@@ -51,13 +53,20 @@ Repeat 1-4
      where it can start: "Extension point: …". If this use case always uses another one
      («include»), write it into the step: "(includes UC-07)". -->
 
-**2a · Season information unavailable.** At step 2, the system cannot retrieve the current season. It informs the player and offers another attempt. Seasonal actions remain unavailable until the current season can be determined. If the player retries, the flow continues at step 1.
+**2a · Season information unavailable.** At step 2, the system cannot retrieve the current season. It informs the player
+and offers another attempt. Seasonal actions remain unavailable until the current season can be determined. If the
+player retries, the flow continues at step 1.
 
-**4a · Season changes during an action.** At step 4, the season changes before the action is committed. The system rejects the outdated action and informs the player. The action does not affect the new season. The flow continues at step 8.
+**4a · Season changes during an action.** At step 4, the season changes before the action is committed. The system
+rejects the outdated action and informs the player. The action does not affect the new season. The flow continues at
+step 8.
 
-**5a · Reset failure.** At step 5, the reset cannot be completed. The system informs players that the season change is still in progress and prevents seasonal actions against a partially reset state. The flow continues at step 86after successful recovery.
+**5a · Reset failure.** At step 5, the reset cannot be completed. The system informs players that the season change is
+still in progress and prevents seasonal actions against a partially reset state. The flow continues at step 86after
+successful recovery.
 
-**5a · Storage failure.** At step 5, storage fails and the message is not committed. The system reports that sending failed and preserves the message text. No message is published. The flow continues at step 3.
+**5a · Storage failure.** At step 5, storage fails and the message is not committed. The system reports that sending
+failed and preserves the message text. No message is published. The flow continues at step 3.
 
 ### 4.3 Sequence diagram
 
@@ -74,7 +83,8 @@ Repeat 1-4
      NFR-P-02 — The confirmation shall appear within 1 s for 95 % of the bookings.
      System-wide ones go into SRS sections 3.2 to 3.5. Write "None" if there are none. -->
 
- **SR-CHAT-01 — Consistent reset::** Before gameplay in a new season is enabled, the system shall reset the defined seasonal game state for every player, including offline players, to the same configured starting conditions.
+**SR-CHAT-01 — Consistent reset::** Before gameplay in a new season is enabled, the system shall reset the defined
+seasonal game state for every player, including offline players, to the same configured starting conditions.
 
 ## 6 Preconditions
 
