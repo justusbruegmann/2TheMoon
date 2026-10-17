@@ -1,4 +1,4 @@
-# UC-[NN] [Verb object]
+# UC-06 Analyze the Market
 
 <!--
 HOW TO USE THIS TEMPLATE
@@ -12,26 +12,28 @@ HOW TO USE THIS TEMPLATE
   https://cin.ufpe.br/~if682/RUP/webtmpl/templates/req/rup_ucspec.htm
 -->
 
-| Author       | Estimate       | User stories                                                        |
-|--------------|----------------|---------------------------------------------------------------------|
-| [first name] | [story points] | [#12, #13 — and write "Implements UC-NN" into each of these issues] |
+| Author    | Estimate | User stories                                                        |
+|-----------|----------|---------------------------------------------------------------------|
+| Sebastian | [SP]     | [#12, #13 — and write "Implements UC-NN" into each of these issues] |
 
 ## 1 Brief description
 
 <!-- One paragraph: the purpose of the use case and the value for the actor. -->
 
-[…]
+The player can see a list of all available stock and crypto for trade. They can analyze their performance through
+key numbers, line diagrams and candle charts. This enables the player to make informed investment decisions.
 
 ## 2 Actors
 
-- **Primary:** [role that starts the use case]
-- **Secondary:** [system or role the use case needs, or "none"]
+- **Primary:** User
+- **Secondary:** None
 
 ## 3 Mockup
 
 <!-- A wireframe is enough. Show the key step of this use case. -->
 
-![Mockup UC-[NN]](../mockups/UC-[NN]_[name].png)
+![List Page](../mockups/StockOverview.png)
+![Detail Page](../mockups/StockDetail.png)
 
 ## 4 Flow of events
 
@@ -39,10 +41,13 @@ HOW TO USE THIS TEMPLATE
 
 <!-- The success case, 3 to 9 numbered steps (Cockburn). Actor and system take turns. -->
 
-1. The [actor] […].
-2. The system […].
-3. The [actor] […].
-4. The system […].
+1. The user wants to see all available assets and opens the asset list page.
+2. The system displays a filterable list with basic associated information.
+3. The user filters and selects one asset to see details of.
+4. The system switches to a details page of this asset, showing current prices as well as historical data displayed as
+   charts.
+5. Based on this information, the user can make an informed buy/sell/hold decision, and possibly immediately execute on
+   this decisions through Buy + Sell buttons on this page.
 
 ### 4.2 Alternative flows
 
@@ -52,8 +57,9 @@ HOW TO USE THIS TEMPLATE
      where it can start: "Extension point: …". If this use case always uses another one
      («include»), write it into the step: "(includes UC-07)". -->
 
-**[N]a · [short name].** At step [N], [condition]. The system […]. The flow continues at
-step [M] / The use case ends.
+**1a · Open stock details directly.** At step 1, the user can open the details page of one stock directly. The system
+might link these pages directly from other dashboards or the portfolio page that lists the user's held assets. 
+The flow continues at step 4.
 
 ### 4.3 Sequence diagram
 
@@ -76,10 +82,10 @@ step [M] / The use case ends.
 
 <!-- The state of the system before the use case can start, e.g., "The user is logged in." -->
 
-- […]
+- The user is logged in
 
 ## 7 Postconditions
 
 <!-- The state of the system after the use case, e.g., "The booking is stored." -->
 
-- […]
+None. This use case is idempotent. No information is being changed in [this flow](#4-flow-of-events).

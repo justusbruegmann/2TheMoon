@@ -163,7 +163,7 @@ crypto). · [Specification](use_cases/UC-05_Trade_Assets.md)
 
 #### 3.1.6 UC-06 Analyze the Market
 
-*Author: Sebastian* · [One sentence.] · [Specification](use_cases/UC-06_Analyze_the_Market.md)
+*Author: Sebastian* · The players can see a list of available stocks and detailed information about each entry in the form of key numbers, line graphs, and candle charts. · [Specification](use_cases/UC-06_Analyze_the_Market.md)
 
 <!-- QUALITY REQUIREMENTS (3.2 to 3.5)
      At least one per section. Each one: an ID, one sentence with "shall", a number you can
@@ -218,7 +218,7 @@ crypto). · [Specification](use_cases/UC-05_Trade_Assets.md)
 
 ### 3.6 Design constraints
 
-*Author: [first name]*
+*Author: Sebastian*
 
 <!-- Decisions that are fixed, not chosen per feature: your stack. -->
 
@@ -230,61 +230,100 @@ crypto). · [Specification](use_cases/UC-05_Trade_Assets.md)
 
 ### 3.7 Online user documentation and help system requirements
 
-Not applicable. [Reason, or replace with requirements.]
+Not applicable. 2TheMoon will not contain help pages.
 
 ### 3.8 Purchased components
 
-Not applicable. [Reason, or list them.]
+**Domain**: The webapp is hosted on [2TheMoon.dev](https://2TheMoon.dev) through Vercel, which is a paid domain.
 
 ### 3.9 Interfaces
 
-*Author: [first name]*
+*Author: Sebastian*
 
 #### 3.9.1 User interfaces
 
-<!-- Link the mockups of your use cases, or describe the main screens in one line each. -->
+*Author: Justus*
+![Page Mockups](mockups/_all_.png)
 
-[…]
+*Author: Max*
+![Season Indicator](mockups/Mockup_UC-04.png)
+![Global Chat Window](mockups/Mockup_UC-03.png)
+
 
 #### 3.9.2 Hardware interfaces
 
-Not applicable. [Reason.]
+Not applicable. 2TheMoon is a webapp and can run on any customer device.
 
 #### 3.9.3 Software interfaces
 
 <!-- External services and APIs you use, e.g., an e-mail service. -->
 
-[…]
+**Database and Auth (Login, Signup)**: [Supabase API](https://supabase.com/docs)
 
 #### 3.9.4 Communications interfaces
 
 <!-- E.g., HTTPS between frontend and backend. -->
 
-[…]
+**Protocol**: HTTPS between frontend and backend.
+**Request Format**: Logged-in user's supabase session token in header
 
 ### 3.10 Licensing requirements
 
-*Author: [first name]*
+*Author: Sebastian*
 
 <!-- The license of your project, and of libraries that impose conditions. -->
 
-[…]
+We have not yet selected a license for this project. 
+
+Third party licenses for VueJS and FastAPI (both MIT):
+
+```text
+The MIT License (MIT)
+
+Copyright (c) 2018 Sebastián Ramírez
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+```
+
+Not covered by the lecture 🤡
+
 
 ### 3.11 Legal, copyright and other notices
 
-*Author: [first name]*
+*Author: Sebastian*
 
 <!-- E.g., data protection (GDPR) if you store personal data. -->
 
-[…]
+Not answerable.
+- GDPR might not be applicable; all 2TheMoon stores is a player's chosen pseudonym.
+- No financial laws apply – the game is only a market simulation.
+- Real trading is not categorized as gambling; so the Glücksspielstaatsvertrag should not be relevant.
+- How should we know what is applicable? An evaluation of that takes legal departments full of trained lawyers weeks to decide. 🤡
 
 ### 3.12 Applicable standards
 
-*Author: [first name]*
+*Author: Sebastian*
 
 <!-- E.g., WCAG 2.2 level AA, a coding standard. -->
 
-[…]
+Not applicable. Not covered in the lecture 🤡. 
+"WCAG 2.2 level AA" is a funny collection of alphanumerical characters that looks more like a strong password than something I am willing to sink even more useless hours into researching myself.
 
 ## 4 Supporting information
 
