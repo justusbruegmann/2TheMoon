@@ -143,23 +143,27 @@ how much money they have to invest. · [Specification](use_cases/UC-01_Analyze_P
 
 #### 3.1.2 UC-02 Compare Player Performance
 
-*Author: Mika* · A leaderboard page shows the portfolio performance of all players so that rivalries can make the game more engaging. · [Specification](use_cases/UC-02_Compare_Player_Performance.md)
+*Author: Mika* · A leaderboard page shows the portfolio performance of all players so that rivalries can make the game
+more engaging. · [Specification](use_cases/UC-02_Compare_Player_Performance.md)
 
 #### 3.1.3 UC-03 Use global Chat
 
-*Author: Max* · A global chat enables players to communicate among each other as well as broadcast system-wide messages to all users. · [Specification](use_cases/UC-03_Use_Global_Chat.md)
+*Author: Max* · A global chat enables players to communicate among each other as well as broadcast system-wide messages
+to all users. · [Specification](use_cases/UC-03_Use_Global_Chat.md)
 
 #### 3.1.4 UC-04 Compete in Seasons
 
-*Author: Max* · The game runs in seasons after which the winners are crowned, progress is wiped, and all players start anew in a new (possibly differently themed) market. · [Specification](use_cases/UC-04_Compete_in_Seasons.md)
+*Author: Max* · The game runs in seasons after which the winners are crowned, progress is wiped, and all players start
+anew in a new (possibly differently themed) market. · [Specification](use_cases/UC-04_Compete_in_Seasons.md)
 
 #### 3.1.5 UC-05 Trade Assets
 
-*Author: Justus* · Players can buy and sell assets (stocks or crypto). · [Specification](use_cases/UC-05_Trade_Assets.md)
+*Author: Justus* · Players can buy and sell assets (stocks or
+crypto). · [Specification](use_cases/UC-05_Trade_Assets.md)
 
-#### 3.1.6 UC-06 [Verb object]
+#### 3.1.6 UC-06 Analyze the Market
 
-*Author: Sebastian* · [One sentence.] · [Specification](use_cases/UC-04_[name].md)
+*Author: Sebastian* · [One sentence.] · [Specification](use_cases/UC-06_Analyze_the_Market.md)
 
 <!-- QUALITY REQUIREMENTS (3.2 to 3.5)
      At least one per section. Each one: an ID, one sentence with "shall", a number you can
@@ -170,27 +174,47 @@ how much money they have to invest. · [Specification](use_cases/UC-01_Analyze_P
 
 ### 3.2 Usability
 
-| ID       | Requirement              | Author       |
-|----------|--------------------------|--------------|
-| NFR-U-01 | [measurable requirement] | [first name] |
+| ID       | Requirement              | Author    |
+|----------|--------------------------|-----------|
+| NFR-U-01 | [measurable requirement] | Justus    |
+| NFR-U-02 | [measurable requirement] | Mika      |
+| NFR-U-03 | [measurable requirement] | Max       |
+| NFR-U-04 | [measurable requirement] | Max       |
+| NFR-U-05 | [measurable requirement] | Justus    |
+| NFR-U-06 | [measurable requirement] | Sebastian |
 
 ### 3.3 Reliability
 
-| ID       | Requirement              | Author       |
-|----------|--------------------------|--------------|
-| NFR-R-01 | [measurable requirement] | [first name] |
+| ID       | Requirement              | Author    |
+|----------|--------------------------|-----------|
+| NFR-R-01 | [measurable requirement] | Justus    |
+| NFR-R-02 | [measurable requirement] | Mika      |
+| NFR-R-03 | [measurable requirement] | Max       |
+| NFR-R-04 | [measurable requirement] | Max       |
+| NFR-R-05 | [measurable requirement] | Justus    |
+| NFR-R-06 | [measurable requirement] | Sebastian |
 
 ### 3.4 Performance
 
-| ID       | Requirement              | Author       |
-|----------|--------------------------|--------------|
-| NFR-P-01 | [measurable requirement] | [first name] |
+| ID       | Requirement              | Author    |
+|----------|--------------------------|-----------|
+| NFR-P-01 | [measurable requirement] | Justus    |
+| NFR-P-02 | [measurable requirement] | Mika      |
+| NFR-P-03 | [measurable requirement] | Max       |
+| NFR-P-04 | [measurable requirement] | Max       |
+| NFR-P-05 | [measurable requirement] | Justus    |
+| NFR-P-06 | [measurable requirement] | Sebastian |
 
 ### 3.5 Supportability
 
-| ID       | Requirement              | Author       |
-|----------|--------------------------|--------------|
-| NFR-S-01 | [measurable requirement] | [first name] |
+| ID       | Requirement              | Author    |
+|----------|--------------------------|-----------|
+| NFR-S-01 | [measurable requirement] | Justus    |
+| NFR-S-02 | [measurable requirement] | Mika      |
+| NFR-S-03 | [measurable requirement] | Max       |
+| NFR-S-04 | [measurable requirement] | Max       |
+| NFR-S-05 | [measurable requirement] | Justus    |
+| NFR-S-06 | [measurable requirement] | Sebastian |
 
 ### 3.6 Design constraints
 
@@ -198,11 +222,11 @@ how much money they have to invest. · [Specification](use_cases/UC-01_Analyze_P
 
 <!-- Decisions that are fixed, not chosen per feature: your stack. -->
 
-| ID    | Constraint                                                  |
-|-------|-------------------------------------------------------------|
-| DC-01 | Frontend: [JavaScript/TypeScript, framework]                |
-| DC-02 | Backend: [Java, JavaScript/TypeScript or Python, framework] |
-| DC-03 | Database: […]                                               |
+| ID    | Constraint                     |
+|-------|--------------------------------|
+| DC-01 | Frontend: TypeScript, VueJS    |
+| DC-02 | Backend: Python, FastAPI       |
+| DC-03 | Database: PostgreSQL, Supabase |
 
 ### 3.7 Online user documentation and help system requirements
 
