@@ -23,6 +23,7 @@ The player views the leaderboard to compare their portfolio worth with that of o
 
 1. The user opens the leaderboard page.
 2. The system displays the podium and ranked list of players.
+3. The user views the podium and ranked list.
 
 ### 4.2 Alternative flows
 
