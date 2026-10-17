@@ -1,4 +1,4 @@
-# UC-0 
+# UC-01-Analyze-Portfolio
 
 | Author       | Estimate       | User stories                                                        |
 |--------------|----------------|---------------------------------------------------------------------|
@@ -6,14 +6,14 @@
 
 ## 1 Brief description
 
-The wants to look at his portfolio and check the perfomance of his trades.
+The user wants to look at his portfolio and check the perfomance of his trades.
 Furthermore the stocks that this user holds will be displayed with the option to sell.
 
 
 ## 2 Actors
 
 - **Primary:** User
-- **Secondary:** Backend with the currect prices and the holdings of the User
+- **Secondary:** System
 
 ## 3 Mockup
 
@@ -25,8 +25,8 @@ Furthermore the stocks that this user holds will be displayed with the option to
 
 
 1. The user opens the portfolio page.
-2. The backend loads the investor's holdings and current prices and displays each stock with its quantity, current value and performance.
-
+2. The System loads the investor's holdings and current prices and displays each stock with its quantity, current value and performance.
+3. The System displays the holdings with the current prices
 ### 4.2 Alternative flows
 
 
