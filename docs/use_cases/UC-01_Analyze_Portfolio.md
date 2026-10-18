@@ -40,8 +40,13 @@ with a warning.
 ![](../diagrams/UC-01-Sequence.png)
 
 ## 5 Special requirements
+| ID       | Requirement                                                                                          | Author   |
+|----------|------------------------------------------------------------------------------------------------------|----------|
+| NFR-U-01 | The portfolio shall show all the portfolio information without scrolling on a 1920x1080 screen       | Justus   |
+| NFR-R-01 | If the api is not reachable the frontend shall show a error in less than 5s        | Justus    |
+| NFR-P-01 | The api shall return data in less than 2s on p95 with 50req/s over 5min            | Justus    |
+| NFR-S-01 | The frontend won't need any editing for adding new assets                              | Justus    |
 
-Not applicable
 
 ## 6 Preconditions
 

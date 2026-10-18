@@ -36,10 +36,12 @@ enough stock.** At step 2 an sell selected, . The system notifies the user. The 
 ![Sequence diagram UC-[05]](../diagrams/UC-05-sequence.png)
 
 ## 5 Special requirements
-
-Not applicable
-
-[…]
+| ID       | Requirement                                                                            | Author |
+|----------|------------------------------------------------------------------------------------------------------|----------|
+| NFR-U-05 | The User shall perfom a action with a maximum of 3 steps (choose buy/sell, select auantatiy,confirm) | Justus    |
+| NFR-R-05 | The trade shall only confirmed if every db action is succeded (log, user_holdings) | Justus    |
+| NFR-P-05 | he api shall return the conformation in less than 1s on p95 with 50req/s over 5min | Justus    |
+| NFR-S-05 | Every trade shall be logged in the trade log so the whole history can be reconstructed | Justus    |
 
 ## 6 Preconditions
 

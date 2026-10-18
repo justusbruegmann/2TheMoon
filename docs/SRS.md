@@ -174,47 +174,47 @@ crypto). · [Specification](use_cases/UC-05_Trade_Assets.md)
 
 ### 3.2 Usability
 
-| ID       | Requirement              | Author    |
-|----------|--------------------------|-----------|
-| NFR-U-01 | [measurable requirement] | Justus    |
-| NFR-U-02 | [measurable requirement] | Mika      |
-| NFR-U-03 | [measurable requirement] | Max       |
-| NFR-U-04 | [measurable requirement] | Max       |
-| NFR-U-05 | [measurable requirement] | Justus    |
-| NFR-U-06 | [measurable requirement] | Sebastian |
+| ID       | Requirement                                                                                          | Author   |
+|----------|------------------------------------------------------------------------------------------------------|----------|
+| NFR-U-01 | The portfolio shall show all the portfolio information without scrolling on a 1920x1080 screen       | Justus   |
+| NFR-U-02 | [measurable requirement]                                                                             | Mika     |
+| NFR-U-03 | [measurable requirement]                                                                             | Max      |
+| NFR-U-04 | [measurable requirement]                                                                             | Max      |
+| NFR-U-05 | The User shall perfom a action with a maximum of 3 steps (choose buy/sell, select auantatiy,confirm) | Justus    |
+| NFR-U-06 | [measurable requirement]                                                                             | Sebastian |
 
 ### 3.3 Reliability
 
-| ID       | Requirement              | Author    |
-|----------|--------------------------|-----------|
-| NFR-R-01 | [measurable requirement] | Justus    |
-| NFR-R-02 | [measurable requirement] | Mika      |
-| NFR-R-03 | [measurable requirement] | Max       |
-| NFR-R-04 | [measurable requirement] | Max       |
-| NFR-R-05 | [measurable requirement] | Justus    |
-| NFR-R-06 | [measurable requirement] | Sebastian |
+| ID       | Requirement                                                                        | Author    |
+|----------|------------------------------------------------------------------------------------|-----------|
+| NFR-R-01 | If the api is not reachable the frontend shall show a error in less than 5s        | Justus    |
+| NFR-R-02 | [measurable requirement]                                                           | Mika      |
+| NFR-R-03 | [measurable requirement]                                                           | Max       |
+| NFR-R-04 | [measurable requirement]                                                           | Max       |
+| NFR-R-05 | The trade shall only confirmed if every db action is succeded (log, user_holdings) | Justus    |
+| NFR-R-06 | [measurable requirement]                                                           | Sebastian |
 
 ### 3.4 Performance
 
-| ID       | Requirement              | Author    |
-|----------|--------------------------|-----------|
-| NFR-P-01 | [measurable requirement] | Justus    |
-| NFR-P-02 | [measurable requirement] | Mika      |
-| NFR-P-03 | [measurable requirement] | Max       |
-| NFR-P-04 | [measurable requirement] | Max       |
-| NFR-P-05 | [measurable requirement] | Justus    |
-| NFR-P-06 | [measurable requirement] | Sebastian |
+| ID       | Requirement                                                                        | Author    |
+|----------|------------------------------------------------------------------------------------|-----------|
+| NFR-P-01 | The api shall return data in less than 2s on p95 with 50req/s over 5min            | Justus    |
+| NFR-P-02 | [measurable requirement]                                                           | Mika      |
+| NFR-P-03 | [measurable requirement]                                                           | Max       |
+| NFR-P-04 | [measurable requirement]                                                           | Max       |
+| NFR-P-05 | he api shall return the conformation in less than 1s on p95 with 50req/s over 5min | Justus    |
+| NFR-P-06 | [measurable requirement]                                                           | Sebastian |
 
 ### 3.5 Supportability
 
-| ID       | Requirement              | Author    |
-|----------|--------------------------|-----------|
-| NFR-S-01 | [measurable requirement] | Justus    |
-| NFR-S-02 | [measurable requirement] | Mika      |
-| NFR-S-03 | [measurable requirement] | Max       |
-| NFR-S-04 | [measurable requirement] | Max       |
-| NFR-S-05 | [measurable requirement] | Justus    |
-| NFR-S-06 | [measurable requirement] | Sebastian |
+| ID       | Requirement                                                                            | Author    |
+|----------|----------------------------------------------------------------------------------------|-----------|
+| NFR-S-01 | The frontend won't need any editing for adding new assets                              | Justus    |
+| NFR-S-02 | [measurable requirement]                                                               | Mika      |
+| NFR-S-03 | [measurable requirement]                                                               | Max       |
+| NFR-S-04 | [measurable requirement]                                                               | Max       |
+| NFR-S-05 | Every trade shall be logged in the trade log so the whole history can be reconstructed | Justus    |
+| NFR-S-06 | [measurable requirement]                                                               | Sebastian |
 
 ### 3.6 Design constraints
 
