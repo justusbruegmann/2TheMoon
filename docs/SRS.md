@@ -185,30 +185,34 @@ form of key numbers, line graphs, and candle charts. · [Specification](use_case
 
 ### 3.3 Reliability
 
-| ID       | Requirement                                                                        | Author |
-|----------|------------------------------------------------------------------------------------|--------|
-| NFR-R-01 | [special requirement](use_cases/UC-01_Analyze_Portfolio.md#5-special-requirements) | Justus |
-| NFR-R-02 | [special requirement](use_cases/UC-05_Trade_Assets.md#5-special-requirements)      | Justus |
-| NFR-R-03 | If the API is not reachable the frontend shall show a error in less than 5s        | Justus |
-| NFR-R-04 | Trades shall only be confirmed if every db action succeeds (log, user_holdings)    | Justus |
+| ID       | Requirement                                                                                                  | Author    |
+|----------|--------------------------------------------------------------------------------------------------------------|-----------|
+| NFR-R-01 | [special requirement](use_cases/UC-01_Analyze_Portfolio.md#5-special-requirements)                           | Justus    |
+| NFR-R-02 | [special requirement](use_cases/UC-05_Trade_Assets.md#5-special-requirements)                                | Justus    |
+| NFR-R-03 | If the API is not reachable the frontend shall show a error in less than 5s                                  | Justus    |
+| NFR-R-04 | Trades shall only be confirmed if every db action succeeds (log, user_holdings)                              | Justus    |
+| NFR-R-05 | The system shall be available for at least 95 % of the time during a season, excluding announced maintenance | Sebastian |
 
 ### 3.4 Performance
 
-| ID       | Requirement                                                                         | Author    |
-|----------|-------------------------------------------------------------------------------------|-----------|
-| NFR-P-01 | [special requirement](use_cases/UC-01_Analyze_Portfolio.md#5-special-requirements)  | Justus    |
-| NFR-P-02 | [special requirement](use_cases/UC-05_Trade_Assets.md#5-special-requirements)       | Justus    |
-| NFR-P-03 | [special requirement](use_cases/UC-06_Analyze_the_Market.md#5-special-requirements) | Sebastian |
-| NFR-P-04 | [special requirement](use_cases/UC-06_Analyze_the_Market.md#5-special-requirements) | Sebastian |
-| NFR-P-05 | The API shall return data in less than 2s on p95 with 50req/s over 5min             | Justus    |
+| ID       | Requirement                                                                                                | Author    |
+|----------|------------------------------------------------------------------------------------------------------------|-----------|
+| NFR-P-01 | [special requirement](use_cases/UC-01_Analyze_Portfolio.md#5-special-requirements)                         | Justus    |
+| NFR-P-02 | [special requirement](use_cases/UC-05_Trade_Assets.md#5-special-requirements)                              | Justus    |
+| NFR-P-03 | [special requirement](use_cases/UC-06_Analyze_the_Market.md#5-special-requirements)                        | Sebastian |
+| NFR-P-04 | [special requirement](use_cases/UC-06_Analyze_the_Market.md#5-special-requirements)                        | Sebastian |
+| NFR-P-05 | The frontend shall finish its initial page load in under 3 s on a standard internet connection (25 Mbit/s) | Sebastian |
+| NFR-P-06 | The API shall return data in less than 2s on p95 with 50req/s over 5min                                    | Justus    |
 
 ### 3.5 Supportability
 
-| ID       | Requirement                                                                           | Author |
-|----------|---------------------------------------------------------------------------------------|--------|
-| NFR-S-01 | [special requirement](use_cases/UC-01_Analyze_Portfolio.md#5-special-requirements)    | Justus |
-| NFR-S-02 | [special requirement](use_cases/UC-05_Trade_Assets.md#5-special-requirements)         | Justus |
-| NFR-S-03 | The frontend won't need any editing for adding new assets                             | Justus |
+| ID       | Requirement                                                                                                     | Author    |
+|----------|-----------------------------------------------------------------------------------------------------------------|-----------|
+| NFR-S-01 | [special requirement](use_cases/UC-01_Analyze_Portfolio.md#5-special-requirements)                              | Justus    |
+| NFR-S-02 | [special requirement](use_cases/UC-05_Trade_Assets.md#5-special-requirements)                                   | Justus    |
+| NFR-S-03 | The frontend won't need any editing for adding new assets                                                       | Justus    |
+| NFR-S-04 | Every pull request shall be reviewed by at least one other team member before it is merged into the main branch | Sebastian |
+| NFR-S-05 | The backend shall log errors with a timestamp and a message so that errors can be researched                    | Sebastian |
 
 ### 3.6 Design constraints
 
