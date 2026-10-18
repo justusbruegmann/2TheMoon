@@ -83,7 +83,7 @@ failed and preserves the message text. No message is published. The flow continu
      NFR-P-02 — The confirmation shall appear within 1 s for 95 % of the bookings.
      System-wide ones go into SRS sections 3.2 to 3.5. Write "None" if there are none. -->
 
-**SR-CHAT-01 — Consistent reset::** Before gameplay in a new season is enabled, the system shall reset the defined
+**NFR-U-04 — Consistent reset::** Before gameplay in a new season is enabled, the system shall reset the defined
 seasonal game state for every player, including offline players, to the same configured starting conditions.
 
 ## 6 Preconditions

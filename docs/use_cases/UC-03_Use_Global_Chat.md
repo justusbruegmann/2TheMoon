@@ -84,7 +84,7 @@ may leave at step 8.
      NFR-P-02 — The confirmation shall appear within 1 s for 95 % of the bookings.
      System-wide ones go into SRS sections 3.2 to 3.5. Write "None" if there are none. -->
 
-**SR-CHAT-01 — Message filtering:** The server shall check every submitted message against a configured list of blocked
+**NFR-U-03 — Message filtering:** The server shall check every submitted message against a configured list of blocked
 words before storing or distributing it. Matching shall be case-insensitive and based on whole words. Messages
 containing at least one blocked word shall be rejected, and the sender shall be informed.
 

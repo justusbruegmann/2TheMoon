@@ -3,13 +3,13 @@
 <!--
 HOW TO USE THIS TEMPLATE
 - ✓ Copy the whole docs/ folder into your repository.
-- Replace every [placeholder] in square brackets. Comments like this one are guidance: they
+- ✓ Replace every [placeholder] in square brackets. Comments like this one are guidance: they
   are invisible on GitHub, and you may delete them once a section is done.
-- Keep every heading and its number. If a section does not apply, write
+- ✓ Keep every heading and its number. If a section does not apply, write
   "Not applicable" and one sentence why.
-- Every section you write names its author: in the "Author" line below its heading, or in
+- ✓ Every section you write names its author: in the "Author" line below its heading, or in
   the Author column of a table. Prefilled sections need no author.
-- Structure after the RUP template "Software Requirements Specification":
+- ✓ Structure after the RUP template "Software Requirements Specification":
   https://cin.ufpe.br/~if682/RUP/webtmpl/templates/req/rup_srs.htm
 -->
 
@@ -163,7 +163,8 @@ crypto). · [Specification](use_cases/UC-05_Trade_Assets.md)
 
 #### 3.1.6 UC-06 Analyze the Market
 
-*Author: Sebastian* · The players can see a list of available stocks and detailed information about each entry in the form of key numbers, line graphs, and candle charts. · [Specification](use_cases/UC-06_Analyze_the_Market.md)
+*Author: Sebastian* · The players can see a list of available stocks and detailed information about each entry in the
+form of key numbers, line graphs, and candle charts. · [Specification](use_cases/UC-06_Analyze_the_Market.md)
 
 <!-- QUALITY REQUIREMENTS (3.2 to 3.5)
      At least one per section. Each one: an ID, one sentence with "shall", a number you can
@@ -174,47 +175,40 @@ crypto). · [Specification](use_cases/UC-05_Trade_Assets.md)
 
 ### 3.2 Usability
 
-| ID       | Requirement                                                                                          | Author   |
-|----------|------------------------------------------------------------------------------------------------------|----------|
-| NFR-U-01 | The portfolio shall show all the portfolio information without scrolling on a 1920x1080 screen       | Justus   |
-| NFR-U-02 | [measurable requirement]                                                                             | Mika     |
-| NFR-U-03 | [measurable requirement]                                                                             | Max      |
-| NFR-U-04 | [measurable requirement]                                                                             | Max      |
-| NFR-U-05 | The User shall perfom a action with a maximum of 3 steps (choose buy/sell, select auantatiy,confirm) | Justus    |
-| NFR-U-06 | [measurable requirement]                                                                             | Sebastian |
+| ID       | Requirement                                                                           | Author    |
+|----------|---------------------------------------------------------------------------------------|-----------|
+| NFR-U-01 | [special requirement](use_cases/UC-01_Analyze_Portfolio.md#5-special-requirements)    | Justus    |
+| NFR-U-02 | [special requirement](use_cases/UC-05_Trade_Assets.md#5-special-requirements)         | Justus    |
+| NFR-U-03 | [special requirement](use_cases/UC-03_Use_Global_Chat.md#5-special-requirements)      | Max       |
+| NFR-U-04 | [special requirement](use_cases/UC-04_Compete_in_Seasons.md#5-special-requirements)   | Max       |
+| NFR-U-05 | The website layout shall show all information without scrolling on a 1920x1080 screen | Sebastian |
 
 ### 3.3 Reliability
 
-| ID       | Requirement                                                                        | Author    |
-|----------|------------------------------------------------------------------------------------|-----------|
-| NFR-R-01 | If the api is not reachable the frontend shall show a error in less than 5s        | Justus    |
-| NFR-R-02 | [measurable requirement]                                                           | Mika      |
-| NFR-R-03 | [measurable requirement]                                                           | Max       |
-| NFR-R-04 | [measurable requirement]                                                           | Max       |
-| NFR-R-05 | The trade shall only confirmed if every db action is succeded (log, user_holdings) | Justus    |
-| NFR-R-06 | [measurable requirement]                                                           | Sebastian |
+| ID       | Requirement                                                                        | Author |
+|----------|------------------------------------------------------------------------------------|--------|
+| NFR-R-01 | [special requirement](use_cases/UC-01_Analyze_Portfolio.md#5-special-requirements) | Justus |
+| NFR-R-02 | [special requirement](use_cases/UC-05_Trade_Assets.md#5-special-requirements)      | Justus |
+| NFR-R-03 | If the API is not reachable the frontend shall show a error in less than 5s        | Justus |
+| NFR-R-04 | Trades shall only be confirmed if every db action succeeds (log, user_holdings)    | Justus |
 
 ### 3.4 Performance
 
-| ID       | Requirement                                                                        | Author    |
-|----------|------------------------------------------------------------------------------------|-----------|
-| NFR-P-01 | The api shall return data in less than 2s on p95 with 50req/s over 5min            | Justus    |
-| NFR-P-02 | [measurable requirement]                                                           | Mika      |
-| NFR-P-03 | [measurable requirement]                                                           | Max       |
-| NFR-P-04 | [measurable requirement]                                                           | Max       |
-| NFR-P-05 | he api shall return the conformation in less than 1s on p95 with 50req/s over 5min | Justus    |
-| NFR-P-06 | [measurable requirement]                                                           | Sebastian |
+| ID       | Requirement                                                                         | Author    |
+|----------|-------------------------------------------------------------------------------------|-----------|
+| NFR-P-01 | [special requirement](use_cases/UC-01_Analyze_Portfolio.md#5-special-requirements)  | Justus    |
+| NFR-P-02 | [special requirement](use_cases/UC-05_Trade_Assets.md#5-special-requirements)       | Justus    |
+| NFR-P-03 | [special requirement](use_cases/UC-06_Analyze_the_Market.md#5-special-requirements) | Sebastian |
+| NFR-P-04 | [special requirement](use_cases/UC-06_Analyze_the_Market.md#5-special-requirements) | Sebastian |
+| NFR-P-05 | The API shall return data in less than 2s on p95 with 50req/s over 5min             | Justus    |
 
 ### 3.5 Supportability
 
-| ID       | Requirement                                                                            | Author    |
-|----------|----------------------------------------------------------------------------------------|-----------|
-| NFR-S-01 | The frontend won't need any editing for adding new assets                              | Justus    |
-| NFR-S-02 | [measurable requirement]                                                               | Mika      |
-| NFR-S-03 | [measurable requirement]                                                               | Max       |
-| NFR-S-04 | [measurable requirement]                                                               | Max       |
-| NFR-S-05 | Every trade shall be logged in the trade log so the whole history can be reconstructed | Justus    |
-| NFR-S-06 | [measurable requirement]                                                               | Sebastian |
+| ID       | Requirement                                                                           | Author |
+|----------|---------------------------------------------------------------------------------------|--------|
+| NFR-S-01 | [special requirement](use_cases/UC-01_Analyze_Portfolio.md#5-special-requirements)    | Justus |
+| NFR-S-02 | [special requirement](use_cases/UC-05_Trade_Assets.md#5-special-requirements)         | Justus |
+| NFR-S-03 | The frontend won't need any editing for adding new assets                             | Justus |
 
 ### 3.6 Design constraints
 
@@ -249,7 +243,6 @@ Not applicable. 2TheMoon will not contain help pages.
 ![Season Indicator](mockups/Mockup_UC-04.png)
 ![Global Chat Window](mockups/Mockup_UC-03.png)
 
-
 #### 3.9.2 Hardware interfaces
 
 Not applicable. 2TheMoon is a webapp and can run on any customer device.
@@ -264,8 +257,7 @@ Not applicable. 2TheMoon is a webapp and can run on any customer device.
 
 <!-- E.g., HTTPS between frontend and backend. -->
 
-**Protocol**: HTTPS between frontend and backend.
-**Request Format**: Logged-in user's supabase session token in header
+**Protocol**: HTTPS between frontend and backend. **Request Format**: Logged-in user's supabase session token in header
 
 ### 3.10 Licensing requirements
 
@@ -273,7 +265,7 @@ Not applicable. 2TheMoon is a webapp and can run on any customer device.
 
 <!-- The license of your project, and of libraries that impose conditions. -->
 
-We have not yet selected a license for this project. 
+We have not yet selected a license for this project.
 
 Third party licenses for VueJS and FastAPI (both MIT):
 
@@ -303,7 +295,6 @@ THE SOFTWARE.
 
 Not covered by the lecture 🤡
 
-
 ### 3.11 Legal, copyright and other notices
 
 *Author: Sebastian*
@@ -311,10 +302,12 @@ Not covered by the lecture 🤡
 <!-- E.g., data protection (GDPR) if you store personal data. -->
 
 Not answerable.
+
 - GDPR might not be applicable; all 2TheMoon stores is a player's chosen pseudonym.
 - No financial laws apply – the game is only a market simulation.
 - Real trading is not categorized as gambling; so the Glücksspielstaatsvertrag should not be relevant.
-- How should we know what is applicable? An evaluation of that takes legal departments full of trained lawyers weeks to decide. 🤡
+- How should we know what is applicable? An evaluation of that takes legal departments full of trained lawyers weeks to
+  decide. 🤡
 
 ### 3.12 Applicable standards
 
@@ -322,8 +315,9 @@ Not answerable.
 
 <!-- E.g., WCAG 2.2 level AA, a coding standard. -->
 
-Not applicable. Not covered in the lecture 🤡. 
-"WCAG 2.2 level AA" is a funny collection of alphanumerical characters that looks more like a strong password than something I am willing to sink even more useless hours into researching myself.
+Not applicable. Not covered in the lecture 🤡.
+"WCAG 2.2 level AA" is a funny collection of alphanumerical characters that looks more like a strong password than
+something I am willing to sink even more useless hours into researching myself.
 
 ## 4 Supporting information
 
