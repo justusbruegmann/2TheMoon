@@ -4,6 +4,8 @@
 |--------|----------|--------------|
 | Justus | 20       | 2TM-57       |
 
+Realization: [UCR-01](../use_case_realizations/UCR-01-Analyze_Portfolio.md)
+
 ## 1 Brief description
 
 The user wants to look at his portfolio and check the performance of his trades.
@@ -38,6 +40,12 @@ with a warning.
 ### 4.3 Sequence diagram
 
 ![](../diagrams/UC-01-Sequence.png)
+
+### 4.4 Activity diagram
+
+
+![Activity diagram UC-01](../diagrams/UC-01-activity.png)
+
 
 ## 5 Special requirements
 

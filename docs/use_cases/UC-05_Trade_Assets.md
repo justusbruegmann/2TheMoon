@@ -4,6 +4,9 @@
 |--------|----------|---------------|
 | Justus | 20 + 20  | 2tm-84,2tm-85 |
 
+Realization: [UCR-05](../use_case_realizations/UCR-05-Trade_Assets.md)
+
+
 ## 1 Brief description
 
 The user wants to trade his assets.
@@ -34,6 +37,11 @@ enough stock.** At step 2 an sell selected, . The system notifies the user. The 
 ### 4.3 Sequence diagram
 
 ![Sequence diagram UC-[05]](../diagrams/UC-05-sequence.png)
+
+### 4.4 Activity diagram
+
+
+![Activity diagram UC-01](../diagrams/UC-05-activity.png)
 
 ## 5 Special requirements
 
