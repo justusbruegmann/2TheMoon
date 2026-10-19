@@ -5,6 +5,7 @@ import {computed} from "vue";
 const route = useRoute();
 
 const currentPath = computed(() => String(route.name).split(" ")[2]);
+
 </script>
 
 <template>
