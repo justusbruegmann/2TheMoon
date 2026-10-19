@@ -9,4 +9,3 @@ class DbSettings(BaseSettings):
 
     supabase_url: str
     supabase_publishable_key: str
-    supabase_secret_key: str

@@ -1,9 +1,9 @@
-import httpx
+import httpx2
 from postgrest.exceptions import APIError
 
 from .models.fastapi.schema_public_latest import *
 from .models.db_schema_helper import TESTING_TABLE
-from .supabase_client import get_secret_client
+from .supabase_client import get_client
 
 
 
@@ -38,7 +38,7 @@ class Database:
             )
             rows = TESTING_TABLE.parse(res.data)
             return rows[0] if rows else None
-        except (APIError, httpx.HTTPError):
+        except (APIError, httpx2.HTTPError):
             raise DatabaseError(f"Query to table '{TESTING_TABLE.name}' failed")
 
 
@@ -52,7 +52,7 @@ class Database:
                 .execute()
             )
             return TESTING_TABLE.parse(res.data)
-        except (APIError, httpx.HTTPError):
+        except (APIError, httpx2.HTTPError):
             raise DatabaseError(f"Query to table '{TESTING_TABLE.name}' failed")
 
 
@@ -66,7 +66,7 @@ class Database:
                 .execute()
             )
             return TESTING_TABLE.parse(res.data)[0]
-        except (APIError, httpx.HTTPError):
+        except (APIError, httpx2.HTTPError):
             raise DatabaseError(f"Insert into table '{TESTING_TABLE.name}' failed")
 
 
@@ -81,7 +81,7 @@ class Database:
                 .execute()
             )
             return TESTING_TABLE.parse(res.data)
-        except (APIError, httpx.HTTPError):
+        except (APIError, httpx2.HTTPError):
             raise DatabaseError(f"Update on table '{TESTING_TABLE.name}' failed")
 
 
@@ -96,9 +96,9 @@ class Database:
                 .execute()
             )
             return TESTING_TABLE.parse(res.data)
-        except (APIError, httpx.HTTPError):
+        except (APIError, httpx2.HTTPError):
             raise DatabaseError(f"Delete on table '{TESTING_TABLE.name}' failed")
 
 
 
-db = Database(get_secret_client())
+db = Database(get_client())
