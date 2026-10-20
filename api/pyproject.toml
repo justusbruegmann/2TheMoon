@@ -20,6 +20,9 @@ shared = { path = "../shared", editable = true }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = [
+    "integration: hits a live Supabase project (requires TEST_USER_EMAIL/TEST_USER_PASSWORD)",
+]
 
 [dependency-groups]
 dev = [
