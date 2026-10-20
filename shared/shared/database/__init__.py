@@ -1,3 +1,3 @@
-from .repository import DatabaseError, db
+from .database import Database, DatabaseError, Table, get_public_db, get_secret_db
 
-__all__ = ["DatabaseError", "db"]
+__all__ = ["Database", "DatabaseError", "Table", "get_public_db", "get_secret_db"]

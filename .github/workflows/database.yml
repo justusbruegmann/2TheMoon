@@ -1,0 +1,28 @@
+name: Database Tests
+
+on:
+  pull_request:
+    paths:
+      - "supabase/**"
+      - ".github/workflows/database.yml"
+
+jobs:
+  pgtap:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: supabase
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Start local database
+        run: supabase db start
+
+      - name: Run pgTAP tests
+        run: supabase test db
