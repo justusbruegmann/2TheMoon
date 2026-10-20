@@ -7,6 +7,7 @@ from postgrest import APIError
 from pydantic import BaseModel
 from supabase import Client, ClientOptions, create_client
 
+from .models.test import Test
 from ..config import DbSettings
 from .models import (
     Asset,
@@ -95,6 +96,8 @@ class Database:
         self.portfolio_history = Table(client, "portfolio_history", PortfolioHistory)
         self.price_history = Table(client, "price_history", PriceHistory)
         self.market_events = Table(client, "market_event", MarketEvent)
+
+        self.test = Table(client, "test", Test)
 
 
 @lru_cache(maxsize=1)
