@@ -66,8 +66,6 @@ else we roll everything back and return an error notification.
 
 Not applicable
 
-[Not applicable]
-
 ## 3 Derived requirements
 
 <!-- Requirements the design adds and the implementation must handle, each with an ID that is
