@@ -43,6 +43,10 @@ The flow continues at step 4.
 
 ![Sequence diagram UC-06](../diagrams/UC-06_sequence.png)
 
+### 4.4 Activity diagram
+
+![Activity diagram UC-06](../diagrams/UC-06_activity.png)
+
 ## 5 Special requirements
 
 **NFR-P-03** – The list of stocks shall load in less than three seconds. **NFR-P-04** – The list of stocks shall be
