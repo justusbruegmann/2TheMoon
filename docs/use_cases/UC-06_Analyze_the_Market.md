@@ -1,5 +1,7 @@
 # UC-06 Analyze the Market
 
+Realization: [UCR-06](../use_case_realizations/UCR-06-Analyze_the_Market.md)
+
 | Author    | Estimate | User stories                                                                              |
 |-----------|----------|-------------------------------------------------------------------------------------------|
 | Justus    | 20       | [2TM-17 Build Stock Detail Page](https://2themoon.youtrack.cloud/issue/2TM-17)            |
