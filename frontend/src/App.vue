@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import NotificationContainer from "./components/ui-components/NotificationContainer.vue";
 import Header from "./components/Header.vue";
 import {useRoute} from "vue-router";
 import {computed} from "vue";
@@ -10,6 +11,8 @@ const currentPath = computed(() => String(route.name).split(" ")[2]);
 
 <template>
 <Header :label="currentPath"/>
+
+  <notification-container/>
 
   <router-view/>
 </template>
