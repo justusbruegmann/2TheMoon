@@ -1,5 +1,5 @@
 import {ref} from "vue";
-import type {Notification, NotificationInput, Status} from "../types/notification";
+import type {Notification, NotificationInput, Status} from "../types/notifications.ts";
 
 let nextId = 0;
 
@@ -28,7 +28,7 @@ export function add(notification: NotificationInput) {
 
 export function remove(id: number) {
     notifications.value = notifications.value.filter(
-        (notification) => notification.id !== id,
+        (notification:Notification) => notification.id !== id,
     );
 }
 
