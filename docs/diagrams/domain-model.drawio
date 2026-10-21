@@ -1,0 +1,216 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Domain Model" id="domain-model">
+    <mxGraphModel dx="3264" dy="1015" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c_user" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Profile" vertex="1">
+          <mxGeometry height="74" width="240" x="-160" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a_user" parent="c_user" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="displayName: String&lt;br&gt;createdAt: DateTime" vertex="1">
+          <mxGeometry height="48" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_portfolio" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Portfolio" vertex="1">
+          <mxGeometry height="74" width="240" x="470" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a_portfolio" parent="c_portfolio" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="cashBalance: Decimal&lt;br&gt;createdAt: DateTime" vertex="1">
+          <mxGeometry height="48" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_season" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Season" vertex="1">
+          <mxGeometry height="134" width="240" x="860" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a_season" parent="c_season" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="name: String&lt;br&gt;status: SeasonStatus&lt;br&gt;startingBalance: Decimal&lt;br&gt;startsAt: DateTime&lt;br&gt;endsAt: DateTime [0..1]" vertex="1">
+          <mxGeometry height="108" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_event" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="MarketEvent" vertex="1">
+          <mxGeometry height="134" width="270" x="1240" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a_event" parent="c_event" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="label: String&lt;br&gt;description: String&lt;br&gt;affectedIndustries: Industry [1..*]&lt;br&gt;startsAt: DateTime&lt;br&gt;endsAt: DateTime" vertex="1">
+          <mxGeometry height="108" width="270" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_trade" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Trade" vertex="1">
+          <mxGeometry height="134" width="240" x="320" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="a_trade" parent="c_trade" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="operation: TradeOperation&lt;br&gt;quantity: Decimal&lt;br&gt;executionPrice: Decimal&lt;br&gt;fee: Decimal&lt;br&gt;executedAt: DateTime" vertex="1">
+          <mxGeometry height="108" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_holding" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Holding" vertex="1">
+          <mxGeometry height="74" width="240" x="620" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="a_holding" parent="c_holding" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="quantity: Decimal&lt;br&gt;averageBuyPrice: Decimal" vertex="1">
+          <mxGeometry height="48" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_asset" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Asset" vertex="1">
+          <mxGeometry height="134" width="240" x="470" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="a_asset" parent="c_asset" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="ticker: String&lt;br&gt;name: String&lt;br&gt;kind: AssetKind&lt;br&gt;industries: Industry [0..*]&lt;br&gt;createdAt: DateTime" vertex="1">
+          <mxGeometry height="108" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_price" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="PriceHistory" vertex="1">
+          <mxGeometry height="110" width="240" x="860" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="a_price" parent="c_price" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="open: Decimal&lt;br&gt;close: Decimal&lt;br&gt;high: Decimal&lt;div&gt;low: Decimal&lt;br&gt;recordedAt: DateTime&lt;/div&gt;" vertex="1">
+          <mxGeometry height="84" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="en_op" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="«enumeration»&lt;br&gt;&lt;b&gt;TradeOperation&lt;/b&gt;" vertex="1">
+          <mxGeometry height="88" width="200" x="20" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="ev_op" parent="en_op" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="Buy&lt;br&gt;Sell" vertex="1">
+          <mxGeometry height="48" width="200" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="en_kind" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="«enumeration»&lt;br&gt;&lt;b&gt;AssetKind&lt;/b&gt;" vertex="1">
+          <mxGeometry height="108" width="200" x="260" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="ev_kind" parent="en_kind" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="Stock&lt;br&gt;Crypto&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="68" width="200" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="en_status" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="«enumeration»&lt;br&gt;&lt;b&gt;SeasonStatus&lt;/b&gt;" vertex="1">
+          <mxGeometry height="108" width="200" x="500" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="ev_status" parent="en_status" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="Planned&lt;br&gt;Active&lt;br&gt;Ended" vertex="1">
+          <mxGeometry height="68" width="200" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="en_ind" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="«enumeration»&lt;br&gt;&lt;b&gt;Industry&lt;/b&gt;" vertex="1">
+          <mxGeometry height="148" width="200" x="740" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="ev_ind" parent="en_ind" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="Technology&lt;br&gt;Finance&lt;br&gt;Energy&lt;br&gt;Healthcare&lt;br&gt;Consumer" vertex="1">
+          <mxGeometry height="108" width="200" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c_user" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" target="c_portfolio" value="owns">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1s" connectable="0" parent="e1" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=bottom;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.85" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e1t" connectable="0" parent="e1" style="edgeLabel;html=1;resizable=0;align=right;verticalAlign=bottom;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="0.85" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c_season" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" target="c_portfolio" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2s" connectable="0" parent="e2" style="edgeLabel;html=1;resizable=0;align=right;verticalAlign=bottom;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.85" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2t" connectable="0" parent="e2" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=bottom;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="0.85" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c_portfolio" style="endArrow=none;startArrow=diamondThin;startFill=1;startSize=16;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" target="c_trade" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3s" connectable="0" parent="e3" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=top;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.75" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3t" connectable="0" parent="e3" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=bottom;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="0.8" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="c_portfolio" style="endArrow=none;startArrow=diamondThin;startFill=1;startSize=16;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" target="c_holding" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4s" connectable="0" parent="e4" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=top;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.75" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4t" connectable="0" parent="e4" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=bottom;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="0.8" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="c_trade" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="c_asset" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6s" connectable="0" parent="e6" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=top;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="-0.8" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6t" connectable="0" parent="e6" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=bottom;" value="1" vertex="1">
+          <mxGeometry relative="1" x="0.8" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="c_holding" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="c_asset" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7s" connectable="0" parent="e7" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=top;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="-0.8" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7t" connectable="0" parent="e7" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=bottom;" value="1" vertex="1">
+          <mxGeometry relative="1" x="0.8" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="c_asset" style="endArrow=none;startArrow=diamondThin;startFill=1;startSize=16;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" target="c_price" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8s" connectable="0" parent="e8" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=bottom;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.6" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8t" connectable="0" parent="e8" style="edgeLabel;html=1;resizable=0;align=right;verticalAlign=bottom;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="0.85" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="c_season" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" target="c_price" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9s" connectable="0" parent="e9" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=top;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.9" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9t" connectable="0" parent="e9" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=bottom;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="0.9" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="c_season" style="endArrow=none;startArrow=diamondThin;startFill=1;startSize=16;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" target="c_event" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10s" connectable="0" parent="e10" style="edgeLabel;html=1;resizable=0;align=left;verticalAlign=bottom;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.6" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10t" connectable="0" parent="e10" style="edgeLabel;html=1;resizable=0;align=right;verticalAlign=bottom;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="0.85" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="G_inPunHO8hxD-q_rN65-13" edge="1" parent="1" source="G_inPunHO8hxD-q_rN65-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;defaultLabelBackgroundColor=gap;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="c_user">
+          <mxGeometry relative="1" x="-0.5667" as="geometry">
+            <mxPoint x="-150" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="G_inPunHO8hxD-q_rN65-11" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="ChatMessage" vertex="1">
+          <mxGeometry height="74" width="240" x="170" y="644" as="geometry" />
+        </mxCell>
+        <mxCell id="G_inPunHO8hxD-q_rN65-12" parent="G_inPunHO8hxD-q_rN65-11" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="Message: String&lt;br&gt;createdAt: DateTime" vertex="1">
+          <mxGeometry height="48" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="G_inPunHO8hxD-q_rN65-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="sender" vertex="1">
+          <mxGeometry height="30" width="60" x="290" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="G_inPunHO8hxD-q_rN65-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="1" vertex="1">
+          <mxGeometry height="30" width="60" x="-60" y="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
