@@ -1,0 +1,92 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="UCR-06 Design Classes" id="ucr06-classes">
+    <mxGraphModel dx="977" dy="759" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1340" pageHeight="420" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c_overview" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=none;strokeColor=#000000;" value="StocksOverviewPage" vertex="1">
+          <mxGeometry height="66" width="260" x="45" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="o_overview" parent="c_overview" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="+ openAssetList(): void&lt;br&gt;+ selectAsset(assetId): void" vertex="1">
+          <mxGeometry height="36" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c_details" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=none;strokeColor=#000000;" value="StocksDetailsPage" vertex="1">
+          <mxGeometry height="90" width="260" x="45" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="o_details" parent="c_details" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="&lt;div&gt;+ openAssetDetails(assetId): void&lt;/div&gt;&lt;div&gt;+ handleBuy(assetId, quantity): void&lt;/div&gt;&lt;div&gt;+ handleSell(assetId, quantity): void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xREmEjk5PlL_BjM4vg_Z-13" edge="1" parent="1" source="o_service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" target="o_router">
+          <mxGeometry relative="1" x="0.0986" as="geometry" />
+        </mxCell>
+        <mxCell id="c_service" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=none;strokeColor=#000000;" value="AssetService" vertex="1">
+          <mxGeometry height="66" width="260" x="405" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="o_service" parent="c_service" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="+ listAssets(): Asset[]&lt;br&gt;+ getAssetDetails(assetId): AssetDetails" vertex="1">
+          <mxGeometry height="36" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c_overview" style="endArrow=open;endFill=0;endSize=10;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" target="c_service">
+          <mxGeometry relative="1" x="-0.0054" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c_details" style="endArrow=open;endFill=0;endSize=10;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;" target="c_service">
+          <mxGeometry relative="1" x="-0.005" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="a_asset" style="endArrow=open;endFill=0;endSize=10;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="xREmEjk5PlL_BjM4vg_Z-6">
+          <mxGeometry relative="1" x="-0.0473" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="289.5" />
+              <mxPoint x="1060" y="145" />
+            </Array>
+            <mxPoint x="1070" y="133" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xREmEjk5PlL_BjM4vg_Z-1" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="Frontend" vertex="1">
+          <mxGeometry height="400" width="650" x="30" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="xREmEjk5PlL_BjM4vg_Z-2" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="API" vertex="1">
+          <mxGeometry height="400" width="340" x="690" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="c_asset" parent="xREmEjk5PlL_BjM4vg_Z-2" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=none;strokeColor=#000000;" value="Asset" vertex="1">
+          <mxGeometry height="80" width="260" x="40" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="a_asset" parent="c_asset" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="&lt;div&gt;+ asset_select_all(): Asset[]&lt;br&gt;+ asset_select(assetId): Asset&lt;br&gt;+ price_history_select(assetId): PriceHistory[]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="54" width="260" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="xREmEjk5PlL_BjM4vg_Z-12" edge="1" parent="xREmEjk5PlL_BjM4vg_Z-2" source="c_router" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="c_asset">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_router" parent="xREmEjk5PlL_BjM4vg_Z-2" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=none;strokeColor=#000000;" value="AssetRouter" vertex="1">
+          <mxGeometry height="66" width="260" x="40" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="o_router" parent="c_router" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="+ get_assets(): Asset[]&lt;br&gt;+ get_asset(assetId): Asset" vertex="1">
+          <mxGeometry height="36" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xREmEjk5PlL_BjM4vg_Z-3" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="&lt;div&gt;Database&lt;/div&gt;" vertex="1">
+          <mxGeometry height="400" width="300" x="1040" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="c_price" parent="xREmEjk5PlL_BjM4vg_Z-3" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=none;strokeColor=#000000;" value="PriceHistory" vertex="1">
+          <mxGeometry height="110" width="160" x="70" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="a_price" parent="c_price" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="- open: Decimal&lt;br&gt;- close: Decimal&lt;br&gt;- high: Decimal&lt;br&gt;- low: Decimal&lt;br&gt;- recordedAt: DateTime" vertex="1">
+          <mxGeometry height="84" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="xREmEjk5PlL_BjM4vg_Z-6" parent="xREmEjk5PlL_BjM4vg_Z-3" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=none;strokeColor=#000000;" value="Asset" vertex="1">
+          <mxGeometry height="110" width="160" x="70" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xREmEjk5PlL_BjM4vg_Z-7" parent="xREmEjk5PlL_BjM4vg_Z-6" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;html=1;" value="&lt;div&gt;- ticker: String&lt;/div&gt;&lt;div&gt;- name: String&lt;/div&gt;- kind: AssetKind&lt;br&gt;- industries: Industry[0..*]&lt;br&gt;&lt;div&gt;- createdAt: DateTime&lt;/div&gt;" vertex="1">
+          <mxGeometry height="84" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="xREmEjk5PlL_BjM4vg_Z-11" edge="1" parent="1" source="a_asset" style="endArrow=open;endFill=0;endSize=10;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="a_price">
+          <mxGeometry relative="1" x="0.0743" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="303" />
+              <mxPoint x="1060" y="318" />
+            </Array>
+            <mxPoint x="1030" y="270" as="sourcePoint" />
+            <mxPoint x="1070" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
