@@ -66,8 +66,6 @@ else we roll everything back and return an error notification.
 
 Not applicable
 
-
- the images. -->
 ### 2.5 Design classes
 
 | Analysis object (2.1) | Design class(es)            |
