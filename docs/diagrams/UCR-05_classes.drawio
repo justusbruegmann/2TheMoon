@@ -1,0 +1,118 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="UCR-05 Design classes" id="ucr05cls">
+    <mxGraphModel dx="1414" dy="863" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="680" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fe" parent="1" style="swimlane;startSize=26;html=1;fillColor=#f5f5f5;" value="Frontend (Vue)" vertex="1">
+          <mxGeometry height="160" width="260" x="20" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="be" parent="1" style="swimlane;startSize=26;html=1;fillColor=#f5f5f5;" value="Backend (FastAPI)" vertex="1">
+          <mxGeometry height="620" width="1080" x="300" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="TradePage" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffffff;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«component»&lt;/i&gt;&lt;br&gt;&lt;b&gt;TradePage&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ submitTrade()&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="220" x="40" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="TradeController" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffffff;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«boundary»&lt;/i&gt;&lt;br&gt;&lt;b&gt;TradeController&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ executeTrade(assetId, type, quantity)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="240" x="340" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="TradeService" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffffff;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«control»&lt;/i&gt;&lt;br&gt;&lt;b&gt;TradeService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ trade(userId, assetId, type, quantity)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="300" x="660" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="UserProfile" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffffff;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«entity»&lt;/i&gt;&lt;br&gt;&lt;b&gt;UserProfile&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;balance: Decimal&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ hasEnoughBalance(amount): bool&lt;br&gt;+ updateBalance(delta)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="110" width="210" x="340" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="UserHolding" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffffff;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«entity»&lt;/i&gt;&lt;br&gt;&lt;b&gt;UserHolding&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;quantity: Decimal&lt;br&gt;buyInPrice: Decimal&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ hasEnoughQuantity(qty): bool&lt;br&gt;+ updateQuantity(delta)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="130" width="210" x="590" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="TradingAsset" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffffff;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«entity»&lt;/i&gt;&lt;br&gt;&lt;b&gt;TradingAsset&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;symbol: str&lt;br&gt;currentPrice: Decimal&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ getCurrentPrice(): Decimal&lt;/p&gt;" vertex="1">
+          <mxGeometry height="110" width="200" x="840" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="TradingRecord" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffffff;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«entity»&lt;/i&gt;&lt;br&gt;&lt;b&gt;TradingRecord&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;type: TradeType&lt;br&gt;quantity: Decimal&lt;br&gt;price: Decimal&lt;br&gt;timestamp: DateTime&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ TradingRecord(profile, asset, type, quantity, price)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="150" width="260" x="1080" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="TradeType" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffffff;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«enumeration»&lt;/i&gt;&lt;br&gt;&lt;b&gt;TradeType&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;BUY&lt;br&gt;SELL&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="130" x="1230" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="TradePage" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;" target="TradeController" value="POST /trades">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="TradeController" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;" target="TradeService" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="TradeService" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" target="UserProfile" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="TradeService" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.35;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" target="UserHolding" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="TradeService" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.6;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" target="TradingAsset" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="TradeService" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.9;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" target="TradingRecord" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="UserProfile" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;" target="UserHolding" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7_m0" connectable="0" parent="e7" style="edgeLabel;resizable=0;html=1;labelBackgroundColor=#ffffff;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.8" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7_m1" connectable="0" parent="e7" style="edgeLabel;resizable=0;html=1;labelBackgroundColor=#ffffff;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="0.8" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="UserHolding" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;" target="TradingAsset" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8_m0" connectable="0" parent="e8" style="edgeLabel;resizable=0;html=1;labelBackgroundColor=#ffffff;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="-0.8" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8_m1" connectable="0" parent="e8" style="edgeLabel;resizable=0;html=1;labelBackgroundColor=#ffffff;" value="1" vertex="1">
+          <mxGeometry relative="1" x="0.8" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="TradingAsset" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;" target="TradingRecord" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9_m0" connectable="0" parent="e9" style="edgeLabel;resizable=0;html=1;labelBackgroundColor=#ffffff;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.8" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9_m1" connectable="0" parent="e9" style="edgeLabel;resizable=0;html=1;labelBackgroundColor=#ffffff;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="0.8" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="UserProfile" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.2;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" target="TradingRecord" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="445" y="490" />
+              <mxPoint x="1132" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10_m0" connectable="0" parent="e10" style="edgeLabel;resizable=0;html=1;labelBackgroundColor=#ffffff;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.8" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10_m1" connectable="0" parent="e10" style="edgeLabel;resizable=0;html=1;labelBackgroundColor=#ffffff;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="0.8" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="TradingRecord" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" target="TradeType" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

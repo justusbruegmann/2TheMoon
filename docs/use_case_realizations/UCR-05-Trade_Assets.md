@@ -12,7 +12,7 @@
      what is left out. Terms belong in the SRS, not here. -->
 
 This document describes the realization of [UC-05 Trade Assets](../use_cases/UC-05_Trade_Assets.md).
-It shows which objects work together, and in which order, when a logged-in user buys or sells an asset
+It shows which analysis objects work together, and in which order, when a logged-in user buys or sells an asset
 by choosing the trade type and quantity and confirming the trade. The alternative flows "not enough money" (2a)
 and "not enough stock" (2b) are covered as fragments in the sequence diagram, as well as the rollback when a
 database action fails (NFR-R-02).
@@ -65,6 +65,23 @@ else we roll everything back and return an error notification.
 ### 2.4 State machine
 
 Not applicable
+
+
+ the images. -->
+### 2.5 Design classes
+
+| Analysis object (2.1) | Design class(es)            |
+| --------------------- | --------------------------- |
+| :TradeForm «boundary» | TradePage, TradeController  |
+| :TradeAsset «control» | TradeService                |
+| :Profile «entity»     | UserProfile                 |
+| :Holding «entity»     | UserHolding                 |
+| :Asset «entity»       | TradingAsset                |
+| :Trade «entity»       | TradingRecord               |
+
+![Class diagram UCR-05](../diagrams/UCR-05_classes.png)
+
+![Sequence diagram UCR-05, design classes](../diagrams/UCR-05_sequence_design.png)
 
 ## 3 Derived requirements
 
