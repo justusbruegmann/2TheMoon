@@ -59,6 +59,10 @@ sequenceDiagram
     Frontend -->> User: Display podium and remaining ranked users
     deactivate Frontend
 ```
+## 4.4 Activity diagram
+
+![Activity diagram UC-02](../diagrams/UC-02-activity-diagram.png)
+
 
 ## 5 Special requirements
 
