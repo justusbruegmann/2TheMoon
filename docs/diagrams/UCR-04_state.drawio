@@ -1,0 +1,21 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="ucr04state" name="UCR-04 Season state machine">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="320" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="i" parent="1" style="ellipse;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" value="" vertex="1"><mxGeometry x="20" y="125" width="30" height="30" as="geometry" /></mxCell>
+        <mxCell id="pl" parent="1" style="rounded=1;arcSize=40;whiteSpace=wrap;html=1;fontStyle=1;verticalAlign=top;" value="PLANNED&lt;hr size=&quot;1&quot;&gt;&lt;span style=&quot;font-weight:normal&quot;&gt;seasonal actions rejected&lt;/span&gt;" vertex="1"><mxGeometry x="180" y="105" width="170" height="70" as="geometry" /></mxCell>
+        <mxCell id="ac" parent="1" style="rounded=1;arcSize=40;whiteSpace=wrap;html=1;fontStyle=1;verticalAlign=top;" value="ACTIVE&lt;hr size=&quot;1&quot;&gt;&lt;span style=&quot;font-weight:normal&quot;&gt;seasonal actions accepted&lt;/span&gt;" vertex="1"><mxGeometry x="560" y="105" width="170" height="70" as="geometry" /></mxCell>
+        <mxCell id="en" parent="1" style="rounded=1;arcSize=40;whiteSpace=wrap;html=1;fontStyle=1;verticalAlign=top;" value="ENDED&lt;hr size=&quot;1&quot;&gt;&lt;span style=&quot;font-weight:normal&quot;&gt;read-only, results final&lt;/span&gt;" vertex="1"><mxGeometry x="960" y="105" width="170" height="70" as="geometry" /></mxCell>
+        <mxCell id="f" parent="1" style="ellipse;html=1;shape=endState;aspect=fixed;fillColor=#000000;strokeColor=#000000;" value="" vertex="1"><mxGeometry x="1205" y="125" width="30" height="30" as="geometry" /></mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="i" target="pl" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;labelBackgroundColor=default;verticalAlign=bottom;" value="configured"><mxGeometry relative="1" as="geometry"></mxGeometry></mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="pl" target="ac" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;labelBackgroundColor=default;verticalAlign=bottom;" value="season_change() committed&lt;br&gt;[previous season ENDED]&lt;br&gt;/ portfolios with starting_balance&lt;br&gt;for all players, notify players"><mxGeometry relative="1" as="geometry"></mxGeometry></mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="ac" target="en" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;labelBackgroundColor=default;verticalAlign=bottom;" value="ends_at reached&lt;br&gt;/ block seasonal actions"><mxGeometry relative="1" as="geometry"></mxGeometry></mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="en" target="f" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;labelBackgroundColor=default;verticalAlign=bottom;" value=""><mxGeometry relative="1" as="geometry"></mxGeometry></mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="pl" target="pl" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;labelBackgroundColor=default;verticalAlign=bottom;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;verticalAlign=top;" value="season_change() failed&lt;br&gt;/ rollback, schedule_retry()"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="222" y="230" /><mxPoint x="307" y="230" /></Array></mxGeometry></mxCell>
+        <mxCell id="c6" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;align=left;spacingLeft=6;verticalAlign=top;fillColor=#ffffff;" value="At most one season is ACTIVE at a time (DR-04-03).&lt;br&gt;Between ENDED of the old and ACTIVE of the new season&lt;br&gt;no season is ACTIVE, so seasonal actions are rejected (5a)." vertex="1"><mxGeometry x="560" y="220" width="370" height="64" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
