@@ -77,6 +77,13 @@ may leave at step 8.
 
 ![Sequence diagram UC-03](../diagrams/UC-03_sequence.png)
 
+### 4.4 Activity diagram
+<!-- The flow of events as an activity diagram. Commit the source file next
+to the image. -->
+![Activity diagram UC-03](../diagrams/UC-03_activity.png)
+
+
+
 ## 5 Special requirements
 
 <!-- Quality requirements for this use case only, each with an ID that is unique in the

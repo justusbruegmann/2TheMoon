@@ -1,6 +1,6 @@
 # UC-06 Analyze the Market
 
-Realization: [UCR-06](../use_case_realizations/UCR-06-Analyze_the_Market.md)
+Realization: [UCR-06](../use_case_realizations/UCR-06_Analyze_the_Market.md)
 
 | Author    | Estimate | User stories                                                                              |
 |-----------|----------|-------------------------------------------------------------------------------------------|

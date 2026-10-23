@@ -47,8 +47,22 @@ If we did not get the current prices we show an warning.
 
 ### 2.4 State machine
 
-
 Not applicable
+
+### 2.5 Design classes
+
+| Analysis object (2.1)          | Design class(es)                    |
+| ------------------------------ | ----------------------------------- |
+| :PortfolioPage «boundary»      | PortfolioPage, PortfolioController  |
+| :AnalyzePortfolio «control»    | PortfolioService                    |
+| :Profile «entity»              | UserProfile                         |
+| :Holding «entity»              | UserHolding                         |
+| :Asset «entity»                | TradingAsset                        |
+| :PortfolioHistory «entity»     | PortfolioHistory                    |
+
+![Class diagram UCR-01](../diagrams/UCR-01_classes.png)
+
+![Sequence diagram UCR-01, design classes](../diagrams/UCR-01_sequence_design.png)
 
 ## 3 Derived requirements
 
