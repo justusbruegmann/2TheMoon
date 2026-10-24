@@ -1,7 +1,30 @@
-{
-  "semi": true,
-  "singleQuote": false,
-  "tabWidth": 4,
-  "printWidth": 80,
-  "trailingComma": "all"
-}
+# Prettier configuration.
+# Written as YAML (instead of JSON) because only YAML allows comments here.
+
+# Terminate statements with a semicolon.
+semi: true
+
+# Use double quotes for strings, not single quotes.
+singleQuote: false
+
+# Indent with 2 spaces per level.
+tabWidth: 2
+
+# Wrap lines that grow beyond 80 characters.
+# This is a guideline, not a hard limit: Prettier will not break a long
+# string or a long identifier just to stay under it.
+printWidth: 80
+
+# Add a trailing comma wherever one is syntactically valid,
+# including function arguments. Keeps diffs small when a line is appended.
+trailingComma: all
+
+# Sorts Tailwind utility classes into Tailwind's own canonical order.
+# A plugin has to be listed here explicitly, otherwise Prettier ignores it.
+plugins:
+  - prettier-plugin-tailwindcss
+
+# Tailwind v4 has no tailwind.config.js: the theme lives in the CSS file
+# (see the @theme block in src/style.css). The plugin needs this path to
+# resolve our custom utilities, e.g. the colors defined there.
+tailwindStylesheet: ./src/style.css
