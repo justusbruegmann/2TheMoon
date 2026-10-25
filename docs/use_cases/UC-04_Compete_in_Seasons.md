@@ -76,6 +76,11 @@ failed and preserves the message text. No message is published. The flow continu
 
 ![Sequence diagram UC-04](../diagrams/UC-04_sequence.png)
 
+### 4.4 Activity diagram
+<!-- The flow of events as an activity diagram. Commit the source file next
+to the image. -->
+![Activity diagram UC-04](../diagrams/UC-04_activity.png)
+
 ## 5 Special requirements
 
 <!-- Quality requirements for this use case only, each with an ID that is unique in the
@@ -84,7 +89,7 @@ failed and preserves the message text. No message is published. The flow continu
      System-wide ones go into SRS sections 3.2 to 3.5. Write "None" if there are none. -->
 
 **NFR-U-04 — Consistent reset::** Before gameplay in a new season is enabled, the system shall reset the defined
-seasonal game state for every player, including offline players, to the same configured starting conditions.
+seasonal game state for every player to the same configured starting conditions.
 
 ## 6 Preconditions
 

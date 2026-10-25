@@ -1,0 +1,104 @@
+<mxfile host="Electron">
+  <diagram id="ucr03cls" name="UCR-03 Design classes">
+    <mxGraphModel dx="1265" dy="778" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1580" pageHeight="510" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c1" parent="1" style="swimlane;startSize=26;html=1;fillColor=none;" value="Frontend (Vue)" vertex="1">
+          <mxGeometry height="470" width="560" x="20" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="swimlane;startSize=26;html=1;fillColor=none;" value="&lt;span style=&quot;forced-color-adjust: none; box-shadow: none !important; color: rgb(255, 255, 255); font-family: Helvetica; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; font-size: 11px; background-color: rgb(18, 18, 18);&quot;&gt;GET/POST&lt;/span&gt;&lt;br style=&quot;forced-color-adjust: none; box-shadow: none !important; color: rgb(255, 255, 255); font-family: Helvetica; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(27, 29, 30); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; font-size: 11px;&quot;&gt;&lt;span style=&quot;forced-color-adjust: none; box-shadow: none !important; color: rgb(255, 255, 255); font-family: Helvetica; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; font-size: 11px; background-color: rgb(18, 18, 18);&quot;&gt;/chat/messages&lt;/span&gt;" vertex="1">
+          <mxGeometry height="470" width="420" x="600" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="1XrqsqhTkHrY2ZXXrm04-1" parent="c2" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 11px; white-space: nowrap; background-color: rgb(18, 18, 18);&quot;&gt;GET/POST&lt;/span&gt;&lt;br style=&quot;font-size: 11px; white-space: nowrap;&quot;&gt;&lt;span style=&quot;font-size: 11px; white-space: nowrap; background-color: rgb(18, 18, 18);&quot;&gt;/chat/messages&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="20" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ChatWindow" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=none;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«component»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ChatWindow&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;messages: ChatMessage[]&lt;br&gt;draft: string&lt;br&gt;isOutOfDate: boolean&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ open()&lt;br&gt;+ sendMessage()&lt;br&gt;+ close()&lt;br&gt;+ appendMessage(message)&lt;br&gt;+ appendMessages(messages)&lt;br&gt;+ showOutOfDate()&lt;/p&gt;" vertex="1">
+          <mxGeometry height="201" width="230" x="40" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="swimlane;startSize=26;html=1;separatorColor=light-dark(#000000,#121212);labelBackgroundColor=light-dark(#000000,#121212);" value="Shared (shared/database)" vertex="1">
+          <mxGeometry height="470" width="520" x="1040" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="1XrqsqhTkHrY2ZXXrm04-2" parent="c3" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;labelBackgroundColor=light-dark(#000000,#121212);" value="&lt;span style=&quot;font-size: 11px; text-wrap-mode: nowrap;&quot;&gt;sender&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="110" y="313" as="geometry" />
+        </mxCell>
+        <mxCell id="ChatService" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=none;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«service»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ChatService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;lastSeen: Date&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ loadMessages(since?): ChatMessage[]&lt;br&gt;+ sendMessage(text): ChatMessage&lt;br&gt;+ subscribe(onMessage, onStatus)&lt;br&gt;+ unsubscribe()&lt;/p&gt;" vertex="1">
+          <mxGeometry height="141" width="250" x="310" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="RealtimeChannel" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=none;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«external · supabase-js»&lt;/i&gt;&lt;br&gt;&lt;b&gt;RealtimeChannel&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ on(event, filter, callback)&lt;br&gt;+ subscribe(statusCallback)&lt;br&gt;+ unsubscribe()&lt;/p&gt;" vertex="1">
+          <mxGeometry height="101" width="250" x="310" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="ChatRouter" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=none;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«boundary»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ChatRouter&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ get_messages(since: datetime | None)&lt;br&gt;+ post_message(payload: ChatMessageInsert)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="86" width="270" x="730" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ChatFilter" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=none;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«control»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ChatFilter&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;blocked_words: set[str]&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ is_empty(text: str): bool&lt;br&gt;+ contains_blocked_word(text: str): bool&lt;/p&gt;" vertex="1">
+          <mxGeometry height="111" width="270" x="730" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="Database" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=none;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«repository»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;+ chat_message_select_latest(limit: int): list[ChatMessage]&lt;br&gt;+ chat_message_select_since(since: datetime): list[ChatMessage]&lt;br&gt;+ chat_message_insert(data: ChatMessageInsert): ChatMessage&lt;/p&gt;" vertex="1">
+          <mxGeometry height="101" width="480" x="1060" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ChatMessage" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=none;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«entity»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ChatMessage&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;text: str&lt;br&gt;created_at: datetime&lt;/p&gt;" vertex="1">
+          <mxGeometry height="86" width="200" x="1060" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="ChatMessageInsert" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=none;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«schema»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ChatMessageInsert&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;text: str&lt;br&gt;sender_id: UUID&lt;/p&gt;" vertex="1">
+          <mxGeometry height="86" width="200" x="1320" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="Profile" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=none;" value="&lt;p style=&quot;margin:0;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«entity»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Profile&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 6px;&quot;&gt;display_name: str&lt;/p&gt;" vertex="1">
+          <mxGeometry height="71" width="200" x="1060" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="ChatWindow" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.284;entryDx=0;entryDy=0;" target="ChatService" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="ChatService" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.49;entryDx=0;entryDy=0;strokeColor=default;" target="ChatRouter" value="">
+          <mxGeometry relative="1" x="0.179" y="-138" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="645" y="112.3" />
+              <mxPoint x="730" y="113" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="ChatService" style="endArrow=open;endSize=10;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="RealtimeChannel" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l7" connectable="0" parent="e6" style="edgeLabel;resizable=0;html=1;" value="&lt;span&gt;1&lt;/span&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.8" as="geometry">
+            <mxPoint x="5" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l8" connectable="0" parent="e6" style="edgeLabel;resizable=0;html=1;" value="0..1" vertex="1">
+          <mxGeometry relative="1" x="0.8" as="geometry">
+            <mxPoint x="5" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="ChatRouter" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ChatFilter" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="ChatRouter" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Database" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="Database" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ChatMessage" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="ChatMessage" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startFillColor=light-dark(#000000,#121212);" target="Profile" value="">
+          <mxGeometry relative="1" x="0.0625" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l14" connectable="0" parent="e13" style="edgeLabel;resizable=0;html=1;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="-0.8" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l15" connectable="0" parent="e13" style="edgeLabel;resizable=0;html=1;" value="1" vertex="1">
+          <mxGeometry relative="1" x="0.8" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="Database" style="endArrow=open;endSize=10;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#ffffff;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ChatMessageInsert" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

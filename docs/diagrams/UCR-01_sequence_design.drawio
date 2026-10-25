@@ -1,0 +1,234 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="UCR-01 Sequence (design)" id="ucr01seq">
+    <mxGraphModel dx="1768" dy="1079" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="user" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;participant=umlActor;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;" value="User" vertex="1">
+          <mxGeometry height="1040" width="20" x="90" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="page" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;" value=":PortfolioPage" vertex="1">
+          <mxGeometry height="1040" width="130" x="180" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ctrl" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;" value=":PortfolioController" vertex="1">
+          <mxGeometry height="1040" width="130" x="330" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="svc" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;" value=":PortfolioService" vertex="1">
+          <mxGeometry height="1040" width="130" x="500" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="prof" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;" value=":UserProfile" vertex="1">
+          <mxGeometry height="1040" width="130" x="670" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="hold" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;" value=":UserHolding" vertex="1">
+          <mxGeometry height="1040" width="130" x="820" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="asset" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;" value=":TradingAsset" vertex="1">
+          <mxGeometry height="1040" width="130" x="970" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="hist" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;" value=":PortfolioHistory" vertex="1">
+          <mxGeometry height="1040" width="130" x="1120" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="openPortfolio()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="100" as="sourcePoint" />
+            <mxPoint x="240" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="GET /portfolio → getPortfolio()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="140" as="sourcePoint" />
+            <mxPoint x="390" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c3" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=20;fillColor=none;fontStyle=1;" value="break" vertex="1">
+          <mxGeometry height="70" width="420" x="60" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="text;html=1;fontStyle=2;align=left;verticalAlign=top;" value="[backend not reachable after 5 s] (NFR-R-01)" vertex="1">
+          <mxGeometry height="20" width="300" x="115" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="error &quot;service unavailable&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="215" as="sourcePoint" />
+            <mxPoint x="100" y="215" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c6" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="getPortfolio(userId)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="270" as="sourcePoint" />
+            <mxPoint x="560" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c7" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="getProfile(userId)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="310" as="sourcePoint" />
+            <mxPoint x="730" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c8" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="profile">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="730" y="335" as="sourcePoint" />
+            <mxPoint x="570" y="335" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c9" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="getHoldings(userId)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="370" as="sourcePoint" />
+            <mxPoint x="880" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c10" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="holdings">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="880" y="395" as="sourcePoint" />
+            <mxPoint x="570" y="395" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c11" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=20;fillColor=none;fontStyle=1;" value="break" vertex="1">
+          <mxGeometry height="140" width="640" x="60" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="c12" parent="1" style="text;html=1;fontStyle=2;align=left;verticalAlign=top;" value="[no holdings] (2a)" vertex="1">
+          <mxGeometry height="20" width="300" x="115" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="c13" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;rounded=0;align=left;spacingLeft=4;labelBackgroundColor=none;" value="emptyPortfolio(profile)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="605" y="455" />
+              <mxPoint x="605" y="475" />
+            </Array>
+            <mxPoint x="570" y="455" as="sourcePoint" />
+            <mxPoint x="575" y="475" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c14" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="empty portfolio">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="500" as="sourcePoint" />
+            <mxPoint x="400" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c15" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="200 empty portfolio">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="520" as="sourcePoint" />
+            <mxPoint x="250" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c16" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="&quot;0&quot; placeholders, skeletons">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="545" as="sourcePoint" />
+            <mxPoint x="100" y="545" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c17" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="getCurrentPrices(assets)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="590" as="sourcePoint" />
+            <mxPoint x="1030" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c18" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="prices">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1030" y="615" as="sourcePoint" />
+            <mxPoint x="570" y="615" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c19" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=20;fillColor=none;fontStyle=1;" value="opt" vertex="1">
+          <mxGeometry height="80" width="600" x="520" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="c20" parent="1" style="text;html=1;fontStyle=2;align=left;verticalAlign=top;" value="[prices unavailable] (2b)" vertex="1">
+          <mxGeometry height="20" width="300" x="575" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="c21" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="getLastKnownPrices(assets)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="680" as="sourcePoint" />
+            <mxPoint x="1030" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c22" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="lastKnownPrices">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1030" y="705" as="sourcePoint" />
+            <mxPoint x="570" y="705" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c23" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;rounded=0;align=left;spacingLeft=4;labelBackgroundColor=none;" value="calculateValueAndPerformance(holdings, prices)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="605" y="745" />
+              <mxPoint x="605" y="765" />
+            </Array>
+            <mxPoint x="570" y="745" as="sourcePoint" />
+            <mxPoint x="575" y="765" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c24" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="getHistory(userId)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="810" as="sourcePoint" />
+            <mxPoint x="1180" y="810" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c25" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="history">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1180" y="835" as="sourcePoint" />
+            <mxPoint x="570" y="835" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c26" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="portfolio(holdings, value, performance, history, warning)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="875" as="sourcePoint" />
+            <mxPoint x="400" y="875" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c27" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="200 portfolio">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="905" as="sourcePoint" />
+            <mxPoint x="250" y="905" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c28" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="portfolio view (holdings, value, performance, sell option)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="935" as="sourcePoint" />
+            <mxPoint x="100" y="935" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c29" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=20;fillColor=none;fontStyle=1;" value="opt" vertex="1">
+          <mxGeometry height="70" width="280" x="60" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="c30" parent="1" style="text;html=1;fontStyle=2;align=left;verticalAlign=top;" value="[warning]" vertex="1">
+          <mxGeometry height="20" width="300" x="115" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="c31" edge="1" parent="1" style="endArrow=open;endSize=10;dashed=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;" value="&quot;prices may be outdated&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="1010" as="sourcePoint" />
+            <mxPoint x="100" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c32" parent="1" style="html=1;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="910" width="10" x="240" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="c33" parent="1" style="html=1;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="765" width="10" x="390" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c34" parent="1" style="html=1;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="605" width="10" x="560" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="c35" parent="1" style="html=1;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="25" width="10" x="565" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="c36" parent="1" style="html=1;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="25" width="10" x="565" y="745" as="geometry" />
+        </mxCell>
+        <mxCell id="c37" parent="1" style="html=1;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="25" width="10" x="730" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="c38" parent="1" style="html=1;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="25" width="10" x="880" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c39" parent="1" style="html=1;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="25" width="10" x="1030" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="c40" parent="1" style="html=1;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="25" width="10" x="1030" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="c41" parent="1" style="html=1;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="25" width="10" x="1180" y="810" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

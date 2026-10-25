@@ -1,5 +1,7 @@
 # UC-06 Analyze the Market
 
+Realization: [UCR-06](../use_case_realizations/UCR-06_Analyze_the_Market.md)
+
 | Author    | Estimate | User stories                                                                              |
 |-----------|----------|-------------------------------------------------------------------------------------------|
 | Justus    | 20       | [2TM-17 Build Stock Detail Page](https://2themoon.youtrack.cloud/issue/2TM-17)            |
@@ -42,6 +44,10 @@ The flow continues at step 4.
 ### 4.3 Sequence diagram
 
 ![Sequence diagram UC-06](../diagrams/UC-06_sequence.png)
+
+### 4.4 Activity diagram
+
+![Activity diagram UC-06](../diagrams/UC-06_activity.png)
 
 ## 5 Special requirements
 
