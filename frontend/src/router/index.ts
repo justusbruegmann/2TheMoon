@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from "vue-router";
+import {notify} from "../scripts/notify.ts";
 
 //Page imports
 import PortfolioPage from "../pages/PortfolioPage.vue";
@@ -29,6 +30,7 @@ const router = createRouter({
 })
 router.beforeEach(async (to, _from, next) => {
     if (to.meta.requiresAuth && !(await isLoggedIn())) {
+        notify.error("Authentication Required", "You must be logged in to access this page.");
         next("/login")
         return
     }
