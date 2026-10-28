@@ -26,12 +26,20 @@ def access_token():
 
 def test_database_reachable_with_real_token(access_token):
     response = client.get("/test/database", headers={"Authorization": f"Bearer {access_token}"})
-
     assert response.status_code == 200
     assert response.json().get("success") is True
 
 
-def test_database_rejects_malformed_token(access_token):
+def test_database_rejects_malformed_token():
     response = client.get("/test/database", headers={"Authorization": "Bearer not-a-real-token"})
 
-    assert response.status_code == 503
+    assert response.status_code == 401
+    assert response.json().get("success") is False
+    assert "Expected 3 parts in JWT; got 1" in response.json().get("message")
+
+def test_database_rejects_missing_token():
+    response = client.get("/test/database", headers={"Authorization": "not-a-token"})
+
+    assert response.status_code == 401
+    assert response.json().get("success") is False
+    assert response.json().get("message") == "Authentication header missing or malformed"

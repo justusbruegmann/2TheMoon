@@ -4,10 +4,10 @@ from .base import Insert
 
 
 class TestInsert(Insert):
-    number: int
-    text: str
-    bool: bool
-    timestamptz: datetime
+    number: int | None
+    text: str | None
+    bool: bool | None
+    timestamptz: datetime | None
 
 class Test(TestInsert):
     id: int

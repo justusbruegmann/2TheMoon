@@ -7,6 +7,7 @@ from postgrest import APIError
 from pydantic import BaseModel
 from supabase import Client, ClientOptions, create_client
 
+from .database_error import DatabaseError, status_code_of
 from .models.test import Test
 from ..config import DbSettings
 from .models import (
@@ -23,12 +24,12 @@ from .models import (
 )
 
 
-class DatabaseError(Exception):
-    pass
-
-
 class Table[RowT: BaseModel]:
-    def __init__(self, client: Client, name: str, model: type[RowT]) -> None:
+    def __init__(self,
+                 client: Client,
+                 name: str,
+                 model: type[RowT]
+                 ) -> None:
         self.client = client
         self.name = name
         self.model = model
@@ -37,7 +38,13 @@ class Table[RowT: BaseModel]:
             for field, info in model.model_fields.items()
         )
 
-    def find(self, order_by: str | None = None, desc: bool = False, limit: int | None = None, **filters: Any) -> list[RowT]:
+    def find(self,
+             order_by: str | None = None,
+             desc: bool = False,
+             limit: int | None = None,
+             **filters: Any
+             ) -> list[RowT]:
+
         query = self.client.table(self.name).select(self.columns)
         for column, value in filters.items():
             query = query.eq(column, str(value))
@@ -81,7 +88,10 @@ class Table[RowT: BaseModel]:
         try:
             response = query.execute()
         except (APIError, httpx.HTTPError) as error:
-            raise DatabaseError(f"Request on table '{self.name}' failed: {error}") from error
+            raise DatabaseError(
+                f"Request on table '{self.name}' failed: {getattr(error, "message", str(error))}",
+                status_code=status_code_of(error),
+            ) from error
         return [self.model.model_validate(row) for row in response.data]
 
 
@@ -97,7 +107,7 @@ class Database:
         self.price_history = Table(client, "price_history", PriceHistory)
         self.market_events = Table(client, "market_event", MarketEvent)
 
-        self.test = Table(client, "test", Test)
+        self.test = Table(client, "testing_table", Test)
 
 
 @lru_cache(maxsize=1)

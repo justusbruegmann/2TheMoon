@@ -8,8 +8,7 @@ from app.util.response import success_response, error_response
 from shared.database import DatabaseError
 from shared.database.models.test import TestInsert
 
-
-_Bool = bool  # avoid the `bool` field below shadowing the builtin type in its own annotation
+_Bool = bool  # alias the bool field shadowing the builtin type for annotations
 
 
 class TestPatch(BaseModel):
@@ -25,10 +24,9 @@ router = APIRouter()
 @router.get("/database/")
 def test_get_all(db: UserDbDep):
     try:
-        return success_response(db is not None, "Message")
         rows = db.test.find()
-    except DatabaseError:
-        raise error_response(status_code=503, message="Database request failed")
+    except DatabaseError as e:
+        raise error_response(status_code=e.status_code or 503, message=str(e))
     return success_response(data=[r.model_dump(by_alias=True, mode="json") for r in rows])
 
 
