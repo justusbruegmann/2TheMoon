@@ -1,0 +1,408 @@
+<mxfile host="Electron">
+  <diagram id="ucr03-seq" name="UCR-03 Use Global Chat">
+    <mxGraphModel dx="1265" dy="778" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="1950" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c7" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=60;height=22;fillColor=none;fontStyle=1;" value="break" vertex="1">
+          <mxGeometry height="95" width="830" x="15" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="c28" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=22;fillColor=none;fontStyle=1;" value="alt" vertex="1">
+          <mxGeometry height="305" width="1178" x="51" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="e31" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="51" y="1095" as="sourcePoint" />
+            <mxPoint x="1229" y="1095" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c32" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=22;fillColor=none;fontStyle=1;" value="alt" vertex="1">
+          <mxGeometry height="575" width="1202" x="39" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="e36" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="39" y="755" as="sourcePoint" />
+            <mxPoint x="1241" y="755" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e37" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="39" y="845" as="sourcePoint" />
+            <mxPoint x="1241" y="845" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c53" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=22;fillColor=none;fontStyle=1;" value="alt" vertex="1">
+          <mxGeometry height="1275" width="1226" x="27" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="e57" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="27" y="1255" as="sourcePoint" />
+            <mxPoint x="1253" y="1255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e58" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="27" y="1575" as="sourcePoint" />
+            <mxPoint x="1253" y="1575" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c59" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=55;height=22;fillColor=none;fontStyle=1;" value="loop" vertex="1">
+          <mxGeometry height="1335" width="1250" x="15" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="c63" parent="1" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;" value="" vertex="1">
+          <mxGeometry height="1890" width="30" x="45" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c64" parent="1" style="shape=umlLifeline;participant=umlBoundary;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;" value="" vertex="1">
+          <mxGeometry height="1890" width="40" x="280" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c65" parent="1" style="shape=umlLifeline;participant=umlControl;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;" value="" vertex="1">
+          <mxGeometry height="1890" width="40" x="540" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c66" parent="1" style="shape=umlLifeline;participant=umlEntity;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;" value="" vertex="1">
+          <mxGeometry height="1890" width="40" x="780" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c67" parent="1" style="shape=umlLifeline;participant=umlBoundary;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;fillColor=default;" value="" vertex="1">
+          <mxGeometry height="1890" width="40" x="1000" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c68" parent="1" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;" value="" vertex="1">
+          <mxGeometry height="1890" width="30" x="1205" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c69" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;" value="" vertex="1">
+          <mxGeometry height="1750" width="10" x="295" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c70" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="20" width="10" x="560" y="625" as="geometry" />
+        </mxCell>
+        <mxCell id="c71" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="20" width="10" x="560" y="1365" as="geometry" />
+        </mxCell>
+        <mxCell id="c72" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="1720" width="10" x="555" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c73" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="795" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="c74" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="70" width="10" x="795" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="c75" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="795" y="1400" as="geometry" />
+        </mxCell>
+        <mxCell id="c76" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="795" y="1670" as="geometry" />
+        </mxCell>
+        <mxCell id="c77" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="200" width="10" x="1015" y="1290" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="openChat()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="140" as="sourcePoint" />
+            <mxPoint x="295" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="loadMessages()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="305" y="170" as="sourcePoint" />
+            <mxPoint x="555" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="getLatest()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="565" y="200" as="sourcePoint" />
+            <mxPoint x="795" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="messages | failed">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="795" y="230" as="sourcePoint" />
+            <mxPoint x="565" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="failed">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="300" as="sourcePoint" />
+            <mxPoint x="305" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="error, offer retry (retry → step 1)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="330" as="sourcePoint" />
+            <mxPoint x="60" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c8" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[messages cannot be loaded]  (2a)" vertex="1">
+          <mxGeometry height="22" width="284" x="83" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="messages">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="380" as="sourcePoint" />
+            <mxPoint x="305" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="show messages with sender and timestamp">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="410" as="sourcePoint" />
+            <mxPoint x="60" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="subscribe()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="305" y="440" as="sourcePoint" />
+            <mxPoint x="555" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="send(text)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="550" as="sourcePoint" />
+            <mxPoint x="295" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="send(sender, text)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="305" y="580" as="sourcePoint" />
+            <mxPoint x="555" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" style="html=1;align=left;spacingLeft=2;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="validate(text)  (4, NFR-U-03)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="605" y="610" />
+              <mxPoint x="605" y="632" />
+            </Array>
+            <mxPoint x="565" y="610" as="sourcePoint" />
+            <mxPoint x="570" y="632" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="rejected(&quot;message must contain text&quot;)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="700" as="sourcePoint" />
+            <mxPoint x="305" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="error message">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="730" as="sourcePoint" />
+            <mxPoint x="60" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="rejected(&quot;message contains a blocked word&quot;)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="790" as="sourcePoint" />
+            <mxPoint x="305" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="error message">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="820" as="sourcePoint" />
+            <mxPoint x="60" y="820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e19" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="«create» create(sender, text, sentAt)  (5)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="565" y="880" as="sourcePoint" />
+            <mxPoint x="795" y="880" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e20" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="message">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="795" y="950" as="sourcePoint" />
+            <mxPoint x="565" y="950" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e21" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="confirmed(message)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="980" as="sourcePoint" />
+            <mxPoint x="305" y="980" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e22" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="show message as sent">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="1010" as="sourcePoint" />
+            <mxPoint x="60" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e23" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;endSize=8;rounded=0;labelBackgroundColor=none;" value="publish(message)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="565" y="1040" as="sourcePoint" />
+            <mxPoint x="1020" y="1040" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e24" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;endSize=8;rounded=0;labelBackgroundColor=none;" value="show incoming message">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1020" y="1070" as="sourcePoint" />
+            <mxPoint x="1220" y="1070" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e25" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="failed">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="800" y="1130" as="sourcePoint" />
+            <mxPoint x="565" y="1130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e26" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="failed(&quot;sending failed&quot;)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="1160" as="sourcePoint" />
+            <mxPoint x="305" y="1160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e27" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="error, message text preserved">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="1190" as="sourcePoint" />
+            <mxPoint x="60" y="1190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c29" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[stored]" vertex="1">
+          <mxGeometry height="22" width="84" x="109" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c30" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[storage failed]  (5a)" vertex="1">
+          <mxGeometry height="22" width="196" x="59" y="1097" as="geometry" />
+        </mxCell>
+        <mxCell id="c33" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[text is empty]  (4a)" vertex="1">
+          <mxGeometry height="22" width="188" x="97" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="c34" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[text contains a blocked word]  (NFR-U-03)" vertex="1">
+          <mxGeometry height="22" width="356" x="47" y="757" as="geometry" />
+        </mxCell>
+        <mxCell id="c35" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[else]" vertex="1">
+          <mxGeometry height="22" width="68" x="47" y="847" as="geometry" />
+        </mxCell>
+        <mxCell id="e38" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="send(text)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1220" y="1290" as="sourcePoint" />
+            <mxPoint x="1025" y="1290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e39" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="send(sender, text)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1015" y="1320" as="sourcePoint" />
+            <mxPoint x="565" y="1320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e40" edge="1" parent="1" style="html=1;align=left;spacingLeft=2;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="validate(text)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="605" y="1350" />
+              <mxPoint x="605" y="1372" />
+            </Array>
+            <mxPoint x="565" y="1350" as="sourcePoint" />
+            <mxPoint x="570" y="1372" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e41" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="«create» create(sender, text, sentAt)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="565" y="1400" as="sourcePoint" />
+            <mxPoint x="795" y="1400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e42" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="message">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="795" y="1430" as="sourcePoint" />
+            <mxPoint x="565" y="1430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e43" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="confirmed(message)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="565" y="1460" as="sourcePoint" />
+            <mxPoint x="1015" y="1460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e44" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="show message as sent">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1025" y="1490" as="sourcePoint" />
+            <mxPoint x="1220" y="1490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e45" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;endSize=8;rounded=0;labelBackgroundColor=none;" value="publish(message)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="1520" as="sourcePoint" />
+            <mxPoint x="305" y="1520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e46" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;endSize=8;rounded=0;labelBackgroundColor=none;" value="show incoming message">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="1550" as="sourcePoint" />
+            <mxPoint x="60" y="1550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e47" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;endSize=8;rounded=0;labelBackgroundColor=none;" value="hint: conversation may be out of date">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="1610" as="sourcePoint" />
+            <mxPoint x="60" y="1610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e48" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="loadMessagesSince(lastSeen)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="305" y="1640" as="sourcePoint" />
+            <mxPoint x="555" y="1640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e49" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="getSince(lastSeen)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="565" y="1670" as="sourcePoint" />
+            <mxPoint x="795" y="1670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e50" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="missed messages">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="795" y="1700" as="sourcePoint" />
+            <mxPoint x="565" y="1700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e51" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="missed messages">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="1730" as="sourcePoint" />
+            <mxPoint x="305" y="1730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e52" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;endSize=8;rounded=0;labelBackgroundColor=none;" value="show missed messages">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="1760" as="sourcePoint" />
+            <mxPoint x="60" y="1760" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c54" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[player sends a message]  (3)" vertex="1">
+          <mxGeometry height="22" width="252" x="85" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="c55" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[other player sends a message]  (6–7)" vertex="1">
+          <mxGeometry height="22" width="316" x="35" y="1257" as="geometry" />
+        </mxCell>
+        <mxCell id="c56" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[updates interrupted, then reconnected]  (7a)" vertex="1">
+          <mxGeometry height="22" width="380" x="35" y="1577" as="geometry" />
+        </mxCell>
+        <mxCell id="c60" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[until the player leaves the chat]  (repeat 3–7)" vertex="1">
+          <mxGeometry height="22" width="404" x="78" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="e61" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="leaveChat()  (8)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="1830" as="sourcePoint" />
+            <mxPoint x="295" y="1830" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e62" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="unsubscribe()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="305" y="1860" as="sourcePoint" />
+            <mxPoint x="555" y="1860" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1P4vYI0wcYfOGu-I0TWh-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;Player&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="30" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="1P4vYI0wcYfOGu-I0TWh-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;&lt;span style=&quot;background-color: rgb(18, 18, 18);&quot;&gt;:ChatWindow&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: rgb(18, 18, 18);&quot;&gt;«boundary»&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="270" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="1P4vYI0wcYfOGu-I0TWh-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;&lt;span style=&quot;background-color: light-dark(rgb(0, 0, 0), rgb(18, 18, 18));&quot;&gt;:UseGlobalChat&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(rgb(0, 0, 0), rgb(18, 18, 18));&quot;&gt;«control»&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="530" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="1P4vYI0wcYfOGu-I0TWh-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;&lt;span style=&quot;background-color: light-dark(rgb(0, 0, 0), rgb(18, 18, 18));&quot;&gt;:ChatMessage&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(rgb(0, 0, 0), rgb(18, 18, 18));&quot;&gt;«entity»&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="770" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="1P4vYI0wcYfOGu-I0TWh-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;other:ChatWindow&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;«boundary»&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="990" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="1P4vYI0wcYfOGu-I0TWh-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;white-space: nowrap; background-color: rgb(18, 18, 18);&quot;&gt;Other Player&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="1190" y="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

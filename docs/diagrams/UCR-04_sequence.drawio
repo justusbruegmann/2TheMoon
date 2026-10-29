@@ -1,0 +1,356 @@
+<mxfile host="Electron">
+  <diagram id="ucr04-seq" name="UCR-04 Compete in Seasons">
+    <mxGraphModel dx="869" dy="1099" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="1909" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c7" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=60;height=22;fillColor=none;fontStyle=1;" value="break" vertex="1">
+          <mxGeometry height="95" width="930" x="15" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="c13" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=22;fillColor=none;fontStyle=1;" value="opt" vertex="1">
+          <mxGeometry height="95" width="1090" x="15" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="c27" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=22;fillColor=none;fontStyle=1;" value="alt" vertex="1">
+          <mxGeometry height="251" width="1216" x="27" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="e30" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="27" y="941" as="sourcePoint" />
+            <mxPoint x="1243" y="941" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c31" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=55;height=22;fillColor=none;fontStyle=1;" value="loop" vertex="1">
+          <mxGeometry height="431" width="1240" x="15" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="c43" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=55;height=22;fillColor=none;fontStyle=1;" value="loop" vertex="1">
+          <mxGeometry height="95" width="756" x="487" y="1336" as="geometry" />
+        </mxCell>
+        <mxCell id="c53" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=22;fillColor=none;fontStyle=1;" value="alt" vertex="1">
+          <mxGeometry height="474" width="1240" x="15" y="1296" as="geometry" />
+        </mxCell>
+        <mxCell id="e56" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="15" y="1571" as="sourcePoint" />
+            <mxPoint x="1255" y="1571" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c58" parent="1" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;" value="Player" vertex="1">
+          <mxGeometry height="1849" width="30" x="45" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c59" parent="1" style="shape=umlLifeline;participant=umlBoundary;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;" value=":SeasonView&lt;br&gt;«boundary»" vertex="1">
+          <mxGeometry height="1849" width="40" x="270" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c60" parent="1" style="shape=umlLifeline;participant=umlControl;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;" value=":CompeteInSeasons&lt;br&gt;«control»" vertex="1">
+          <mxGeometry height="1849" width="40" x="500" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c61" parent="1" style="shape=umlLifeline;participant=umlControl;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;" value=":ChangeSeason&lt;br&gt;«control»" vertex="1">
+          <mxGeometry height="1849" width="40" x="710" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c62" parent="1" style="shape=umlLifeline;participant=umlEntity;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;" value=":Season&lt;br&gt;«entity»" vertex="1">
+          <mxGeometry height="1849" width="40" x="880" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c63" parent="1" style="shape=umlLifeline;participant=umlEntity;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;" value=":Portfolio&lt;br&gt;«entity»" vertex="1">
+          <mxGeometry height="1849" width="40" x="1040" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c64" parent="1" style="shape=umlLifeline;participant=umlEntity;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;verticalAlign=top;spacingTop=42;labelBackgroundColor=#ffffff;size=40;" value=":Profile&lt;br&gt;«entity»" vertex="1">
+          <mxGeometry height="1849" width="40" x="1190" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c65" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="1709" width="10" x="285" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c66" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="906" width="10" x="515" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c67" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="20" width="10" x="730" y="1621" as="geometry" />
+        </mxCell>
+        <mxCell id="c68" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="763" width="10" x="725" y="1086" as="geometry" />
+        </mxCell>
+        <mxCell id="c69" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="895" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="c70" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="895" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="c71" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="895" y="1116" as="geometry" />
+        </mxCell>
+        <mxCell id="c72" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="895" y="1176" as="geometry" />
+        </mxCell>
+        <mxCell id="c73" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="895" y="1456" as="geometry" />
+        </mxCell>
+        <mxCell id="c74" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="1055" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="c75" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="1055" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="c76" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="1055" y="1376" as="geometry" />
+        </mxCell>
+        <mxCell id="c77" parent="1" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="1205" y="1236" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="open()  (1)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="140" as="sourcePoint" />
+            <mxPoint x="285" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="getSeasonState(player)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="170" as="sourcePoint" />
+            <mxPoint x="515" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="getActive()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="200" as="sourcePoint" />
+            <mxPoint x="895" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="season | none | failed">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="895" y="230" as="sourcePoint" />
+            <mxPoint x="525" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="unavailable">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="300" as="sourcePoint" />
+            <mxPoint x="295" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="error, retry; actions disabled">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="285" y="330" as="sourcePoint" />
+            <mxPoint x="60" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c8" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[no active season or season cannot be retrieved]  (2a, 5a)" vertex="1">
+          <mxGeometry height="22" width="484" x="83" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="get(player, season)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="380" as="sourcePoint" />
+            <mxPoint x="1055" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="portfolio | none">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1055" y="410" as="sourcePoint" />
+            <mxPoint x="525" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="«create» create(player, season, startingBalance)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="480" as="sourcePoint" />
+            <mxPoint x="1055" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="portfolio">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1055" y="510" as="sourcePoint" />
+            <mxPoint x="525" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c14" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[player has no portfolio in this season yet]  (automatic participation)" vertex="1">
+          <mxGeometry height="22" width="588" x="73" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="seasonState(remainingTime, portfolio)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="560" as="sourcePoint" />
+            <mxPoint x="295" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="show remaining time + state  (2)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="285" y="590" as="sourcePoint" />
+            <mxPoint x="60" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="performActivity(action)  (3)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="660" as="sourcePoint" />
+            <mxPoint x="285" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="perform(action, season)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="690" as="sourcePoint" />
+            <mxPoint x="515" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e19" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="isActive(season)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="720" as="sourcePoint" />
+            <mxPoint x="895" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e20" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="active">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="895" y="750" as="sourcePoint" />
+            <mxPoint x="525" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c21" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=45;height=22;fillColor=#ffffff;fontStyle=1;" value="ref" vertex="1">
+          <mxGeometry height="46" width="582" x="499" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="c22" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;" value="UCR-05 Trade Assets — updates the player&#39;s :Portfolio" vertex="1">
+          <mxGeometry height="38" width="522" x="549" y="824" as="geometry" />
+        </mxCell>
+        <mxCell id="e23" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="updated seasonState  (4)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="886" as="sourcePoint" />
+            <mxPoint x="295" y="886" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e24" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="show updated seasonal game state">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="285" y="916" as="sourcePoint" />
+            <mxPoint x="60" y="916" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e25" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="rejected(&quot;season has changed&quot;)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="976" as="sourcePoint" />
+            <mxPoint x="295" y="976" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e26" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="error, action discarded">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="285" y="1006" as="sourcePoint" />
+            <mxPoint x="60" y="1006" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c28" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[season is still active]" vertex="1">
+          <mxGeometry height="22" width="212" x="85" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="c29" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[season has changed]  (4a)" vertex="1">
+          <mxGeometry height="22" width="228" x="35" y="943" as="geometry" />
+        </mxCell>
+        <mxCell id="c32" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[until the season ends]  (repeat 1–4)" vertex="1">
+          <mxGeometry height="22" width="316" x="78" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="e33" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;startSize=8;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="seasonEndReached(season)  (5)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="1086" as="sourcePoint" />
+            <mxPoint x="725" y="1086" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e34" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="end(season)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="735" y="1116" as="sourcePoint" />
+            <mxPoint x="895" y="1116" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e35" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="ok">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="895" y="1146" as="sourcePoint" />
+            <mxPoint x="735" y="1146" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c36" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;align=left;spacingLeft=6;verticalAlign=top;fillColor=#ffffff;" value="No season is active now:&lt;br&gt;seasonal actions are&lt;br&gt;rejected (2a, 4a)." vertex="1">
+          <mxGeometry height="58" width="175" x="535" y="1176" as="geometry" />
+        </mxCell>
+        <mxCell id="e37" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="getNextPlanned()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="735" y="1176" as="sourcePoint" />
+            <mxPoint x="895" y="1176" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e38" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="newSeason">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="895" y="1206" as="sourcePoint" />
+            <mxPoint x="735" y="1206" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e39" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="getAll()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="735" y="1236" as="sourcePoint" />
+            <mxPoint x="1205" y="1236" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e40" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="profiles&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1205" y="1266" as="sourcePoint" />
+            <mxPoint x="735" y="1266" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e41" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="«create» create(profile, newSeason, startingBalance)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="735" y="1376" as="sourcePoint" />
+            <mxPoint x="1055" y="1376" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e42" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="portfolio">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1055" y="1406" as="sourcePoint" />
+            <mxPoint x="735" y="1406" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c44" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[for each profile]" vertex="1">
+          <mxGeometry height="22" width="164" x="550" y="1336" as="geometry" />
+        </mxCell>
+        <mxCell id="e45" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="activate(newSeason)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="735" y="1456" as="sourcePoint" />
+            <mxPoint x="895" y="1456" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e46" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;labelBackgroundColor=none;" value="ok">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="895" y="1486" as="sourcePoint" />
+            <mxPoint x="735" y="1486" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e47" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;endSize=8;rounded=0;labelBackgroundColor=none;" value="notifySeasonChanged(newSeason)  (6)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="725" y="1516" as="sourcePoint" />
+            <mxPoint x="295" y="1516" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e48" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;endSize=8;rounded=0;labelBackgroundColor=none;" value="show season change + new state">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="285" y="1546" as="sourcePoint" />
+            <mxPoint x="60" y="1546" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e49" edge="1" parent="1" style="html=1;align=left;spacingLeft=2;endArrow=block;endFill=1;rounded=0;labelBackgroundColor=none;" value="rollback()">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="775" y="1606" />
+              <mxPoint x="775" y="1628" />
+            </Array>
+            <mxPoint x="735" y="1606" as="sourcePoint" />
+            <mxPoint x="740" y="1628" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e50" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;endSize=8;rounded=0;labelBackgroundColor=none;" value="notifySeasonChangeInProgress()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="725" y="1656" as="sourcePoint" />
+            <mxPoint x="295" y="1656" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e51" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;endSize=8;rounded=0;labelBackgroundColor=none;" value="season change in progress">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="285" y="1686" as="sourcePoint" />
+            <mxPoint x="60" y="1686" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c52" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;align=left;spacingLeft=6;verticalAlign=top;fillColor=#ffffff;" value="Reset is retried after recovery;&lt;br&gt;continues with activate(newSeason)." vertex="1">
+          <mxGeometry height="44" width="250" x="760" y="1716" as="geometry" />
+        </mxCell>
+        <mxCell id="c54" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[reset succeeded]" vertex="1">
+          <mxGeometry height="22" width="156" x="73" y="1296" as="geometry" />
+        </mxCell>
+        <mxCell id="c55" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;labelBackgroundColor=default;" value="[reset failed]  (5a)" vertex="1">
+          <mxGeometry height="22" width="180" x="23" y="1573" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="uc02-activity" name="UC-02 Activity Diagram">
+    <mxGraphModel dx="1777" dy="1158" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lane-system" parent="1" style="swimlane;horizontal=1;startSize=30;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;html=1;" value="System" vertex="1">
+          <mxGeometry height="890" width="810" x="200" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-user" parent="lane-system" style="swimlane;horizontal=1;startSize=30;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;html=1;" value="User" vertex="1">
+          <mxGeometry height="890" width="200" x="-170" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" parent="lane-user" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=11;" value="Open leaderboard page" vertex="1">
+          <mxGeometry height="50" width="140" x="30" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="start" parent="lane-user" style="ellipse;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="85" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="f1" edge="1" parent="lane-user" source="start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="load" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=11;" value="Load ranking data" vertex="1">
+          <mxGeometry height="50" width="140" x="310" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" parent="1" style="rhombus;html=1;fillColor=#ffffff;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="70" width="80" x="340" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="sort" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=11;" value="Sort players by portfolio worth" vertex="1">
+          <mxGeometry height="50" width="140" x="310" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" parent="1" style="rhombus;html=1;fillColor=#ffffff;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="70" width="80" x="340" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" parent="1" style="rhombus;html=1;fillColor=#ffffff;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="70" width="80" x="340" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="main" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=11;" value="Show podium and ranked list" vertex="1">
+          <mxGeometry height="50" width="140" x="310" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="err" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=11;" value="Show error message" vertex="1">
+          <mxGeometry height="50" width="130" x="855" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="skel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=11;" value="Show skeleton" vertex="1">
+          <mxGeometry height="50" width="130" x="715" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="few" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=10;" value="Show available players in their ranked places, without empty podium positions" vertex="1">
+          <mxGeometry height="80" width="150" x="545" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="merge" parent="1" style="rhombus;html=1;fillColor=#ffffff;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="40" width="70" x="345" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="end" parent="1" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="365" y="805" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" edge="1" parent="1" source="a1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="load">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" edge="1" parent="1" source="load" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="d1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" edge="1" parent="1" source="d1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0.5;entryY=0;fontStyle=2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" target="err" value="[ranking data unavailable]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" edge="1" parent="1" source="d1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontStyle=2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" target="sort" value="[else]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f6" edge="1" parent="1" source="sort" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="d2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f7" edge="1" parent="1" source="d2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0.5;entryY=0;fontStyle=2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" target="skel" value="[no ranked players]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f8" edge="1" parent="1" source="d2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontStyle=2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" target="d3" value="[else]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f9" edge="1" parent="1" source="d3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0.5;entryY=0;fontStyle=2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" target="few" value="[fewer than 3 players]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f10" edge="1" parent="1" source="d3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontStyle=2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" target="main" value="[else]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f11" edge="1" parent="1" source="main" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="merge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f12" edge="1" parent="1" source="err" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=0.5;exitY=1;entryX=1;entryY=0.5;" target="merge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f13" edge="1" parent="1" source="skel" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=0.5;exitY=1;entryX=1;entryY=0.5;" target="merge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f14" edge="1" parent="1" source="few" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=0.5;exitY=1;entryX=1;entryY=0.5;" target="merge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f15" edge="1" parent="1" source="merge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#000000;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
