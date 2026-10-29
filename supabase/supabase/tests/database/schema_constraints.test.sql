@@ -33,7 +33,7 @@ select is(
 );
 
 select throws_ok(
-    $$ insert into auth.users (raw_user_meta_data) values ('{"display_name": "alice"}') $$,
+    $$ insert into auth.users (id, raw_user_meta_data) values (gen_random_uuid(), '{"display_name": "alice"}') $$,
     '23505', null,
     'display names are unique'
 );
