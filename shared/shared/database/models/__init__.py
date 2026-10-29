@@ -1,5 +1,6 @@
 from .asset import Asset, AssetInsert
 from .base import Insert
+from .chat_message import ChatMessage, ChatMessageInsert
 from .enums import AssetKind, SeasonStatus, TradeOperation
 from .market_event import MarketEvent, MarketEventInsert
 from .portfolio import Portfolio, PortfolioInsert
@@ -14,6 +15,8 @@ __all__ = [
     "Asset",
     "AssetInsert",
     "AssetKind",
+    "ChatMessage",
+    "ChatMessageInsert",
     "Insert",
     "MarketEvent",
     "MarketEventInsert",

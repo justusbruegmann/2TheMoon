@@ -88,9 +88,13 @@ create table public.portfolio_history (
 create table public.price_history (
     season_id uuid not null references public.season (id) on delete cascade,
     asset_id uuid not null references public.asset (id) on delete cascade,
-    price numeric(24, 8) not null check (price > 0),
+    open numeric(24, 8) not null,
+    close numeric(24, 8) not null,
+    high numeric(24, 8) not null,
+    low numeric(24, 8) not null check (low > 0),
     recorded_at timestamptz not null default now(),
-    primary key (season_id, asset_id, recorded_at)
+    primary key (season_id, asset_id, recorded_at),
+    check (high >= greatest(open, close) and low <= least(open, close))
 );
 
 create table public.market_event (
@@ -106,6 +110,16 @@ create table public.market_event (
 );
 
 create index market_event_season_starts_at_idx on public.market_event (season_id, starts_at);
+
+create table public.chat_message (
+    id uuid primary key default gen_random_uuid(),
+    sender_id uuid not null references public.profile (id) on delete cascade,
+    message text not null check (char_length(btrim(message)) between 1 and 500),
+    created_at timestamptz not null default now()
+);
+
+create index chat_message_created_at_idx on public.chat_message (created_at desc);
+create index chat_message_sender_id_idx on public.chat_message (sender_id);
 
 create function public.handle_new_user()
 returns trigger
@@ -138,7 +152,8 @@ declare
 begin
     foreach table_name in array array[
         'profile', 'season', 'asset', 'portfolio', 'trade',
-        'user_asset', 'portfolio_history', 'price_history', 'market_event'
+        'user_asset', 'portfolio_history', 'price_history', 'market_event',
+        'chat_message'
     ]
     loop
         execute format('alter table public.%I enable row level security', table_name);
@@ -168,6 +183,10 @@ create policy "Authenticated users can read price history"
 create policy "Authenticated users can read started market events"
     on public.market_event for select to authenticated
     using (starts_at <= now());
+
+create policy "Authenticated users can read chat messages"
+    on public.chat_message for select to authenticated
+    using (true);
 
 create policy "Users can read their own portfolios"
     on public.portfolio for select to authenticated

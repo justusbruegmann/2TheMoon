@@ -12,6 +12,7 @@ from .models.test import Test
 from ..config import DbSettings
 from .models import (
     Asset,
+    ChatMessage,
     Insert,
     MarketEvent,
     Portfolio,
@@ -106,6 +107,7 @@ class Database:
         self.portfolio_history = Table(client, "portfolio_history", PortfolioHistory)
         self.price_history = Table(client, "price_history", PriceHistory)
         self.market_events = Table(client, "market_event", MarketEvent)
+        self.chat_messages = Table(client, "chat_message", ChatMessage)
 
         self.test = Table(client, "testing_table", Test)
 

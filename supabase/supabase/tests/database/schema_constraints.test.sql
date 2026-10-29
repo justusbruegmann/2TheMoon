@@ -2,7 +2,7 @@ begin;
 
 create extension if not exists pgtap with schema extensions;
 
-select plan(22);
+select plan(25);
 
 insert into auth.users (id, raw_user_meta_data) values
     ('00000000-0000-0000-0000-00000000000a', '{"display_name": "alice"}'),
@@ -133,11 +133,32 @@ select lives_ok(
 );
 
 select throws_ok(
-    $$ insert into public.price_history (season_id, asset_id, price, recorded_at) values
-       ('10000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 1, '2026-01-01T00:00:00Z'),
-       ('10000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 2, '2026-01-01T00:00:00Z') $$,
+    $$ insert into public.price_history (season_id, asset_id, open, close, high, low, recorded_at) values
+       ('10000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 1, 2, 2, 1, '2026-01-01T00:00:00Z'),
+       ('10000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 2, 3, 3, 2, '2026-01-01T00:00:00Z') $$,
     '23505', null,
-    'one price per asset, season and timestamp'
+    'one candle per asset, season and timestamp'
+);
+
+select throws_ok(
+    $$ insert into public.price_history (season_id, asset_id, open, close, high, low)
+       values ('10000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 10, 12, 11, 9) $$,
+    '23514', null,
+    'candle high must be at least open and close'
+);
+
+select throws_ok(
+    $$ insert into public.price_history (season_id, asset_id, open, close, high, low)
+       values ('10000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 10, 12, 13, 0) $$,
+    '23514', null,
+    'candle prices must be positive'
+);
+
+select throws_ok(
+    $$ insert into public.chat_message (sender_id, message)
+       values ('00000000-0000-0000-0000-00000000000a', '   ') $$,
+    '23514', null,
+    'chat messages cannot be blank'
 );
 
 select throws_ok(

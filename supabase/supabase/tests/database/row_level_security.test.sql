@@ -2,7 +2,7 @@ begin;
 
 create extension if not exists pgtap with schema extensions;
 
-select plan(14);
+select plan(15);
 
 insert into auth.users (id, raw_user_meta_data) values
     ('00000000-0000-0000-0000-00000000000a', '{"display_name": "alice"}'),
@@ -30,8 +30,11 @@ insert into public.portfolio_history (portfolio_id, cash_balance, user_assets_va
     ('30000000-0000-0000-0000-000000000001', 9900, 100),
     ('30000000-0000-0000-0000-000000000002', 9800, 200);
 
-insert into public.price_history (season_id, asset_id, price) values
-    ('10000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 100);
+insert into public.price_history (season_id, asset_id, open, close, high, low) values
+    ('10000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 100, 105, 110, 95);
+
+insert into public.chat_message (sender_id, message) values
+    ('00000000-0000-0000-0000-00000000000b', 'to the moon');
 
 insert into public.market_event (season_id, label, description, starts_at, ends_at) values
     ('10000000-0000-0000-0000-000000000001', 'Rally', 'Tech rally', now() - interval '1 hour', now() + interval '1 hour'),
@@ -44,6 +47,7 @@ select is((select count(*)::int from public.profile), 2, 'authenticated users ca
 select is((select count(*)::int from public.season), 1, 'authenticated users can read seasons');
 select is((select count(*)::int from public.asset), 1, 'authenticated users can read assets');
 select is((select count(*)::int from public.price_history), 1, 'authenticated users can read price history');
+select is((select count(*)::int from public.chat_message), 1, 'authenticated users can read chat messages');
 select is((select count(*)::int from public.market_event), 1, 'future market events are hidden from players');
 
 select is(
