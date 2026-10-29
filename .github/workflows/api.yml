@@ -36,4 +36,7 @@ jobs:
 
       - name: Run shared tests
         working-directory: shared
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
         run: uv run pytest tests
