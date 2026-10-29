@@ -163,11 +163,15 @@ The domain model is in [domain_model.md](domain_model.md). […]
      run on them, and the communication paths with their protocol. Draw the setup you plan for
      your final demo — or the one you use today, and say which. -->
 
-![Deployment diagram](diagrams/deployment.png)
+![Deployment diagram](diagrams/deployment-view.png)
 
-| Node | What runs there | Connected to |
-| ---- | --------------- | ------------ |
-| [Server] | [backend, database] | [browser: HTTPS] |
+| Node                     | What runs there                                                                                                     | Connected to                                                                                                                                  |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| Laptop / Phone           | Web browser running the Vue SPA                                                                                     | Vercel: HTTPS · Backend host (FastAPI): HTTPS / WSS · Supabase Auth: HTTPS                                                                    |
+| Vercel Edge Network      | CDN / static hosting with the frontend build (dist/)                                                                | Browser: HTTPS                                                                                                                                |
+| Backend Host (VM)        | Docker Engine with three containers: FastAPI (api-service), Kafka broker (topics config), Game Server (game-server) | Browser: HTTPS / WSS · Supabase PostgreSQL: TCP 5432 · Computation Cluster: HTTPS (REST) · internally FastAPI ↔ Kafka ↔ Game Server: TCP 9092 |
+| Supabase (managed cloud) | PostgreSQL (schema.sql) and Supabase Auth (GoTrue / JWT)                                                            | Browser: HTTPS (auth) · FastAPI: TCP 5432 · Computation Cluster: TCP 5432                                                                     |
+| Computation Cluster      | Computation API on Node.js / Python / other (TBD) (deployed on with Docker)                                       | FastAPI: HTTPS (REST) · Supabase PostgreSQL: TCP 5432                                                                                         |
 
 ## 8 Implementation view
 
@@ -179,12 +183,26 @@ The domain model is in [domain_model.md](domain_model.md). […]
      services, and the interfaces between them (ball = provides, socket = requires). Two to five
      components inside the backend are a good size. -->
 
-![Component diagram](diagrams/components.png)
+![Component diagram](diagrams/implementation-view.png)
 
-| Component | Responsibility | Classes (Task 5) |
-| --------- | -------------- | ---------------- |
-| [Booking core] | [Books and cancels rooms] | [BookingService, Room, Booking] |
-
+| Component                | Responsibility                                                     | Classes (Task 5)                                                                      |
+|--------------------------|--------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| Views                    | Shows the pages and UI; takes user input                           | PortfolioPage, TradePage, StocksOverviewPage, ChatWindow, SeasonIndicator             |
+| Router                   | Resolves URLs to pages, guards protected routes                    | – (vue-router config)                                                                 |
+| Login Helper             | Login, session check                                               | - (technical, no use case)                                                            |
+| API Client               | Calls the REST API, receives live market data via WebSocket        | – (technical, no use case)                                                            |
+| Web                      | Receives HTTP requests, validates input, returns uniform responses | AssetRouter, PortfolioController, TradeController, ChatRouter, SeasonRouter           |
+| Auth                     | Checks the token of every request                                  | – (technical, no use case)                                                            |
+| Services                 | Business logic: trading, portfolio, chat, seasons, market data     | AssetService, PortfolioService, TradeService, ChatService, ChatFilter, SeasonService  |
+| Cache                    | Keeps current prices in memory for fast reads                      | – (technical, no use case)                                                            |
+| Live Market              | Pushes price updates to clients over WebSocket                     | – (technical, no use case)                                                            |
+| Event Consumer           | Reads market events from Kafka, fills cache, triggers broadcast    | – (technical, no use case)                                                            |
+| Market Simulation        | Calculates virtual prices from random effects and trades           | – (no actor, runs on its own)                                                         |
+| Season Scheduler         | Ends seasons on time and starts the next one                       | SeasonScheduler                                                                       |
+| Event Producer           | Publishes price events to Kafka                                    | – (technical, no use case)                                                            |
+| Database (shared)        | Executes all DB requests, maps errors to DatabaseError             | Database                                                                              |
+| DB Models (shared)       | Data structures of the domain entities                             | TradingAsset, UserProfile, UserHolding, TradingRecord, Portfolio, Season, ChatMessage |
+| Supabase Client (shared) | Connection to Supabase (public/secret client)                      | – (supabase-py)                                                                       |
 ### 8.2 Layers
 
 <!-- Lectures 8 and 9. The layers of your application and the rules between them. Leave this
@@ -194,7 +212,7 @@ The domain model is in [domain_model.md](domain_model.md). […]
 
 ## 9 Data view
 
-*Author: Justus*
+*Author: Max*
 
 <!-- Optional for now. Later: your database schema or ER model, derived from your domain model. -->
 
