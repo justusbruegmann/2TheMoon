@@ -14,9 +14,9 @@ HOW TO USE THIS TEMPLATE
   https://cin.ufpe.br/~if682/RUP/webtmpl/templates/a_and_d/rup_sad.htm
 -->
 
-| Team | Version | Last change |
-| ---- | ------- | ----------- |
-| 2TheMoon | 0.1 | 26.10.26 |
+| Team     | Version | Last change |
+|----------|---------|-------------|
+| 2TheMoon | 0.1     | 26.10.26    |
 
 The Git history of this file is the revision history.
 
@@ -38,47 +38,50 @@ The Git history of this file is the revision history.
 
 ### 1.1 Purpose
 
-*Author: [first name]*
+*Author: Sebastian*
 
 <!-- One paragraph: what this document describes and who reads it — your team, the developer
      who takes the project over, and the lecturer as investor. -->
 
-This document describes the architecture of [project name]: the parts the application is made
-of, how they are connected, and where they run. […]
+This document describes the architecture of the trading game *2TheMoon*: the parts the application is made
+of, how they are connected, and where they run. It serves as a foundation to the developers as we design the system in
+the elaboration phase of the project development. Furthermore, other stakeholders such as the lecturer can use it as a
+reference document in the future.
 
 ### 1.2 Scope
 
-*Author: [first name]*
+*Author: Sebastian*
 
 <!-- One or two sentences: which software this document covers, e.g., the whole application
      with frontend, backend, and database. The functional scope is in SRS 1.2 — link it. -->
 
-[…] The functional scope is described in [SRS 1.2](SRS.md#12-scope).
+This SAD describes the structure of the entirety of the 2TheMoon web app consisting of a frontend, API, database and a
+separate message broker. The functional scope is described in [SRS 1.2](SRS.md#12-scope).
 
 ### 1.3 Definitions, acronyms and abbreviations
 
-*Author: [first name]*
+*Author: Sebastian*
 
 <!-- Terms of the domain are in the SRS and in your domain model. Add only the technical terms
      a reader of this document needs. -->
 
-| Term | Meaning |
-| ---- | ------- |
-| SAD | Software Architecture Document |
-| SRS | Software Requirements Specification |
-| UCR | Use-case realization |
-| [term] | [meaning] |
+| Term | Meaning                             |
+|------|-------------------------------------|
+| SAD  | Software Architecture Document      |
+| SRS  | Software Requirements Specification |
+| UCR  | Use-case realization                |
+| 2TM  | 2TheMoon                            |
 
 ### 1.4 References
 
-*Author: [first name]*
+*Author: Sebastian*
 
-| Title | Link |
-| ----- | ---- |
-| SRS | [SRS.md](SRS.md) |
-| Domain model | [domain_model.md](domain_model.md) |
-| Repository | [link] |
-| Board | [link to your GitHub Projects board] |
+| Title        | Link                                                  |
+|--------------|-------------------------------------------------------|
+| SRS          | [SRS.md](SRS.md)                                      |
+| Domain model | [domain_model.md](domain_model.md)                    |
+| Repository   | [GitHub](https://github.com/justusbruegmann/2TheMoon) |
+| Board        | [YouTrack](https://2themoon.youtrack.cloud/agiles)    |
 
 ### 1.5 Overview
 
@@ -87,19 +90,19 @@ by view, following the RUP template.
 
 ## 2 Architectural representation
 
-*Author: [first name]*
+*Author: Sebastian*
 
 <!-- Which views you use and which diagram shows each. The table is prefilled with the views of
      Lecture 6 — adjust it if you add or drop a view. Later lectures add your architectural
      style and your architecture decisions here. -->
 
-| View | Question it answers | Diagram | Section |
-| ---- | ------------------- | ------- | ------- |
-| Use-case view | What does the system do, and for whom? | Use case diagram, use-case realizations | 4 |
-| Logical view | Which classes, and how are they linked? | Class diagrams | 5 |
-| Process view | What runs at the same time? | Short description | 6 |
-| Deployment view | What runs where, and how is it connected? | Deployment diagram | 7 |
-| Implementation view | Which parts is the code made of? | Component diagram, package diagram | 8 |
+| View                | Question it answers                       | Diagram                                 | Section |
+|---------------------|-------------------------------------------|-----------------------------------------|---------|
+| Use-case view       | What does the system do, and for whom?    | Use case diagram, use-case realizations | 4       |
+| Logical view        | Which classes, and how are they linked?   | Class diagrams                          | 5       |
+| Process view        | What runs at the same time?               | Short description                       | 6       |
+| Deployment view     | What runs where, and how is it connected? | Deployment diagram                      | 7       |
+| Implementation view | Which parts is the code made of?          | Component diagram, package diagram      | 8       |
 
 ## 3 Architectural goals and constraints
 
@@ -123,8 +126,8 @@ use cases most important for the architecture are: […]
 
 <!-- One row per realization from Task 4. No new diagrams: link the files. -->
 
-| Use case | Realization | Author |
-| -------- | ----------- | ------ |
+| Use case                                       | Realization                                      | Author       |
+|------------------------------------------------|--------------------------------------------------|--------------|
 | [UC-02 Book a room](use_cases/UC-02_[name].md) | [UCR-02](use_case_realizations/UCR-02_[name].md) | [first name] |
 
 ## 5 Logical view
@@ -163,6 +166,8 @@ The domain model is in [domain_model.md](domain_model.md). […]
      run on them, and the communication paths with their protocol. Draw the setup you plan for
      your final demo — or the one you use today, and say which. -->
 
+This is the deployment diagram for our final demo setup. The frontend is deployed on Vercel, the backend on a VM with Docker Engine, and the database is hosted by Supabase. The computation cluster is a separate service that can be scaled independently.
+
 ![Deployment diagram](diagrams/deployment-view.png)
 
 | Node                     | What runs there                                                                                                     | Connected to                                                                                                                                  |
@@ -175,13 +180,16 @@ The domain model is in [domain_model.md](domain_model.md). […]
 
 ## 8 Implementation view
 
-### 8.1 Overview
+### 8.1 Overview3
 
 *Author: Justus*
 
 <!-- One UML component diagram of the whole application: frontend, backend, database, external
      services, and the interfaces between them (ball = provides, socket = requires). Two to five
      components inside the backend are a good size. -->
+
+We have an semi-microservice architecture with a frontend, a api layer, a game server and a database. Furthermore we have a computation cluster which will be used to perform heavy calculations for portfolio value and price analysis.
+The shared part can be easily used by the other components because it's a python package.
 
 ![Component diagram](diagrams/implementation-view.png)
 
