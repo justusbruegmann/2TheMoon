@@ -28,6 +28,9 @@ jobs:
 
       - name: Run api tests
         working-directory: api
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
         run: uv run pytest tests
 
       - name: Install shared dependencies
