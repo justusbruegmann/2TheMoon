@@ -62,7 +62,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "fastapi", extras = ["standard"], specifier = ">=0.143.0" },
+    { name = "fastapi", extras = ["standard"], specifier = "==0.143.0" },
     { name = "pydantic", specifier = ">=2.13.5" },
     { name = "pydantic-settings", specifier = ">=2.15.0" },
     { name = "python-dotenv", specifier = ">=1.2.4" },
@@ -1326,7 +1326,6 @@ name = "shared"
 version = "0.1.0"
 source = { editable = "../shared" }
 dependencies = [
-    { name = "httpx" },
     { name = "httpx2" },
     { name = "postgrest" },
     { name = "pydantic" },
@@ -1336,7 +1335,6 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "httpx", specifier = ">=0.28.1" },
     { name = "httpx2", specifier = ">=2.14.0" },
     { name = "postgrest", specifier = ">=2.32.0" },
     { name = "pydantic", specifier = ">=2.13.5" },

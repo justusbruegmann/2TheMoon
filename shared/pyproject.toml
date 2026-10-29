@@ -5,7 +5,6 @@ description = "Shared database models and utilities for the 2TheMoon API and gam
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "httpx>=0.28.1",
     "httpx2>=2.14.0",
     "postgrest>=2.32.0",
     "pydantic>=2.13.5",
