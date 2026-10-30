@@ -5,7 +5,7 @@ from fastapi import FastAPI, HTTPException, Depends
 
 from .dependencies import get_user_db
 from .exception_handlers import exception_handler
-from .routers import test_router
+from .routers import test_router, asset_router
 
 
 
@@ -25,6 +25,13 @@ app.include_router(
     test_router.router,
     prefix="/test",
     tags=["API Test"],
+    dependencies=[Depends(get_user_db)],
+)
+
+app.include_router(
+    asset_router.router,
+    prefix="/assets",
+    tags=["Assets"],
     dependencies=[Depends(get_user_db)],
 )
 

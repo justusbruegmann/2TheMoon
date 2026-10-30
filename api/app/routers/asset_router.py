@@ -4,6 +4,7 @@ from app.dependencies import UserDb
 from app.util.response import success_response, error_response, db_error_response
 from shared.database import DatabaseError
 from shared.database.models import AssetInsert, Asset
+from shared.database.models.api_response import ApiResponse
 
 
 
@@ -22,7 +23,7 @@ router = APIRouter()
 @router.get(
     path="/",
     status_code=status.HTTP_200_OK,
-    response_model=list[Asset],
+    response_model=ApiResponse[list[Asset]],
     description="Returns a list of all available assets"
 )
 def assets_get_all(db: UserDb):
@@ -36,6 +37,7 @@ def assets_get_all(db: UserDb):
 @router.get(
     path="/{asset_id}",
     status_code=status.HTTP_200_OK,
+    response_model=ApiResponse[Asset],
     description="Returns the asset with the specified id"
 )
 def assets_get_one(asset_id: int, db: UserDb):
@@ -51,7 +53,7 @@ def assets_get_one(asset_id: int, db: UserDb):
 @router.post(
     path="/",
     status_code=status.HTTP_201_CREATED,
-    response_model=Asset,
+    response_model=ApiResponse[Asset],
     description="Creates a new type of asset"
 )
 def assets_post_one(payload: AssetInsert, db: UserDb):
@@ -65,7 +67,7 @@ def assets_post_one(payload: AssetInsert, db: UserDb):
 @router.patch(
     path="/{asset_id}",
     status_code=status.HTTP_200_OK,
-    response_model=Asset,
+    response_model=ApiResponse[Asset],
     description="Update the asset with the given id"
 )
 def assets_patch_one(asset_id: int, payload: AssetInsert, db: UserDb):
