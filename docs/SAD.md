@@ -114,13 +114,17 @@ by view, following the RUP template.
 
 ## 4 Use-case view
 
-*Author: [first name]*
+*Author: Mika*
 
 <!-- The use cases that matter most for your architecture — usually the ones you realized in
      Task 4. Link your use case diagram instead of copying it. -->
 
-The use case diagram of the whole application is in [SRS 2.2](SRS.md#22-use-case-diagram). The
-use cases most important for the architecture are: […]
+The use case diagram of the whole application is in [SRS 2.2](SRS.md#22-use-case-diagram). 
+
+The use cases most important for the architecture are: 
+- [UC-01 Analyze Portfolio](use_cases/UC-01_Analyze_Portfolio.md)
+- [UC-05 Trade Assets](use_cases/UC-05_Trade_Assets.md)
+- [UC-06 Analyze the Market](use_cases/UC-06_Analyze_the_Market.md)
 
 ### 4.1 Use-case realizations
 
@@ -128,25 +132,34 @@ use cases most important for the architecture are: […]
 
 | Use case                                       | Realization                                      | Author       |
 |------------------------------------------------|--------------------------------------------------|--------------|
-| [UC-02 Book a room](use_cases/UC-02_[name].md) | [UCR-02](use_case_realizations/UCR-02_[name].md) | [first name] |
+| [UC-01 Analyze Portfolio](use_cases/UC-01_Analyze_Portfolio.md) | [UCR-01](use_case_realizations/UCR-01-Analyze_Portfolio.md) | Justus |
+| [UC-02 Compare Player Performance](use_cases/UC-02_Compare_Player_Performance.md) | [UCR-02](use_case_realizations/UCR-02-Compare-Player-Performance.md) | Mika |
+| [UC-03 Use Global Chat](use_cases/UC-03_Use_Global_Chat.md) | [UCR-03](use_case_realizations/UCR-03_Use_Global_Chat.md) | Max |
+| [UC-04 Compete in Seasons](use_cases/UC-04_Compete_in_Seasons.md) | [UCR-04](use_case_realizations/UCR-04_Compete_in_Seasons.md) | Max |
+| [UC-05 Trade Assets](use_cases/UC-05_Trade_Assets.md) | [UCR-05](use_case_realizations/UCR-05-Trade_Assets.md) | Justus |
+| [UC-06 Analyze the Market](use_cases/UC-06_Analyze_the_Market.md) | [UCR-06](use_case_realizations/UCR-06_Analyze_the_Market.md) | Sebastian |
 
 ## 5 Logical view
 
 ### 5.1 Overview
 
-*Author: [first name]*
+*Author: Mika*
 
 <!-- Link your domain model from Task 5. If you have a package diagram, put it here: the
      packages of your code and their dependencies, without cycles. -->
 
-The domain model is in [domain_model.md](domain_model.md). […]
+The domain model is in [domain_model.md](domain_model.md).
 
 ### 5.2 Architecturally significant design packages
 
 <!-- Optional for now. Link the design classes of your realizations (UCR section 2.5) or describe
      your most important packages in one sentence each. -->
 
-[…]
+Design-class diagrams:
+
+- [UCR-01 Analyze Portfolio](diagrams/UCR-01_classes.png)
+- [UCR-05 Trade Assets](diagrams/UCR-05_classes.png)
+- [UCR-06 Analyze the Market](diagrams/UCR-06_classes.png)
 
 ## 6 Process view
 
