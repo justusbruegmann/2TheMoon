@@ -15,5 +15,5 @@ def get_user_db(credentials: Annotated[HTTPAuthorizationCredentials | None, Depe
     return get_public_db(credentials.credentials)
 
 
-UserDbDep = Annotated[Database, Depends(get_user_db)]
+UserDb = Annotated[Database, Depends(get_user_db)]
 # SecretDbDep = Annotated[Database, Depends(get_secret_db)]

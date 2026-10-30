@@ -2,6 +2,8 @@ from typing import Any
 
 from fastapi import HTTPException
 
+from shared.database import DatabaseError
+
 
 
 def success_response(
@@ -28,3 +30,7 @@ def error_response(
             "data": data
         }
     )
+
+
+def db_error_response(e: DatabaseError) -> HTTPException:
+    return error_response(status_code=e.status_code or 503, message=str(e))

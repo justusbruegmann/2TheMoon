@@ -3,7 +3,7 @@ from datetime import datetime
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from app.dependencies import UserDbDep
+from app.dependencies import UserDb
 from app.util.response import success_response, error_response
 from shared.database import DatabaseError
 from shared.database.models.test import TestInsert
@@ -22,7 +22,7 @@ router = APIRouter()
 
 
 @router.get("/database/")
-def test_get_all(db: UserDbDep):
+def test_get_all(db: UserDb):
     try:
         rows = db.test.find()
     except DatabaseError as e:
@@ -31,7 +31,7 @@ def test_get_all(db: UserDbDep):
 
 
 @router.get("/database/{row_id}")
-def test_get_one(row_id: int, db: UserDbDep):
+def test_get_one(row_id: int, db: UserDb):
     try:
         row = db.test.get(id=row_id)
     except DatabaseError:
@@ -42,7 +42,7 @@ def test_get_one(row_id: int, db: UserDbDep):
 
 
 @router.post("/database/", status_code=201)
-def test_post(payload: TestInsert, db: UserDbDep):
+def test_post(payload: TestInsert, db: UserDb):
     try:
         row = db.test.insert(payload)[0]
     except DatabaseError:
@@ -51,7 +51,7 @@ def test_post(payload: TestInsert, db: UserDbDep):
 
 
 @router.patch("/database/{row_id}")
-def test_patch(row_id: int, payload: TestPatch, db: UserDbDep):
+def test_patch(row_id: int, payload: TestPatch, db: UserDb):
     if not payload.model_fields_set:
         raise error_response(status_code=400, message="No fields to update")
     try:
@@ -64,7 +64,7 @@ def test_patch(row_id: int, payload: TestPatch, db: UserDbDep):
 
 
 @router.delete("/database/{row_id}")
-def test_delete(row_id: int, db: UserDbDep):
+def test_delete(row_id: int, db: UserDb):
     try:
         rows = db.test.delete(id=row_id)
     except DatabaseError:
