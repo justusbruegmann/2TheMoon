@@ -5,15 +5,14 @@ from fastapi import HTTPException
 from shared.database import DatabaseError
 
 
-
 def success_response(
         data: Any | None = None,
         message: str | None = None
 ) -> dict[str, Any]:
     return {
-        "success": True,
-        "message": message,
-        "data": data
+            "success": True,
+            "message": message,
+            "data": data
     }
 
 
@@ -25,9 +24,9 @@ def error_response(
     return HTTPException(
         status_code=status_code,
         detail={
-            "success": False,
-            "message": message,
-            "data": data
+                "success": False,
+                "message": message,
+                "data": data
         }
     )
 

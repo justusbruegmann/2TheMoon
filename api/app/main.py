@@ -5,9 +5,7 @@ from fastapi import FastAPI, HTTPException, Depends
 
 from .dependencies import get_user_db
 from .exception_handlers import exception_handler
-from .routers import test_router, asset_router
-
-
+from .routers import asset_router
 
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
@@ -22,18 +20,12 @@ app.add_exception_handler(HTTPException, exception_handler)
 ####################################################
 
 app.include_router(
-    test_router.router,
-    prefix="/test",
-    tags=["API Test"],
-    dependencies=[Depends(get_user_db)],
-)
-
-app.include_router(
     asset_router.router,
     prefix="/assets",
     tags=["Assets"],
     dependencies=[Depends(get_user_db)],
 )
+
 
 ####################################################
 # Health Check
@@ -41,6 +33,6 @@ app.include_router(
 @app.get("/")
 async def root():
     return {
-        "success": True,
-        "message": "healthy"
+            "success": True,
+            "message": "healthy"
     }

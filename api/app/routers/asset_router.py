@@ -5,7 +5,7 @@ from fastapi import APIRouter, status
 from app.dependencies import UserDb
 from app.util.response import success_response, error_response, db_error_response
 from shared.database import DatabaseError
-from shared.database.models import AssetInsert, Asset
+from shared.database.models import Asset
 from shared.database.models.api_response import ApiResponse
 
 ###########################################################################

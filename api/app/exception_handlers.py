@@ -4,7 +4,6 @@ from fastapi import Request, HTTPException
 from fastapi.responses import JSONResponse
 
 
-
 async def exception_handler(request: Request, exc: HTTPException) -> JSONResponse:
     body: dict[str, Any] = {"success": False}
     detail: Any = exc.detail

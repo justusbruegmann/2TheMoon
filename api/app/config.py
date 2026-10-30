@@ -1,7 +1,6 @@
 from pydantic_settings import BaseSettings
 
 
-
 class Settings(BaseSettings):
     # Login data for the test user in supabase. These are used for the auth token generating script in
     # /scripts/get_test_token.py

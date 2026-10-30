@@ -4,7 +4,7 @@ from fastapi import Depends
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 from app.util.response import error_response
-from shared.database import Database, get_public_db, get_secret_db
+from shared.database import Database, get_public_db
 
 bearer = HTTPBearer(auto_error=False)
 

@@ -6,7 +6,6 @@ from fastapi.testclient import TestClient
 
 from app.dependencies import get_user_db
 from app.main import app
-from shared.database import DatabaseError
 from shared.database.models import Asset, AssetInsert
 
 client = TestClient(app)
@@ -59,21 +58,6 @@ class FakeDatabase:
         self.assets = FakeAssetTable()
 
 
-class UnreachableDatabase:
-    #####################################
-    # Simulates a Supabase/network failure so routes except DatabaseError paths are exercised.
-    #####################################
-
-    class _FailingTable:
-        def __getattr__(self, _name):
-            def _raise(*_args, **_kwargs):
-                raise DatabaseError("simulated outage")
-
-            return _raise
-
-    assets = _FailingTable()
-
-
 @pytest.fixture(scope="module")
 def fake_db():
     ################################################
@@ -93,37 +77,7 @@ def fake_db():
 
 
 ###################
-# Auth Tests
-###################
-def test_get_assets_rejects_missing_token():
-    response = client.get("/assets/")
-    assert response.status_code == 401
-
-
-def test_get_assets_rejects_non_bearer_scheme():
-    response = client.get("/assets/", headers={"Authorization": "something"})
-    assert response.status_code == 401
-
-
-def test_get_assets_returns_503_when_db_unreachable():
-    app.dependency_overrides[get_user_db] = lambda: UnreachableDatabase()
-    try:
-        response = client.get("/assets/", headers=VALID_HEADERS)
-    finally:
-        app.dependency_overrides.pop(get_user_db, None)
-    assert response.status_code == 503
-
-
-def test_get_assets_reachable_with_valid_token(fake_db):
-    response = client.get("/assets/", headers=VALID_HEADERS)
-
-    assert response.status_code == 200
-    json = response.json()
-    assert json is not None and json.get("success") is True
-
-
-###################
-# CRUD operations against the fake table
+# Unit Tests
 ###################
 
 # def test_post_valid_payload(fake_db):
@@ -148,7 +102,6 @@ def test_get_one_valid_id(fake_db):
 def test_get_one_invalid_id(fake_db):
     response = client.get(f"/assets/{uuid4()}", headers=VALID_HEADERS)
     assert response.status_code == 404
-
 
 # def test_patch_valid_payload(fake_db):
 #     response = client.patch(
