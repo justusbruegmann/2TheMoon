@@ -16,16 +16,16 @@ SEASON_ID = UUID("10000000-0000-0000-0000-000000000001")
 ASSET_ID = UUID("20000000-0000-0000-0000-000000000001")
 NOW = "2026-10-20T09:00:00+00:00"
 TRADE_ROW = {
-    "id": "40000000-0000-0000-0000-000000000001",
-    "portfolio_id": str(PORTFOLIO_ID),
-    "season_id": str(SEASON_ID),
-    "asset_id": str(ASSET_ID),
-    "operation": "buy",
-    "quantity": "1.50000000",
-    "execution_price": "12345678901234.12345678",
-    "fee": "0.00000000",
-    "executed_at": NOW,
-    "created_at": NOW,
+        "id": "40000000-0000-0000-0000-000000000001",
+        "portfolio_id": str(PORTFOLIO_ID),
+        "season_id": str(SEASON_ID),
+        "asset_id": str(ASSET_ID),
+        "operation": "buy",
+        "quantity": "1.50000000",
+        "execution_price": "12345678901234.12345678",
+        "fee": "0.00000000",
+        "executed_at": NOW,
+        "created_at": NOW,
 }
 
 
@@ -108,10 +108,10 @@ def test_insert_sends_payload_and_uses_database_defaults(db: Database, server: F
 
 def test_upsert_uses_conflict_columns(db: Database, server: FakeServer) -> None:
     row = {
-        "portfolio_id": str(PORTFOLIO_ID),
-        "asset_id": str(ASSET_ID),
-        "quantity": "2",
-        "average_buy_price": None,
+            "portfolio_id": str(PORTFOLIO_ID),
+            "asset_id": str(ASSET_ID),
+            "quantity": "2",
+            "average_buy_price": None,
     }
     server.response = httpx.Response(201, json=[row])
 
@@ -196,7 +196,7 @@ def test_secret_db_uses_secret_key_and_is_reused(settings: None) -> None:
 
 
 def test_secret_db_fails_clearly_without_key(
-    settings: None, monkeypatch: pytest.MonkeyPatch
+        settings: None, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     monkeypatch.setenv("SUPABASE_SECRET_KEY", "")
     get_settings.cache_clear()
