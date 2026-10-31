@@ -1359,7 +1359,7 @@ name = "shared"
 version = "0.1.0"
 source = { editable = "../shared" }
 dependencies = [
-    { name = "httpx2" },
+    { name = "httpx" },
     { name = "postgrest" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
@@ -1368,7 +1368,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "httpx2", specifier = ">=2.16.0" },
+    { name = "httpx", specifier = ">=0.28.1" },
     { name = "postgrest", specifier = ">=2.32.0" },
     { name = "pydantic", specifier = ">=2.14.2" },
     { name = "pydantic-settings", specifier = ">=2.16.2" },
