@@ -1,12 +1,13 @@
 <script setup lang="ts">
+import StockChart from "../components/StockChart.vue";
+
 defineProps<{
   symbol: string;
 }>()
 </script>
 
 <template>
-  <div>StocksDetails</div>
-  <div>{{symbol}}</div>
+ <StockChart :symbol="symbol"  class="w-3/5"/>
 </template>
 
 <style scoped>
