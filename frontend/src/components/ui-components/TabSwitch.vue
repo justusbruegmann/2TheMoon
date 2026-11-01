@@ -13,10 +13,10 @@ const selected = defineModel<string>()
 </script>
 
 <template>
-<div :class="['flex flex-row items-center gap-8', props.fullWidth ? 'w-full justify-center' : '']">
+<div :class="['flex flex-row items-center gap-1', props.fullWidth ? 'w-full justify-center' : '']">
   <div v-for="item in props.options" :key="item" class="flex flex-col items-center">
     <button
-        :class="['px-4 py-2 rounded-t-lg', selected === item ? 'bg-primary text-white' : 'bg-gray-200 text-gray-700']"
+        :class="['px-4 py-2 rounded-t-lg', selected === item ? 'bg-line text-text' : 'bg-surface text-text-muted']"
         @click="selected = item"
     >
       {{ Capitalize(item) }}

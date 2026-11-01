@@ -5,8 +5,9 @@ import {mockCandleChartData, mockLineChartData} from "../mocks/chart.ts";
 import TabSwitch from "./ui-components/TabSwitch.vue";
 
 const isCandleChart = ref<string>("Candle Chart")
+const timeframe = ref<string>("1D")
 
-// ApexCharts expects candles as { x: timestamp, y: [open, high, low, close] }
+// ApexCharts candles as { x: timestamp, y: [open, high, low, close] }
 const seriesCandle = ref([{
   name: "Stock Price",
   data: mockCandleChartData.map(c => ({x: c.timestamp, y: [c.open, c.high, c.low, c.close]})),
@@ -21,12 +22,25 @@ const seriesLine = ref([{
 const optionsCandle = ref<ApexOptions>({
   chart: {
     type: "candlestick",
-    background: "transparent",
+    background: "#111A38",
     foreColor: "#8C96B8",
     fontFamily: "inherit",
-    toolbar: {show: false},
-    zoom: {enabled: false},
-    animations: {enabled: false},
+    toolbar: {
+      show: true,
+      offsetX: -50,
+      tools: {
+        selection: true,
+        reset: true,
+        zoom: true,
+        pan: true,
+        measure: true,
+        download: false,
+        zoomin: false,
+        zoomout: false,
+      }
+    },
+    zoom: {enabled: true},
+    animations: {enabled: true},
   },
   theme: {mode: "dark"},
   plotOptions: {
@@ -63,12 +77,25 @@ const optionsCandle = ref<ApexOptions>({
 const optionsLine = ref<ApexOptions>({
   chart: {
     type: "line",
-    background: "transparent",
+    background: "#111A38",
     foreColor: "#38BDF8",
     fontFamily: "inherit",
-    toolbar: {show: false},
-    zoom: {enabled: false},
-    animations: {enabled: false},
+    toolbar: {
+      show: true,
+      offsetX: -50,
+      tools: {
+        selection: true,
+        reset: true,
+        zoom: true,
+        pan: true,
+        measure: true,
+        download: false,
+        zoomin: false,
+        zoomout: false,
+      }
+    },
+    zoom: {enabled: true},
+    animations: {enabled: true},
   },
   theme: {mode: "dark"},
   colors: ["#38BDF8"],
@@ -111,16 +138,19 @@ function getLineColor(): string {
 }
 
 const tabSwitchOptions = ref(["Candle Chart", "Line Chart"])
+const tabTimeOptions = ref(["1D", "1W", "1M", "3M"])
 
 </script>
 
 <template>
   <div class="stock-chart">
     <div class="flex flex-row justify-between items-center mb-4">
-      <TabSwitch v-model="isCandleChart" :options="tabSwitchOptions" />
-      <!-- right side: second control goes here -->
+      <TabSwitch v-model="isCandleChart" :options="tabSwitchOptions"/>
+      <TabSwitch v-model="timeframe" :options="tabTimeOptions"/>
     </div>
-    <apexchart v-if="isCandleChart === 'Candle Chart'" width="100%" height="350" type="candlestick" :options="optionsCandle" :series="seriesCandle"></apexchart>
+
+    <apexchart v-if="isCandleChart === 'Candle Chart'" width="100%" height="350" type="candlestick"
+               :options="optionsCandle" :series="seriesCandle"></apexchart>
     <apexchart v-else width="100%" height="350" type="line" :options="optionsLine" :series="seriesLine"></apexchart>
   </div>
 </template>
