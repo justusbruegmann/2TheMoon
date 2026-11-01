@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import type {ApexOptions} from "apexcharts";
-import {mockCandleChartData, mockLineChartData} from "../mocks/chart.ts";
 import TabSwitch from "./ui-components/TabSwitch.vue";
+import type {CandleChartData, LineChartData} from "../types/chart.ts";
+
+const props = defineProps<{
+  chartCandleData: CandleChartData[];
+}>()
 
 const isCandleChart = ref<string>("Candle Chart")
 const timeframe = ref<string>("1D")
@@ -10,14 +14,20 @@ const timeframe = ref<string>("1D")
 // ApexCharts candles as { x: timestamp, y: [open, high, low, close] }
 const seriesCandle = ref([{
   name: "Stock Price",
-  data: mockCandleChartData.map(c => ({x: c.timestamp, y: [c.open, c.high, c.low, c.close]})),
+  data: props.chartCandleData.map(c => ({x: c.timestamp, y: [c.open, c.high, c.low, c.close]})),
 }])
 
 const seriesLine = ref([{
   name: "Stock Price",
-  data: mockLineChartData.map(c => ({x: c.timestamp, y: c.value})),
-  color: getLineColor(),
+  data: getMockLineChartData().map(c => ({x: c.timestamp, y: c.value})),
 }])
+
+ function getMockLineChartData(): LineChartData[] {
+  return props.chartCandleData.map(c => ({
+    timestamp: c.timestamp,
+    value: +((c.open + c.high + c.low + c.close) / 4).toFixed(2),
+  }))
+}
 
 const optionsCandle = ref<ApexOptions>({
   chart: {
@@ -77,6 +87,10 @@ const optionsCandle = ref<ApexOptions>({
 const optionsLine = ref<ApexOptions>({
   chart: {
     type: "line",
+    events: {
+      zoomed: (chartContext, options) => recolor(chartContext, options?.xaxis.min, options?.xaxis.max),
+      scrolled: (chartContext, options) => recolor(chartContext, options?.xaxis.min, options?.xaxis.max),
+    },
     background: "#111A38",
     foreColor: "#38BDF8",
     fontFamily: "inherit",
@@ -97,8 +111,7 @@ const optionsLine = ref<ApexOptions>({
     zoom: {enabled: true},
     animations: {enabled: true},
   },
-  theme: {mode: "dark"},
-  colors: ["#38BDF8"],
+  colors: [getLineColor(undefined, undefined)],  theme: {mode: "dark"},
   stroke: {
     width: 2,
     curve: "straight",
@@ -129,11 +142,29 @@ const optionsLine = ref<ApexOptions>({
   },
 })
 
-function getLineColor(): string {
-  const firstValue = mockLineChartData[0].value
-  const value = mockLineChartData[mockLineChartData.length - 1].value
-  if (value > firstValue) return "#2BD97F"
-  if (value < firstValue) return "#F04A5C"
+function recolor(chartContext: any, min?: number, max?: number) {
+  setTimeout(() => {
+    chartContext.updateOptions(
+        {colors: [getLineColor(min, max)]},
+        false, // redrawPaths
+        false, // animate
+        true,  // updateSyncedCharts
+        false  // overwriteInitialConfig ← keeps reset working
+    )
+  })
+}
+
+function getLineColor(min: number | undefined, max: number | undefined): string {
+
+  const visible = getMockLineChartData().filter(p =>
+      (min === undefined || p.timestamp >= min) &&
+      (max === undefined || p.timestamp <= max)
+  )
+  if (visible.length < 2) return "#38BDF8"
+  const firstValue = visible[0].value
+  const lastValue = visible[visible.length - 1].value
+  if (lastValue > firstValue) return "#2BD97F"
+  if (lastValue < firstValue) return "#F04A5C"
   return "#38BDF8"
 }
 

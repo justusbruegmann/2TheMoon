@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import {ref} from 'vue'
 import type {ApexOptions} from "apexcharts";
-import {mockLineChartData} from "../mocks/chart.ts";
 
 const series = ref([{
   name: "HomeChart",
-  data: mockLineChartData.map(p => ({x: p.timestamp, y: p.value})),
+  data: [17, 20, 27, 27, 25,28,33, 35],
   color: "#2BD97F",
 }])
 const options = ref<ApexOptions>({
@@ -20,9 +19,6 @@ const options = ref<ApexOptions>({
   stroke: {
     width: 3,
     curve: "straight",
-  },
-  xaxis: {
-    type: "datetime",
   },
   fill: {
     type: "solid",
