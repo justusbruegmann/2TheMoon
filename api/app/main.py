@@ -5,7 +5,9 @@ from fastapi import FastAPI, HTTPException, Depends
 
 from .dependencies import get_user_db
 from .exception_handlers import exception_handler
-from .routers import asset_router
+from .routers import asset_router, price_history_router
+
+
 
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
@@ -26,6 +28,12 @@ app.include_router(
     dependencies=[Depends(get_user_db)],
 )
 
+app.include_router(
+    price_history_router.router,
+    prefix="/price_history",
+    tags=["Pricce History"],
+    dependencies=[Depends(get_user_db)],
+)
 
 ####################################################
 # Health Check
