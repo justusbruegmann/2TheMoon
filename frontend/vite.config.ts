@@ -3,6 +3,16 @@ import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
+// FIXME: Workaorund because Sebbi forgot CORS GRRR
 export default defineConfig({
-  plugins: [vue(),tailwindcss()],
+  plugins: [vue(), tailwindcss()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 })

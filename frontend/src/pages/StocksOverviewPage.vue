@@ -1,7 +1,6 @@
 <script setup lang="ts">
-
+import {getAsset} from "../scripts/asset.ts";
 import {computed, onMounted, ref} from 'vue'
-import {mockAssets} from "../mocks/assets.ts";
 import {type Asset} from "../types/asset.ts";
 import AssetItem from "../components/AssetItem.vue";
 
@@ -17,7 +16,9 @@ const filteredData = computed(() => {
 
 
 onMounted(() => {
-  data.value = mockAssets;
+  getAsset().then((response) => {
+    data.value = response;
+  });
 })
 
 </script>
