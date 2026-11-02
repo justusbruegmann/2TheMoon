@@ -1,6 +1,7 @@
 from pydantic_settings import BaseSettings
 
 
+
 class Settings(BaseSettings):
     # Login data for the test user in supabase. These are used for the auth token generating script in
     # /scripts/get_test_token.py
@@ -9,8 +10,12 @@ class Settings(BaseSettings):
     test_user_email: str | None = None
     test_user_password: str | None = None
 
+    # Shared secret for all communication with the gameserver – necessary for the gameserver to call special, protected
+    # endpoints that should not be callable from the frontend.
+    gameserver_shared_secret: str
+
+
     class Config:
         env_file = ".env"
-
 
 settings = Settings()
