@@ -16,4 +16,6 @@ class PriceHistoryInsert(Insert):
 
 
 class PriceHistory(PriceHistoryInsert):
+    # Note: The API interprets recorded_at as the END of the candle. This feels intuitive for the future implementation
+    # in the gameserver.
     recorded_at: datetime

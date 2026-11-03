@@ -48,14 +48,36 @@ def test_get_all(fake_db):
     assert response.status_code == 200
 
 
-def test_get_one_valid_id(fake_db):
-    response = client.get(f"/price_history/{NEWLY_CREATED_PRICE_HISTORY_ID}", headers=VALID_HEADERS)
-    assert response.status_code == 200
+def test_get_all_includes_entry_overlapping_window():
+    recorded_at = datetime(2024, 1, 1, 12, 0, tzinfo=timezone.utc)
+    db = FakeDatabase()
+    db.price_history = FakeTable(PriceHistory, lambda: {"recorded_at": recorded_at})
+    db.price_history.insert(PriceHistoryInsert(**VALID_PAYLOAD))
+
+    with override_user_db(db):
+        # candle covers [11:55, 12:00]; query window [11:58, 11:59] overlaps it
+        response = client.get(
+            "/price_history/",
+            params={"start": "2024-01-01T11:58:00Z", "end": "2024-01-01T11:59:00Z"},
+            headers=VALID_HEADERS,
+        )
+    assert len(response.json()["data"]) == 1
 
 
-def test_get_one_invalid_id(fake_db):
-    response = client.get(f"/price_history/{uuid4()}", headers=VALID_HEADERS)
-    assert response.status_code == 404
+def test_get_all_excludes_entry_outside_window():
+    recorded_at = datetime(2024, 1, 1, 12, 0, tzinfo=timezone.utc)
+    db = FakeDatabase()
+    db.price_history = FakeTable(PriceHistory, lambda: {"recorded_at": recorded_at})
+    db.price_history.insert(PriceHistoryInsert(**VALID_PAYLOAD))
+
+    with override_user_db(db):
+        # candle covers [11:55, 12:00]; query window [10:00, 11:00] is fully before it
+        response = client.get(
+            "/price_history/",
+            params={"start": "2024-01-01T10:00:00Z", "end": "2024-01-01T11:00:00Z"},
+            headers=VALID_HEADERS,
+        )
+    assert response.json()["data"] == []
 
 
 def test_post_valid_payload(fake_db):

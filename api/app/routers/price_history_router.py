@@ -1,9 +1,9 @@
-from uuid import UUID
+from datetime import datetime, timedelta
 
 from fastapi import APIRouter, Depends, status
 
 from app.dependencies import UserDb, gameserver_route_protection
-from app.util.response import success_response, error_response, db_error_response
+from app.util.response import success_response, db_error_response
 from shared.database import DatabaseError
 from shared.database.models import PriceHistory, PriceHistoryInsert
 from shared.database.models.api_response import ApiResponse
@@ -15,35 +15,26 @@ from shared.database.models.api_response import ApiResponse
 
 router = APIRouter()
 
+# shortcut: candle width is hardcoded instead of read from the row (the table only stores recorded_at,
+# the candle's end); upgrade if candles ever get a variable/configurable width.
+CANDLE_WIDTH = timedelta(minutes=5)
+
 
 @router.get(
     path="/",
     status_code=status.HTTP_200_OK,
     response_model=ApiResponse[list[PriceHistory]],
-    description="Returns a list of all history items (5-minute candles)"
+    description="Returns history items (5-minute candles) overlapping the optional [start, end] window"
 )
-def price_history_get_all(db: UserDb):
+def price_history_get_all(db: UserDb, start: datetime | None = None, end: datetime | None = None):
     try:
-        rows = db.price_history.find()
+        rows = db.price_history.find(
+            gt={"recorded_at": start} if start else None,
+            lt={"recorded_at": end + CANDLE_WIDTH} if end else None,
+        )
     except DatabaseError as e:
         raise db_error_response(e)
     return success_response(data=[r.model_dump(by_alias=True, mode="json") for r in rows])
-
-
-@router.get(
-    path="/{price_history_id}",
-    status_code=status.HTTP_200_OK,
-    response_model=ApiResponse[PriceHistory],
-    description="Returns the price_history with the specified id"
-)
-def price_history_get_one(price_history_id: UUID, db: UserDb):
-    try:
-        row = db.price_history.get(id=price_history_id)
-    except DatabaseError as e:
-        raise db_error_response(e)
-    if row is None:
-        raise error_response(status_code=404, message="Found no price_history with this id")
-    return success_response(data=row.model_dump(by_alias=True, mode="json"))
 
 
 

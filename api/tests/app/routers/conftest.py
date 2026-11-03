@@ -31,8 +31,13 @@ class FakeTable:
         self.extra_fields = extra_fields
         self._rows: dict[str, BaseModel] = {}
 
-    def find(self, **_filters):
-        return list(self._rows.values())
+    def find(self, gt=None, lt=None, **_filters):
+        rows = list(self._rows.values())
+        for column, value in (gt or {}).items():
+            rows = [r for r in rows if getattr(r, column) > value]
+        for column, value in (lt or {}).items():
+            rows = [r for r in rows if getattr(r, column) < value]
+        return rows
 
     def get(self, **filters):
         return self._rows.get(str(filters["id"]))
@@ -49,6 +54,12 @@ class FakeTable:
 
 @contextmanager
 def override_user_db(db):
+    # Saves/restores any pre-existing override so nesting (e.g. a one-off override inside a
+    # test that also uses the module-scoped `fake_db` fixture) doesn't clobber the outer one.
+    previous = app.dependency_overrides.get(get_user_db)
     app.dependency_overrides[get_user_db] = lambda: db
     yield db
-    app.dependency_overrides.pop(get_user_db, None)
+    if previous is not None:
+        app.dependency_overrides[get_user_db] = previous
+    else:
+        app.dependency_overrides.pop(get_user_db, None)
