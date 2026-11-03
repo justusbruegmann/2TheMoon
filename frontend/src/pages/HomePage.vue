@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import {ref} from 'vue'
+import type {ApexOptions} from "apexcharts";
 
-const series = ref([{name: "HomeChart", data: [17, 20, 27, 27, 25,28,33, 35], color: "#2BD97F"}])
-const options = ref({
+const series = ref([{
+  name: "HomeChart",
+  data: [17, 20, 27, 27, 25,28,33, 35],
+  color: "#2BD97F",
+}])
+const options = ref<ApexOptions>({
   chart: {
     type: "area",
     toolbar: {
@@ -11,13 +16,9 @@ const options = ref({
     zoom: {enabled: false},
     sparkline: {enabled: true},
   },
-  series: series.value,
   stroke: {
     width: 3,
     curve: "straight",
-  },
-  xaxis: {
-    categories: series.value
   },
   fill: {
     type: "solid",
