@@ -2,15 +2,11 @@ from datetime import datetime, timezone
 from uuid import uuid4
 
 import pytest
-from fastapi.testclient import TestClient
 
-from app.dependencies import get_user_db
-from app.main import app
 from shared.database.models import Asset, AssetInsert
+from .conftest import FakeTable, VALID_HEADERS, client, override_user_db
 
-client = TestClient(app)
 
-VALID_HEADERS = {"Authorization": "Bearer test-token"}
 VALID_PAYLOAD = {
         "ticker": "MOON",
         "name": "2TheMoon AG",
@@ -19,43 +15,9 @@ VALID_PAYLOAD = {
 NEWLY_CREATED_ASSET_ID = None
 
 
-class FakeAssetTable:
-    #################################
-    # Fixture that simulates the assets table
-    #################################
-    def __init__(self):
-        self._rows: dict[str, Asset] = {}
-
-    def find(self, **_filters):
-        return list(self._rows.values())
-
-    def get(self, **filters):
-        return self._rows.get(str(filters["id"]))
-
-    def insert(self, *rows):
-        created = []
-        for row in rows:
-            asset = Asset(id=uuid4(), created_at=datetime.now(timezone.utc), **row.model_dump())
-            self._rows[str(asset.id)] = asset
-            created.append(asset)
-        return created
-
-    def update(self, values, **filters):
-        row = self._rows.get(str(filters["id"]))
-        if row is None:
-            return []
-        updated = row.model_copy(update=values)
-        self._rows[str(filters["id"])] = updated
-        return [updated]
-
-    def delete(self, **filters):
-        row = self._rows.pop(str(filters["id"]), None)
-        return [row] if row else []
-
-
 class FakeDatabase:
     def __init__(self):
-        self.assets = FakeAssetTable()
+        self.assets = FakeTable(Asset, lambda: {"id": uuid4(), "created_at": datetime.now(timezone.utc)})
 
 
 @pytest.fixture(scope="module")
@@ -71,9 +33,8 @@ def fake_db():
     global NEWLY_CREATED_ASSET_ID
     NEWLY_CREATED_ASSET_ID = str(new_row.id)
 
-    app.dependency_overrides[get_user_db] = lambda: db
-    yield db
-    app.dependency_overrides.pop(get_user_db, None)
+    with override_user_db(db):
+        yield db
 
 
 ###################
