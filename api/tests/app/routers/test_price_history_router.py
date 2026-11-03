@@ -3,7 +3,7 @@ from uuid import uuid4
 
 import pytest
 
-from shared.database.models import PriceHistory, PriceHistoryInsert
+from shared.database.models import Asset, AssetInsert, PriceHistory, PriceHistoryInsert
 from .conftest import FakeTable, GAMESERVER_HEADERS, VALID_HEADERS, client, override_user_db
 
 VALID_PAYLOAD = {
@@ -20,6 +20,7 @@ NEWLY_CREATED_PRICE_HISTORY_ID = None
 class FakeDatabase:
     def __init__(self):
         self.price_history = FakeTable(PriceHistory, lambda: {"recorded_at": datetime.now(timezone.utc)})
+        self.assets = FakeTable(Asset, lambda: {"id": uuid4(), "created_at": datetime.now(timezone.utc)})
 
 
 @pytest.fixture(scope="module")
@@ -78,6 +79,28 @@ def test_get_all_excludes_entry_outside_window():
             headers=VALID_HEADERS,
         )
     assert response.json()["data"] == []
+
+
+def test_get_all_filters_by_ticker():
+    db = FakeDatabase()
+    asset = db.assets.insert(AssetInsert(ticker="MOON", name="2TheMoon AG", kind="stock"))[0]
+    db.price_history.insert(PriceHistoryInsert(**{**VALID_PAYLOAD, "asset_id": str(asset.id)}))
+    db.price_history.insert(PriceHistoryInsert(**VALID_PAYLOAD))  # unrelated asset, should not match
+
+    with override_user_db(db):
+        response = client.get("/price_history/", params={"ticker": "MOON"}, headers=VALID_HEADERS)
+
+    assert response.status_code == 200
+    data = response.json()["data"]
+    assert len(data) == 1
+    assert data[0]["asset_id"] == str(asset.id)
+
+
+def test_get_all_unknown_ticker():
+    db = FakeDatabase()
+    with override_user_db(db):
+        response = client.get("/price_history/", params={"ticker": "DOES_NOT_EXIST"}, headers=VALID_HEADERS)
+    assert response.status_code == 404
 
 
 def test_post_valid_payload(fake_db):

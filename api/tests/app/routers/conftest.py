@@ -31,13 +31,15 @@ class FakeTable:
         self.extra_fields = extra_fields
         self._rows: dict[str, BaseModel] = {}
 
-    def find(self, gt=None, lt=None, **_filters):
+    def find(self, limit=None, gt=None, lt=None, **filters):
         rows = list(self._rows.values())
+        for column, value in filters.items():
+            rows = [r for r in rows if str(getattr(r, column)) == str(value)]
         for column, value in (gt or {}).items():
             rows = [r for r in rows if getattr(r, column) > value]
         for column, value in (lt or {}).items():
             rows = [r for r in rows if getattr(r, column) < value]
-        return rows
+        return rows[:limit] if limit else rows
 
     def get(self, **filters):
         return self._rows.get(str(filters["id"]))
