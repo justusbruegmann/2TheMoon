@@ -1,0 +1,12 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    image: 2themoon-api
+    container_name: 2themoon-api
+    env_file:
+      - api/.env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
