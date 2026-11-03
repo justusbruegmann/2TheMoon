@@ -31,6 +31,7 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+          GAMESERVER_SHARED_SECRET: ${{ secrets.GAMESERVER_SHARED_SECRET }}
         run: uv run pytest tests
 
       - name: Install shared dependencies
