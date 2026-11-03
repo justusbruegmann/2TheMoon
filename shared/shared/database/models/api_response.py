@@ -9,3 +9,9 @@ class ApiResponse(BaseModel, Generic[T]):
     success: bool
     message: str | None
     data: T | None
+
+
+class ApiErrorResponse(BaseModel):
+    success: bool
+    message: str | None
+    data: None
