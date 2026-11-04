@@ -147,25 +147,30 @@ architecture reaches each scenario follows in section 11.
 | Response                   | All 3 table writes run in one DB transaction. On commit success, return 201. On failure, roll back and return an error.        |
 | Response measure           | In 100% of tests, either all 3 tables contain the trade changes or none do, and 201 is only returned after a successful commit |
 
-Business value M: So the user cant have a trade that did not go through. Technical risk M: If the transaction fails, the user will have to retry the operation.
+Business value M: So the user cant have a trade that did not go through. Technical risk M: If the transaction fails, the
+user will have to retry the operation.
 
-#### QS-02 [Name]
+#### QS-02 Trade History
 
-| QS-02 [Name]     | *Author: [first name]* · Refines [NFR-ID] |
-| ---------------- | ----------------------------------------- |
-| Source           | [who or what triggers it]                 |
-| Stimulus         | [what arrives at the system]              |
-| Artifact         | [which part of the system is hit]         |
-| Environment      | [in which state the system is]            |
-| Response         | [what the system does]                    |
-| Response measure | [the number that tells you it worked]     |
+| QS-02 Trade History | *Author: Sebastian* · Refines NFR-S-02                                                                                                                     |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Source              | User                                                                                                                                                       |
+| Stimulus            | Confirms a buy or sell decision                                                                                                                            |
+| Artifact            | Database table trade_history / API endpoint /trade_history                                                                                                 |
+| Environment         | Normal operation                                                                                                                                           |
+| Response            | The system writes one immutable trade log into the trade_log table. It contains (amongst others) the user, asset, quantity, executed price, and timestamp. |
+| Response measure    | 100 % of confirmed trades produce exactly one trade log entry with the executed price attached                                                             |
 
-Business value [H/M/L]: [one sentence why]. Technical risk [H/M/L]: [one sentence why].
+Business value H: An incomplete trade log makes the portfolio charts in the frontend unusable, because it renders
+misleading performances.
+Technical risk M: Removing the trade_log table is a simple change in the database; but to be able to reconstruct a
+history of portfolio values, we would need to keep track of fine-grained price developments, which would immensely
+inflate the required storage space in the database.
 
 #### QS-03 [Name]
 
 | QS-03 [Name]     | *Author: [first name]* · Refines [NFR-ID] |
-| ---------------- | ----------------------------------------- |
+|------------------|-------------------------------------------|
 | Source           | [who or what triggers it]                 |
 | Stimulus         | [what arrives at the system]              |
 | Artifact         | [which part of the system is hit]         |
@@ -182,11 +187,11 @@ Business value [H/M/L]: [one sentence why]. Technical risk [H/M/L]: [one sentenc
 <!-- At least three. Kinds: technical, organizational, economic, legal.
      Your stack is in SRS 3.6 — link it instead of copying it. -->
 
-| ID   | Kind           | Constraint                               | What it means for our architecture |
-| ---- | -------------- | ---------------------------------------- | ---------------------------------- |
-| C-01 | Technical      | [our stack, see [SRS 3.6](SRS.md#36-design-constraints)] | [consequence] |
-| C-02 | Organizational | [team size, time]                        | [consequence]                      |
-| C-03 | [kind]         | [constraint]                             | [consequence]                      |
+| ID   | Kind           | Constraint                                               | What it means for our architecture |
+|------|----------------|----------------------------------------------------------|------------------------------------|
+| C-01 | Technical      | [our stack, see [SRS 3.6](SRS.md#36-design-constraints)] | [consequence]                      |
+| C-02 | Organizational | [team size, time]                                        | [consequence]                      |
+| C-03 | [kind]         | [constraint]                                             | [consequence]                      |
 
 ## 4 Use-case view
 
@@ -195,9 +200,10 @@ Business value [H/M/L]: [one sentence why]. Technical risk [H/M/L]: [one sentenc
 <!-- The use cases that matter most for your architecture — usually the ones you realized in
      Task 4. Link your use case diagram instead of copying it. -->
 
-The use case diagram of the whole application is in [SRS 2.2](SRS.md#22-use-case-diagram). 
+The use case diagram of the whole application is in [SRS 2.2](SRS.md#22-use-case-diagram).
 
-The use cases most important for the architecture are: 
+The use cases most important for the architecture are:
+
 - [UC-01 Analyze Portfolio](use_cases/UC-01_Analyze_Portfolio.md)
 - [UC-05 Trade Assets](use_cases/UC-05_Trade_Assets.md)
 - [UC-06 Analyze the Market](use_cases/UC-06_Analyze_the_Market.md)
@@ -206,14 +212,14 @@ The use cases most important for the architecture are:
 
 <!-- One row per realization from Task 4. No new diagrams: link the files. -->
 
-| Use case                                       | Realization                                      | Author       |
-|------------------------------------------------|--------------------------------------------------|--------------|
-| [UC-01 Analyze Portfolio](use_cases/UC-01_Analyze_Portfolio.md) | [UCR-01](use_case_realizations/UCR-01-Analyze_Portfolio.md) | Justus |
-| [UC-02 Compare Player Performance](use_cases/UC-02_Compare_Player_Performance.md) | [UCR-02](use_case_realizations/UCR-02-Compare-Player-Performance.md) | Mika |
-| [UC-03 Use Global Chat](use_cases/UC-03_Use_Global_Chat.md) | [UCR-03](use_case_realizations/UCR-03_Use_Global_Chat.md) | Max |
-| [UC-04 Compete in Seasons](use_cases/UC-04_Compete_in_Seasons.md) | [UCR-04](use_case_realizations/UCR-04_Compete_in_Seasons.md) | Max |
-| [UC-05 Trade Assets](use_cases/UC-05_Trade_Assets.md) | [UCR-05](use_case_realizations/UCR-05-Trade_Assets.md) | Justus |
-| [UC-06 Analyze the Market](use_cases/UC-06_Analyze_the_Market.md) | [UCR-06](use_case_realizations/UCR-06_Analyze_the_Market.md) | Sebastian |
+| Use case                                                                          | Realization                                                          | Author    |
+|-----------------------------------------------------------------------------------|----------------------------------------------------------------------|-----------|
+| [UC-01 Analyze Portfolio](use_cases/UC-01_Analyze_Portfolio.md)                   | [UCR-01](use_case_realizations/UCR-01-Analyze_Portfolio.md)          | Justus    |
+| [UC-02 Compare Player Performance](use_cases/UC-02_Compare_Player_Performance.md) | [UCR-02](use_case_realizations/UCR-02-Compare-Player-Performance.md) | Mika      |
+| [UC-03 Use Global Chat](use_cases/UC-03_Use_Global_Chat.md)                       | [UCR-03](use_case_realizations/UCR-03_Use_Global_Chat.md)            | Max       |
+| [UC-04 Compete in Seasons](use_cases/UC-04_Compete_in_Seasons.md)                 | [UCR-04](use_case_realizations/UCR-04_Compete_in_Seasons.md)         | Max       |
+| [UC-05 Trade Assets](use_cases/UC-05_Trade_Assets.md)                             | [UCR-05](use_case_realizations/UCR-05-Trade_Assets.md)               | Justus    |
+| [UC-06 Analyze the Market](use_cases/UC-06_Analyze_the_Market.md)                 | [UCR-06](use_case_realizations/UCR-06_Analyze_the_Market.md)         | Sebastian |
 
 ## 5 Logical view
 
@@ -255,7 +261,9 @@ Design-class diagrams:
      run on them, and the communication paths with their protocol. Draw the setup you plan for
      your final demo — or the one you use today, and say which. -->
 
-This is the deployment diagram for our final demo setup. The frontend is deployed on Vercel, the backend on a VM with Docker Engine, and the database is hosted by Supabase. The computation cluster is a separate service that can be scaled independently.
+This is the deployment diagram for our final demo setup. The frontend is deployed on Vercel, the backend on a VM with
+Docker Engine, and the database is hosted by Supabase. The computation cluster is a separate service that can be scaled
+independently.
 
 ![Deployment diagram](diagrams/deployment-view.png)
 
@@ -265,7 +273,7 @@ This is the deployment diagram for our final demo setup. The frontend is deploye
 | Vercel Edge Network      | CDN / static hosting with the frontend build (dist/)                                                                | Browser: HTTPS                                                                                                                                |
 | Backend Host (VM)        | Docker Engine with three containers: FastAPI (api-service), Kafka broker (topics config), Game Server (game-server) | Browser: HTTPS / WSS · Supabase PostgreSQL: TCP 5432 · Computation Cluster: HTTPS (REST) · internally FastAPI ↔ Kafka ↔ Game Server: TCP 9092 |
 | Supabase (managed cloud) | PostgreSQL (schema.sql) and Supabase Auth (GoTrue / JWT)                                                            | Browser: HTTPS (auth) · FastAPI: TCP 5432 · Computation Cluster: TCP 5432                                                                     |
-| Computation Cluster      | Computation API on Node.js / Python / other (TBD) (deployed on with Docker)                                       | FastAPI: HTTPS (REST) · Supabase PostgreSQL: TCP 5432                                                                                         |
+| Computation Cluster      | Computation API on Node.js / Python / other (TBD) (deployed on with Docker)                                         | FastAPI: HTTPS (REST) · Supabase PostgreSQL: TCP 5432                                                                                         |
 
 ## 8 Implementation view
 
@@ -277,7 +285,8 @@ This is the deployment diagram for our final demo setup. The frontend is deploye
      services, and the interfaces between them (ball = provides, socket = requires). Two to five
      components inside the backend are a good size. -->
 
-We have an semi-microservice architecture with a frontend, a api layer, a game server and a database. Furthermore we have a computation cluster which will be used to perform heavy calculations for portfolio value and price analysis.
+We have an semi-microservice architecture with a frontend, a api layer, a game server and a database. Furthermore we
+have a computation cluster which will be used to perform heavy calculations for portfolio value and price analysis.
 The shared part can be easily used by the other components because it's a python package.
 
 ![Component diagram](diagrams/implementation-view.png)
@@ -300,6 +309,7 @@ The shared part can be easily used by the other components because it's a python
 | Database (shared)        | Executes all DB requests, maps errors to DatabaseError             | Database                                                                              |
 | DB Models (shared)       | Data structures of the domain entities                             | TradingAsset, UserProfile, UserHolding, TradingRecord, Portfolio, Season, ChatMessage |
 | Supabase Client (shared) | Connection to Supabase (public/secret client)                      | – (supabase-py)                                                                       |
+
 ### 8.2 Layers
 
 <!-- Lectures 8 and 9. The layers of your application and the rules between them. Leave this
