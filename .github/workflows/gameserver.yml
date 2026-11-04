@@ -1,0 +1,39 @@
+name: Gameserver Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "0.13.1"
+          enable-cache: true
+          cache-dependency-glob: |
+            gameserver/uv.lock
+            shared/uv.lock
+
+      - name: Install gameserver dependencies
+        working-directory: gameserver
+        run: uv sync --locked
+
+      - name: Run gameserver tests
+        working-directory: gameserver
+        run: uv run pytest tests
+
+      - name: Install shared dependencies
+        working-directory: shared
+        run: uv sync --locked
+
+      - name: Run shared tests
+        working-directory: shared
+        run: uv run pytest tests
