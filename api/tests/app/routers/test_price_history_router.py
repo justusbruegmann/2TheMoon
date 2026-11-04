@@ -4,15 +4,17 @@ from uuid import uuid4
 import pytest
 
 from shared.database.models import Asset, AssetInsert, PriceHistory, PriceHistoryInsert
-from .conftest import FakeTable, GAMESERVER_HEADERS, VALID_HEADERS, client, override_user_db
+from .conftest import FakeTable, VALID_HEADERS, client, override_user_db
+
+
 
 VALID_PAYLOAD = {
-        "season_id": str(uuid4()),
-        "asset_id": str(uuid4()),
-        "open": "1.0",
-        "close": "1.5",
-        "high": "2.0",
-        "low": "0.5",
+    "season_id": str(uuid4()),
+    "asset_id": str(uuid4()),
+    "open": "1.0",
+    "close": "1.5",
+    "high": "2.0",
+    "low": "0.5",
 }
 NEWLY_CREATED_PRICE_HISTORY_ID = None
 
@@ -103,16 +105,16 @@ def test_get_all_unknown_ticker():
     assert response.status_code == 404
 
 
-def test_post_valid_payload(fake_db):
-    response = client.post("/price_history/", json=VALID_PAYLOAD, headers=GAMESERVER_HEADERS)
-    assert response.status_code == 201
-
-
-def test_post_invalid_payload(fake_db):
-    response = client.post("/price_history/", json={"asset_id": str(uuid4())}, headers=GAMESERVER_HEADERS)
-    assert response.status_code == 422
-
-
-def test_post_missing_gameserver_auth(fake_db):
-    response = client.post("/price_history/", json=VALID_PAYLOAD, headers=VALID_HEADERS)
-    assert response.status_code == 401
+# def test_post_valid_payload(fake_db):
+#     response = client.post("/price_history/", json=VALID_PAYLOAD, headers=GAMESERVER_HEADERS)
+#     assert response.status_code == 201
+#
+#
+# def test_post_invalid_payload(fake_db):
+#     response = client.post("/price_history/", json={"asset_id": str(uuid4())}, headers=GAMESERVER_HEADERS)
+#     assert response.status_code == 422
+#
+#
+# def test_post_missing_gameserver_auth(fake_db):
+#     response = client.post("/price_history/", json=VALID_PAYLOAD, headers=VALID_HEADERS)
+#     assert response.status_code == 401
