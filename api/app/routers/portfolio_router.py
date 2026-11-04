@@ -3,12 +3,9 @@ from uuid import UUID
 from fastapi import APIRouter, status
 
 from app.dependencies import UserDb
-from app.util.response import success_response, error_response, db_error_response
-from shared.database import DatabaseError
+from app.domain.portfolio import portfolio_get_one, portfolio_post_one
 from shared.database.models import Portfolio, PortfolioInsert
 from shared.database.models.api_response import ApiResponse
-
-
 
 #####################
 # Documentation for RLS
@@ -27,15 +24,8 @@ router = APIRouter()
     response_model=ApiResponse[Portfolio],
     description="Returns the portfolio with the specified id"
 )
-def portfolios_get_one(portfolio_id: UUID, db: UserDb):
-    try:
-        row = db.portfolios.get(id=portfolio_id)
-    except DatabaseError as e:
-        raise db_error_response(e)
-    if row is None:
-        raise error_response(status_code=404, message="Found no portfolio with this id")
-    return success_response(data=row.model_dump(by_alias=True, mode="json"))
-
+def handle_get_one_portfolio(db: UserDb, portfolio_id: UUID):
+    portfolio_get_one(db, portfolio_id)
 
 
 @router.post(
@@ -44,9 +34,5 @@ def portfolios_get_one(portfolio_id: UUID, db: UserDb):
     response_model=ApiResponse[Portfolio],
     description="Creates a new type of portfolio"
 )
-def portfolios_post_one(payload: PortfolioInsert, db: UserDb):
-    try:
-        row = db.portfolios.insert(payload)[0]
-    except DatabaseError as e:
-        raise db_error_response(e)
-    return success_response(data=row.model_dump(by_alias=True, mode="json"))
+def handle_post_one_portfolio(db: UserDb, payload: PortfolioInsert):
+    portfolio_post_one(db, payload)
