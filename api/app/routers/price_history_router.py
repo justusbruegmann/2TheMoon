@@ -56,18 +56,22 @@ def price_history_get_all(
 
 ############################
 # Protected POST – only the gameserver is allowed to write entries into the table
+#
+# REMARK AFTER REVIEW
+# The gameserver will communicate with the database through the shared/ functions directly instead of using the API.
+# This code will be inactive, but in case we need it again later, I'll keep it around.
 ############################
 
-@router.post(
-    dependencies=[Depends(gameserver_route_protection)],
-    path="/",
-    status_code=status.HTTP_201_CREATED,
-    response_model=ApiResponse[PriceHistory],
-    description="Creates a new history entry"
-)
-def price_history_post_one(payload: PriceHistoryInsert, db: UserDb):
-    try:
-        row = db.price_history.insert(payload)[0]
-    except DatabaseError as e:
-        raise db_error_response(e)
-    return success_response(data=row.model_dump(by_alias=True, mode="json"))
+# @router.post(
+#     dependencies=[Depends(gameserver_route_protection)],
+#     path="/",
+#     status_code=status.HTTP_201_CREATED,
+#     response_model=ApiResponse[PriceHistory],
+#     description="Creates a new history entry"
+# )
+# def price_history_post_one(payload: PriceHistoryInsert, db: UserDb):
+#     try:
+#         row = db.price_history.insert(payload)[0]
+#     except DatabaseError as e:
+#         raise db_error_response(e)
+#     return success_response(data=row.model_dump(by_alias=True, mode="json"))
