@@ -4,6 +4,7 @@ from fastapi import APIRouter, status
 
 from app.dependencies import UserDb
 from app.domain.asset import assets_get_all, assets_get_one
+from app.util.response import api_response
 from shared.database.models import Asset
 from shared.database.models.api_response import ApiResponse
 
@@ -30,8 +31,9 @@ router = APIRouter()
     response_model=ApiResponse[list[Asset]],
     description="Returns a list of all available assets"
 )
+@api_response
 def handle_get_all_assets(db: UserDb):
-    assets_get_all(db)
+    return assets_get_all(db)
 
 
 @router.get(
@@ -40,5 +42,6 @@ def handle_get_all_assets(db: UserDb):
     response_model=ApiResponse[Asset],
     description="Returns the asset with the specified id"
 )
+@api_response
 def handle_get_one_asset(db: UserDb, asset_id: UUID):
-    assets_get_one(db, asset_id)
+    return assets_get_one(db, asset_id)

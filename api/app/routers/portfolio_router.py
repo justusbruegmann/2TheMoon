@@ -4,6 +4,7 @@ from fastapi import APIRouter, status
 
 from app.dependencies import UserDb
 from app.domain.portfolio import portfolio_get_one, portfolio_post_one
+from app.util.response import api_response
 from shared.database.models import Portfolio, PortfolioInsert
 from shared.database.models.api_response import ApiResponse
 
@@ -24,8 +25,9 @@ router = APIRouter()
     response_model=ApiResponse[Portfolio],
     description="Returns the portfolio with the specified id"
 )
+@api_response
 def handle_get_one_portfolio(db: UserDb, portfolio_id: UUID):
-    portfolio_get_one(db, portfolio_id)
+    return portfolio_get_one(db, portfolio_id)
 
 
 @router.post(
@@ -34,5 +36,6 @@ def handle_get_one_portfolio(db: UserDb, portfolio_id: UUID):
     response_model=ApiResponse[Portfolio],
     description="Creates a new type of portfolio"
 )
+@api_response
 def handle_post_one_portfolio(db: UserDb, payload: PortfolioInsert):
-    portfolio_post_one(db, payload)
+    return portfolio_post_one(db, payload)

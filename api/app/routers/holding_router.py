@@ -4,6 +4,7 @@ from fastapi import APIRouter, status
 
 from app.dependencies import UserDb
 from app.domain.holding import holdings_get_one
+from app.util.response import api_response
 from shared.database.models import Holding
 from shared.database.models.api_response import ApiResponse
 
@@ -13,7 +14,6 @@ from shared.database.models.api_response import ApiResponse
 # RLS
 #
 # - GET /holdings/:id     Only the owning user may see their own holding
-# -
 #####################
 
 router = APIRouter()
@@ -25,8 +25,11 @@ router = APIRouter()
     response_model=ApiResponse[Holding],
     description="Returns the holding with the specified id"
 )
+@api_response
 def handle_get_one(db: UserDb, holding_id: UUID):
-    holdings_get_one(db, holding_id)
+    return holdings_get_one(db, holding_id)
+
+
 
 ############################
 # YAGNI – But here they are anyways since I already wrote them
@@ -39,12 +42,9 @@ def handle_get_one(db: UserDb, holding_id: UUID):
 #     response_model=ApiResponse[Holding],
 #     description="Creates a new type of holding"
 # )
+# @api_response
 # def holdings_post_one(payload: HoldingInsert, db: UserDb):
-#     try:
-#         row = db.holdings.insert(payload)[0]
-#     except DatabaseError as e:
-#         raise db_error_response(e)
-#     return success_response(data=row.model_dump(by_alias=True, mode="json"))
+#     return db.holdings.insert(payload)[0]
 #
 #
 # @router.patch(
@@ -53,16 +53,14 @@ def handle_get_one(db: UserDb, holding_id: UUID):
 #     response_model=ApiResponse[Holding],
 #     description="Update the holding with the given id"
 # )
+# @api_response
 # def holdings_patch_one(holding_id: UUID, payload: HoldingInsert, db: UserDb):
 #     if not payload.model_fields_set:
-#         raise error_response(status_code=400, message="No fields to update")
-#     try:
-#         rows = db.holdings.update(payload.model_dump(exclude_unset=True), id=holding_id)
-#     except DatabaseError as e:
-#         raise db_error_response(e)
+#         raise DomainError(status_code=400, message="No fields to update")
+#     rows = db.holdings.update(payload.model_dump(exclude_unset=True), id=holding_id)
 #     if not rows:
-#         raise error_response(status_code=404, message="Found no holding with this id")
-#     return success_response(data=rows[0].model_dump(by_alias=True, mode="json"))
+#         raise DomainError(status_code=404, message="Found no holding with this id")
+#     return rows[0]
 #
 #
 # @router.delete(
@@ -70,11 +68,9 @@ def handle_get_one(db: UserDb, holding_id: UUID):
 #     status_code=status.HTTP_204_NO_CONTENT,
 #     description="Delete the holding with the given id"
 # )
+# @api_response
 # def holdings_delete_one(holding_id: UUID, db: UserDb):
-#     try:
-#         rows = db.holdings.delete(id=holding_id)
-#     except DatabaseError as e:
-#         raise db_error_response(e)
+#     rows = db.holdings.delete(id=holding_id)
 #     if not rows:
-#         raise error_response(status_code=404, message="Found no holding with this id")
-#     return success_response(data=rows[0].model_dump(by_alias=True, mode="json"))
+#         raise DomainError(status_code=404, message="Found no holding with this id")
+#     return rows[0]

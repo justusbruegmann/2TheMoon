@@ -4,6 +4,7 @@ from fastapi import APIRouter, status
 
 from app.dependencies import UserDb
 from app.domain.price_history import price_history_get_all
+from app.util.response import api_response
 from shared.database.models import PriceHistory
 from shared.database.models.api_response import ApiResponse
 
@@ -33,13 +34,14 @@ CANDLE_WIDTH = timedelta(minutes=5)
     description="Returns history items (5-minute candles) overlapping the optional [start, end] window, "
                 "optionally restricted to a single asset by ticker"
 )
+@api_response
 def handle_get_price_history(
         db: UserDb,
         start: datetime | None = None,
         end: datetime | None = None,
         ticker: str | None = None
 ):
-    price_history_get_all(db, start, end, ticker)
+    return price_history_get_all(db, start, end, ticker)
 
 ############################
 # Protected POST – only the gameserver is allowed to write entries into the table
@@ -56,5 +58,6 @@ def handle_get_price_history(
 #     response_model=ApiResponse[PriceHistory],
 #     description="Creates a new history entry"
 # )
+# @api_response
 # def handle_post_price_history(db: UserDb, payload: PriceHistoryInsert):
-#     price_history_post_one(db, payload)
+#     return price_history_post_one(db, payload)
