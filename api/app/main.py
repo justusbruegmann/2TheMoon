@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from shared.database.models.api_response import ApiErrorResponse
 from .dependencies import get_user_db
 from .exception_handlers import exception_handler
-from .routers import asset_router, price_history_router, portfolio_router
+from .routers import asset_router, holding_router, price_history_router, portfolio_router
 
 
 
@@ -65,6 +65,13 @@ app.include_router(
     portfolio_router.router,
     prefix="/portfolios",
     tags=["Portfolio"],
+    dependencies=[Depends(get_user_db)],
+)
+
+app.include_router(
+    holding_router.router,
+    prefix="/holdings",
+    tags=["Holding"],
     dependencies=[Depends(get_user_db)],
 )
 
