@@ -3,6 +3,7 @@ from uuid import UUID
 from fastapi import APIRouter, status
 
 from app.dependencies import UserDb
+from app.domain.season import get_current_season
 from app.util.response import success_response, error_response, db_error_response
 from shared.database import DatabaseError
 from shared.database.models import Portfolio, PortfolioInsert
@@ -22,14 +23,17 @@ router = APIRouter()
 
 
 @router.get(
-    path="/{portfolio_id}",
+    path="/",
     status_code=status.HTTP_200_OK,
     response_model=ApiResponse[Portfolio],
     description="Returns the portfolio with the specified id"
 )
-def portfolios_get_one(portfolio_id: UUID, db: UserDb):
+def portfolios_get_one(user_id: UUID, db: UserDb, season_id: UUID | None = None):
     try:
-        row = db.portfolios.get(id=portfolio_id)
+        if season_id is None:
+            current_season = get_current_season(db)
+            season_id = current_season.id if current_season else None
+        row = db.portfolios.get(user_id=user_id, season_id=season_id)
     except DatabaseError as e:
         raise db_error_response(e)
     if row is None:

@@ -42,7 +42,8 @@ class FakeTable:
         return rows[:limit] if limit else rows
 
     def get(self, **filters):
-        return self._rows.get(str(filters["id"]))
+        rows = self.find(limit=1, **filters)
+        return rows[0] if rows else None
 
     def insert(self, *rows):
         created = []
