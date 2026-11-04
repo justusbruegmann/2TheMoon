@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from shared.database.models.api_response import ApiErrorResponse
 from .dependencies import get_user_db
 from .exception_handlers import exception_handler
-from .routers import asset_router, price_history_router
+from .routers import asset_router, price_history_router, portfolios_router
 
 
 
@@ -50,7 +50,7 @@ app.add_middleware(
 app.include_router(
     asset_router.router,
     prefix="/assets",
-    tags=["Assets"],
+    tags=["Asset"],
     dependencies=[Depends(get_user_db)],
 )
 
@@ -58,6 +58,13 @@ app.include_router(
     price_history_router.router,
     prefix="/price_history",
     tags=["Pricce History"],
+    dependencies=[Depends(get_user_db)],
+)
+
+app.include_router(
+    portfolios_router.router,
+    prefix="/portfolios",
+    tags=["Portfolio"],
     dependencies=[Depends(get_user_db)],
 )
 
