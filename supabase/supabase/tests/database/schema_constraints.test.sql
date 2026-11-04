@@ -2,7 +2,7 @@ begin;
 
 create extension if not exists pgtap with schema extensions;
 
-select plan(25);
+select plan(24);
 
 insert into auth.users (id, raw_user_meta_data) values
     ('00000000-0000-0000-0000-00000000000a', '{"display_name": "alice"}'),
@@ -113,23 +113,16 @@ select throws_ok(
 );
 
 select lives_ok(
-    $$ insert into public.user_asset (portfolio_id, asset_id, quantity, average_buy_price)
+    $$ insert into public.holding (portfolio_id, asset_id, quantity, average_buy_price)
        values ('30000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 1.5, 189.12345678) $$,
     'a holding can be recorded'
 );
 
 select throws_ok(
-    $$ insert into public.user_asset (portfolio_id, asset_id, quantity)
+    $$ insert into public.holding (portfolio_id, asset_id, quantity)
        values ('30000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 2) $$,
     '23505', null,
     'a portfolio holds each asset at most once'
-);
-
-select lives_ok(
-    $$ insert into public.portfolio_history (portfolio_id, recorded_at, cash_balance, user_assets_value) values
-       ('30000000-0000-0000-0000-000000000001', now(), 10000, 0),
-       ('30000000-0000-0000-0000-000000000001', now() + interval '1 minute', 9000, 1000) $$,
-    'a portfolio can have multiple history snapshots'
 );
 
 select throws_ok(

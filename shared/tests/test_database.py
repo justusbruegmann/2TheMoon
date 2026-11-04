@@ -9,7 +9,7 @@ from supabase import ClientOptions, create_client
 
 from shared.database import Database, DatabaseError, get_public_db, get_secret_db
 from shared.database.database import get_settings
-from shared.database.models import TradeInsert, TradeOperation, UserAsset
+from shared.database.models import TradeInsert, TradeOperation, Holding
 
 PORTFOLIO_ID = UUID("30000000-0000-0000-0000-000000000001")
 SEASON_ID = UUID("10000000-0000-0000-0000-000000000001")
@@ -115,8 +115,8 @@ def test_upsert_uses_conflict_columns(db: Database, server: FakeServer) -> None:
     }
     server.response = httpx.Response(201, json=[row])
 
-    holding = db.user_assets.upsert(
-        UserAsset(portfolio_id=PORTFOLIO_ID, asset_id=ASSET_ID, quantity=Decimal(2)),
+    holding = db.holdings.upsert(
+        Holding(portfolio_id=PORTFOLIO_ID, asset_id=ASSET_ID, quantity=Decimal(2)),
         on_conflict="portfolio_id,asset_id",
     )
 

@@ -14,12 +14,11 @@ from .models import (
     Insert,
     MarketEvent,
     Portfolio,
-    PortfolioHistory,
     PriceHistory,
     Profile,
     Season,
     Trade,
-    UserAsset,
+    Holding,
 )
 from ..config import DbSettings
 
@@ -108,8 +107,7 @@ class Database:
         self.assets = Table(client, "asset", Asset)
         self.portfolios = Table(client, "portfolio", Portfolio)
         self.trades = Table(client, "trade", Trade)
-        self.user_assets = Table(client, "user_asset", UserAsset)
-        self.portfolio_history = Table(client, "portfolio_history", PortfolioHistory)
+        self.holdings = Table(client, "holding", Holding)
         self.price_history = Table(client, "price_history", PriceHistory)
         self.market_events = Table(client, "market_event", MarketEvent)
         self.chat_messages = Table(client, "chat_message", ChatMessage)

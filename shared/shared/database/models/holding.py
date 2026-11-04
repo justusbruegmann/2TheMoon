@@ -4,7 +4,7 @@ from uuid import UUID
 from .base import Insert
 
 
-class UserAsset(Insert):
+class Holding(Insert):
     portfolio_id: UUID
     asset_id: UUID
     quantity: Decimal
