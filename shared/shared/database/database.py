@@ -42,12 +42,18 @@ class Table[RowT: BaseModel]:
              order_by: str | None = None,
              desc: bool = False,
              limit: int | None = None,
+             gt: dict[str, Any] | None = None,
+             lt: dict[str, Any] | None = None,
              **filters: Any
              ) -> list[RowT]:
 
         query = self.client.table(self.name).select(self.columns)
         for column, value in filters.items():
             query = query.eq(column, str(value))
+        for column, value in (gt or {}).items():
+            query = query.gt(column, str(value))
+        for column, value in (lt or {}).items():
+            query = query.lt(column, str(value))
         if order_by:
             query = query.order(order_by, desc=desc)
         if limit:
