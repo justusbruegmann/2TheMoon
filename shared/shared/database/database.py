@@ -37,6 +37,7 @@ class Table[RowT: BaseModel]:
             for field, info in model.model_fields.items()
         )
 
+    # Basically GET multiple (returns a list)
     def find(self,
              order_by: str | None = None,
              desc: bool = False,
@@ -59,6 +60,7 @@ class Table[RowT: BaseModel]:
             query = query.limit(limit)
         return self._run(query)
 
+    # GET a single entry (returns only one element)
     def get(self, **filters: Any) -> RowT | None:
         rows = self.find(limit=1, **filters)
         return rows[0] if rows else None

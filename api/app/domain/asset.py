@@ -9,10 +9,10 @@ def assets_get_all(db: UserDb):
 
 
 def assets_get_one(db: UserDb, asset_id: UUID):
-    row = db.assets.get(id=asset_id)
-    if row is None:
+    asset = db.assets.get(id=asset_id)
+    if asset is None:
         raise DomainError(status_code=404, message="Found no asset with this id")
-    return row
+    return asset
 
 ############################
 # YAGNI – But here they are anyways since I already wrote them
@@ -26,14 +26,14 @@ def assets_get_one(db: UserDb, asset_id: UUID):
 # def assets_patch_one(db: UserDb, asset_id: UUID, payload: AssetInsert):
 #     if not payload.model_fields_set:
 #         raise DomainError(status_code=400, message="No fields to update")
-#     rows = db.assets.update(payload.model_dump(exclude_unset=True), id=asset_id)
-#     if not rows:
+#     updated_asset_list = db.assets.update(payload.model_dump(exclude_unset=True), id=asset_id)
+#     if not updated_asset_list:
 #         raise DomainError(status_code=404, message="Found no asset with this id")
-#     return rows[0]
+#     return updated_asset_list[0]
 #
 #
 # def assets_delete_one(db: UserDb, asset_id: UUID):
-#     rows = db.assets.delete(id=asset_id)
-#     if not rows:
+#     deleted_asset_list = db.assets.delete(id=asset_id)
+#     if not deleted_asset_list:
 #         raise DomainError(status_code=404, message="Found no asset with this id")
-#     return rows[0]
+#     return deleted_asset_list[0]

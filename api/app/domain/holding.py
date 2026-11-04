@@ -23,7 +23,7 @@ def holdings_post_one(db: UserDb, payload: Holding):
 def holdings_patch_one(db: UserDb, holding_id: UUID, payload: HoldingUpdate):
     if not payload.model_fields_set:
         raise DomainError(status_code=400, message="No fields to update")
-    updated_holding = db.holdings.update(payload.model_dump(exclude_unset=True), id=holding_id)
-    if not updated_holding:
+    updated_holdings_list = db.holdings.update(payload.model_dump(exclude_unset=True), id=holding_id)
+    if not updated_holdings_list:
         raise DomainError(status_code=404, message="Found no holding with this id")
-    return updated_holding[0]
+    return updated_holdings_list[0]

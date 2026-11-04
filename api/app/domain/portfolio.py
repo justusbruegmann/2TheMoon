@@ -6,10 +6,10 @@ from shared.database.models import PortfolioInsert
 
 
 def portfolio_get_one(db: UserDb, portfolio_id: UUID):
-    row = db.portfolios.get(id=portfolio_id)
-    if row is None:
+    portfolio = db.portfolios.get(id=portfolio_id)
+    if portfolio is None:
         raise DomainError(status_code=404, message="Found no portfolio with this id")
-    return row
+    return portfolio
 
 
 def portfolio_post_one(db: UserDb, payload: PortfolioInsert):
