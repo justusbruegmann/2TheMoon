@@ -8,4 +8,4 @@ class Holding(Insert):
     portfolio_id: UUID
     asset_id: UUID
     quantity: Decimal
-    average_buy_price: Decimal | None = None
+    average_buy_price: Decimal | None = None        # weighted by quantity
