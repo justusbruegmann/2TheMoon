@@ -67,7 +67,7 @@ create table public.trade (
 create index trade_portfolio_executed_at_idx on public.trade (portfolio_id, executed_at desc);
 create index trade_asset_id_idx on public.trade (asset_id);
 
-create table public.user_asset (
+create table public.holding (
     portfolio_id uuid not null references public.portfolio (id) on delete cascade,
     asset_id uuid not null references public.asset (id) on delete restrict,
     quantity numeric(24, 8) not null check (quantity > 0),
@@ -75,15 +75,7 @@ create table public.user_asset (
     primary key (portfolio_id, asset_id)
 );
 
-create index user_asset_asset_id_idx on public.user_asset (asset_id);
-
-create table public.portfolio_history (
-    portfolio_id uuid not null references public.portfolio (id) on delete cascade,
-    recorded_at timestamptz not null default now(),
-    cash_balance numeric(24, 8) not null check (cash_balance >= 0),
-    user_assets_value numeric(24, 8) not null check (user_assets_value >= 0),
-    primary key (portfolio_id, recorded_at)
-);
+create index holding_asset_id_idx on public.holding (asset_id);
 
 create table public.price_history (
     season_id uuid not null references public.season (id) on delete cascade,
@@ -152,7 +144,7 @@ declare
 begin
     foreach table_name in array array[
         'profile', 'season', 'asset', 'portfolio', 'trade',
-        'user_asset', 'portfolio_history', 'price_history', 'market_event',
+        'holding', 'portfolio_history', 'price_history', 'market_event',
         'chat_message'
     ]
     loop
@@ -200,15 +192,8 @@ create policy "Users can read their own trades"
     ));
 
 create policy "Users can read their own holdings"
-    on public.user_asset for select to authenticated
+    on public.holding for select to authenticated
     using (exists (
         select 1 from public.portfolio p
-        where p.id = user_asset.portfolio_id and p.user_id = (select auth.uid())
-    ));
-
-create policy "Users can read their own portfolio history"
-    on public.portfolio_history for select to authenticated
-    using (exists (
-        select 1 from public.portfolio p
-        where p.id = portfolio_history.portfolio_id and p.user_id = (select auth.uid())
+        where p.id = holding.portfolio_id and p.user_id = (select auth.uid())
     ));

@@ -2,7 +2,7 @@ begin;
 
 create extension if not exists pgtap with schema extensions;
 
-select plan(15);
+select plan(14);
 
 insert into auth.users (id, raw_user_meta_data) values
     ('00000000-0000-0000-0000-00000000000a', '{"display_name": "alice"}'),
@@ -22,13 +22,9 @@ insert into public.trade (portfolio_id, season_id, asset_id, operation, quantity
     ('30000000-0000-0000-0000-000000000001', '10000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 'buy', 1, 100),
     ('30000000-0000-0000-0000-000000000002', '10000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 'buy', 2, 100);
 
-insert into public.user_asset (portfolio_id, asset_id, quantity) values
+insert into public.holding (portfolio_id, asset_id, quantity) values
     ('30000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 1),
     ('30000000-0000-0000-0000-000000000002', '20000000-0000-0000-0000-000000000001', 2);
-
-insert into public.portfolio_history (portfolio_id, cash_balance, user_assets_value) values
-    ('30000000-0000-0000-0000-000000000001', 9900, 100),
-    ('30000000-0000-0000-0000-000000000002', 9800, 200);
 
 insert into public.price_history (season_id, asset_id, open, close, high, low) values
     ('10000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', 100, 105, 110, 95);
@@ -56,8 +52,7 @@ select is(
     'users only see their own portfolio'
 );
 select is((select count(*)::int from public.trade), 1, 'users only see their own trades');
-select is((select count(*)::int from public.user_asset), 1, 'users only see their own holdings');
-select is((select count(*)::int from public.portfolio_history), 1, 'users only see their own portfolio history');
+select is((select count(*)::int from public.holding), 1, 'users only see their own holdings');
 
 select throws_ok(
     $$ insert into public.trade (portfolio_id, season_id, asset_id, operation, quantity, execution_price)

@@ -4,12 +4,11 @@ from .chat_message import ChatMessage, ChatMessageInsert
 from .enums import AssetKind, SeasonStatus, TradeOperation
 from .market_event import MarketEvent, MarketEventInsert
 from .portfolio import Portfolio, PortfolioInsert
-from .portfolio_history import PortfolioHistory, PortfolioHistoryInsert
 from .price_history import PriceHistory, PriceHistoryInsert
 from .profile import Profile
 from .season import Season, SeasonInsert
 from .trade import Trade, TradeInsert
-from .user_asset import UserAsset
+from .holding import Holding
 
 __all__ = [
         "Asset",
@@ -21,8 +20,6 @@ __all__ = [
         "MarketEvent",
         "MarketEventInsert",
         "Portfolio",
-        "PortfolioHistory",
-        "PortfolioHistoryInsert",
         "PortfolioInsert",
         "PriceHistory",
         "PriceHistoryInsert",
@@ -33,5 +30,5 @@ __all__ = [
         "Trade",
         "TradeInsert",
         "TradeOperation",
-        "UserAsset",
+        "Holding",
 ]
