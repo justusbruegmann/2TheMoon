@@ -2,7 +2,7 @@ from uuid import UUID
 
 from app.dependencies import UserDb
 from app.util.response import DomainError
-from shared.database.models import AssetInsert, Holding
+from shared.database.models import Holding, HoldingUpdate
 
 
 def holdings_get_one(db: UserDb, holding_id: UUID):
@@ -16,14 +16,14 @@ def holdings_get_one(db: UserDb, holding_id: UUID):
 # For internal use only – not hooked up to an API endpoint
 ############################################################
 
-def assets_post_one(db: UserDb, payload: AssetInsert):
-    return db.assets.insert(payload)[0]
+def holdings_post_one(db: UserDb, payload: Holding):
+    return db.holdings.insert(payload)[0]
 
 
-def assets_patch_one(db: UserDb, asset_id: UUID, payload: AssetInsert):
+def holdings_patch_one(db: UserDb, holding_id: UUID, payload: HoldingUpdate):
     if not payload.model_fields_set:
         raise DomainError(status_code=400, message="No fields to update")
-    rows = db.assets.update(payload.model_dump(exclude_unset=True), id=asset_id)
-    if not rows:
-        raise DomainError(status_code=404, message="Found no asset with this id")
-    return rows[0]
+    updated_holding = db.holdings.update(payload.model_dump(exclude_unset=True), id=holding_id)
+    if not updated_holding:
+        raise DomainError(status_code=404, message="Found no holding with this id")
+    return updated_holding[0]
