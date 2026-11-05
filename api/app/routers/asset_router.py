@@ -8,12 +8,21 @@ from shared.database import DatabaseError
 from shared.database.models import Asset
 from shared.database.models.api_response import ApiResponse
 
-###########################################################################
+
+
+#####################
+# Information
+#
 # I design routers to be included in main.py with a shared path (e.g. /assets/) and only define the subpaths here.
 #
 # Endpoints will be named according to convention with the plural name of the requested resource
 # (e.g. assets instead of asset)
-###########################################################################
+#####################
+# RLS
+#
+# - GET /assets         Anyone may see all assets
+# - GET /assets/:id     Anyone may see one asset's details
+#####################
 
 router = APIRouter()
 

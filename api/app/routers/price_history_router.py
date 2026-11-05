@@ -1,19 +1,26 @@
 from datetime import datetime, timedelta
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, status
 
-from app.dependencies import UserDb, gameserver_route_protection
+from app.dependencies import UserDb
 from app.util.response import success_response, error_response, db_error_response
 from shared.database import DatabaseError
-from shared.database.models import PriceHistory, PriceHistoryInsert
+from shared.database.models import PriceHistory
 from shared.database.models.api_response import ApiResponse
 
 
 
-###########################################################################
+#####################
+# Information
+#
 # The price_history table stores 5-minute summaries of the gameserver's real-time simulation data.
 # It is in the form {open, close, low, high} which is necessary to build the candle chart in the frontend.
-###########################################################################
+#
+#####################
+# RLS
+#
+# - GET /price_history      Anyone may see all price histories
+#####################
 
 router = APIRouter()
 
