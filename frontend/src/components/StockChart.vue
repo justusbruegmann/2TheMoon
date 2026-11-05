@@ -56,7 +56,7 @@ const optionsCandle = ref<ApexOptions>({
         zoomout: false,
       }
     },
-    zoom: {enabled: true},
+    zoom: {enabled: true, autoScaleYaxis: true},
     animations: {enabled: true},
   },
   theme: {mode: "dark"},
@@ -115,7 +115,7 @@ const optionsLine = ref<ApexOptions>({
         zoomout: false,
       }
     },
-    zoom: {enabled: true},
+    zoom: {enabled: true, autoScaleYaxis: true},
     animations: {enabled: true},
   },
   colors: [getLineColor(undefined, undefined)], theme: {mode: "dark"},
@@ -178,13 +178,17 @@ function getLineColor(min: number | undefined, max: number | undefined): string 
 const tabSwitchOptions = ref(["Candle Chart", "Line Chart"])
 const tabTimeOptions = ref(["1D", "1W", "1M", "3M"])
 
+
+defineEmits(["update:timeframe"])
+
 </script>
 
 <template>
   <div class="stock-chart">
     <div class="flex flex-row justify-between items-center mb-4">
       <TabSwitch v-model="isCandleChart" :options="tabSwitchOptions"/>
-      <TabSwitch v-model="timeframe" :options="tabTimeOptions"/>
+      <TabSwitch v-model="timeframe" :options="tabTimeOptions"
+                 @update:modelValue="tf => $emit('update:timeframe', tf)"/>
     </div>
 
     <apexchart v-if="isCandleChart === 'Candle Chart'" width="100%" height="350" type="candlestick"

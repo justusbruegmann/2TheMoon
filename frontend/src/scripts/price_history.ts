@@ -6,8 +6,11 @@ import {supabase} from "../lib/supabaseClient.ts";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export async function getPriceHistory(ticker: string): Promise<CandleChartData[]> {
-    const url = `${BACKEND_URL}/price_history?ticker=${ticker}`;
+export async function getPriceHistory(ticker: string, startTime?: Date): Promise<CandleChartData[]> {
+    let url = `${BACKEND_URL}/price_history?ticker=${ticker}`;
+    if (startTime) {
+        url += `&start=${startTime.toISOString()}&end=${new Date().toISOString()}`;
+    }
     const authToken = supabase.auth.getSession().then((session) => session.data.session?.access_token);
     const response = await fetch(url, {
         method: "GET",
