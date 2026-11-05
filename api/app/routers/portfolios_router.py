@@ -26,7 +26,7 @@ router = APIRouter()
     path="/",
     status_code=status.HTTP_200_OK,
     response_model=ApiResponse[Portfolio],
-    description="Returns the portfolio with the specified id"
+    description="Returns the portfolio for the given user and season. If no season_id is set, returns the portfolio for the current season."
 )
 def portfolios_get_one(user_id: UUID, db: UserDb, season_id: UUID | None = None):
     try:
