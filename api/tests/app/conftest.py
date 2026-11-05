@@ -14,7 +14,12 @@ class FakeTable:
         self._rows: dict[str, BaseModel] = {str(row.id): row for row in rows}
 
     def find(self, limit=None, gt=None, lt=None, **filters):
-        rows = list(self._rows.values())
+        filters = dict(filters)
+        items = self._rows.items()
+        if "id" in filters:
+            key = str(filters.pop("id"))
+            items = [(k, r) for k, r in items if k == key]
+        rows = [r for _, r in items]
         for column, value in filters.items():
             rows = [r for r in rows if str(getattr(r, column)) == str(value)]
         for column, value in (gt or {}).items():
@@ -24,7 +29,8 @@ class FakeTable:
         return rows[:limit] if limit else rows
 
     def get(self, **filters):
-        return self._rows.get(str(filters["id"]))
+        rows = self.find(limit=1, **filters)
+        return rows[0] if rows else None
 
     def insert(self, *rows):
         created = []
