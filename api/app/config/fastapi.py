@@ -24,7 +24,7 @@ def register_routers(app: FastAPI):
     app.include_router(
         price_history_router.router,
         prefix=PRICE_HISTORY,
-        tags=["Pricce History"],
+        tags=["Price History"],
         dependencies=[Depends(get_user_db)],
     )
 
