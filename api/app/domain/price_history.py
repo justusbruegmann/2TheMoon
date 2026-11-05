@@ -14,6 +14,11 @@ def price_history_get_all(
         end: datetime | None = None,
         ticker: str | None = None
 ):
+    if start and end and start > end:
+        raise DomainError(status_code=400, message="Requested start time cannot be later than end time")
+    if start and start > datetime.now(start.tzinfo):
+        raise DomainError(status_code=400, message="Requested start time cannot be in the future")
+
     filters = {}
     if start:
         filters["gt"] = {"recorded_at": start}
