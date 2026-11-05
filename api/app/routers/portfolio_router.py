@@ -3,11 +3,12 @@ from uuid import UUID
 from fastapi import APIRouter, status
 
 from app.dependencies import UserDb
-from app.domain.season import get_current_season
-from app.util.response import success_response, error_response, db_error_response
-from shared.database import DatabaseError
+from app.domain.portfolio import portfolio_post_one, portfolio_get_one
+from app.util.response import api_response
 from shared.database.models import Portfolio, PortfolioInsert
 from shared.database.models.api_response import ApiResponse
+
+
 
 #####################
 # Documentation for RLS
@@ -26,18 +27,9 @@ router = APIRouter()
     response_model=ApiResponse[Portfolio],
     description="Returns the portfolio for the given user and season. If no season_id is set, returns the portfolio for the current season."
 )
-def portfolios_get_one(user_id: UUID, db: UserDb, season_id: UUID | None = None):
-    try:
-        if season_id is None:
-            current_season = get_current_season(db)
-            season_id = current_season.id if current_season else None
-        row = db.portfolios.get(user_id=user_id, season_id=season_id)
-    except DatabaseError as e:
-        raise db_error_response(e)
-    if row is None:
-        raise error_response(status_code=404, message="Found no portfolio with this id")
-    return success_response(data=row.model_dump(by_alias=True, mode="json"))
-
+@api_response
+def handle_get_one_portfolio(db: UserDb, user_id: UUID, season_id: UUID | None = None):
+    return portfolio_get_one(db, user_id, season_id)
 
 
 @router.post(
