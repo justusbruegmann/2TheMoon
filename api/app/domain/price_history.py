@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 
 from app.config.dependencies import UserDb
 from app.util.response import DomainError
+from app.util.time_range import validate_time_range
 
 # We interpret the history entry's 'recorded_at' field as the end of the candle.
 # If start/end times overlap with a candle's covered (hardcoded) 5-minute span, we need to retrieve that one as well.
@@ -14,6 +15,8 @@ def price_history_get_all(
         end: datetime | None = None,
         ticker: str | None = None
 ):
+    validate_time_range(start, end)
+
     filters = {}
     if start:
         filters["gt"] = {"recorded_at": start}

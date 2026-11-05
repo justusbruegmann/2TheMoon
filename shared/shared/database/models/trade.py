@@ -2,6 +2,8 @@ from datetime import datetime
 from decimal import Decimal
 from uuid import UUID
 
+from pydantic import BaseModel
+
 from .base import Insert
 from .enums import TradeOperation
 
@@ -21,3 +23,9 @@ class Trade(TradeInsert):
     id: UUID
     executed_at: datetime
     created_at: datetime
+
+
+class TradeOffer(BaseModel):
+    asset_id: UUID
+    quantity: UUID
+    offer_price: Decimal
