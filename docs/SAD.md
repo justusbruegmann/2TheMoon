@@ -133,6 +133,8 @@ architecture reaches each scenario follows in section 11.
 
 [One or two sentences: which scenario comes first, and why. (H, H) comes before everything else.]
 
+
+
 #### QS-01 Postgres Transaction
 
 <!-- Start from the sentence in your SRS (3.2 to 3.5) and name every part.
@@ -182,16 +184,20 @@ Business value [H/M/L]: [one sentence why]. Technical risk [H/M/L]: [one sentenc
 
 ### 3.2 Constraints
 
-*Author: [first name]*
+*Author: [Mika]*
 
 <!-- At least three. Kinds: technical, organizational, economic, legal.
      Your stack is in SRS 3.6 — link it instead of copying it. -->
 
 | ID   | Kind           | Constraint                                               | What it means for our architecture |
 |------|----------------|----------------------------------------------------------|------------------------------------|
-| C-01 | Technical      | [our stack, see [SRS 3.6](SRS.md#36-design-constraints)] | [consequence]                      |
-| C-02 | Organizational | [team size, time]                                        | [consequence]                      |
-| C-03 | [kind]         | [constraint]                                             | [consequence]                      |
+| C-01 | Technical      | Frontend in TypeScript/Vue, backend in Python/FastAPI, database PostgreSQL                                                     | Two languages, so no code can be shared between frontend and backend. Backend components share code only through the Python package "shared".                                                                                                                                                                              |
+| C-02 | Technical      | Login and database run on Supabase (Supabase Auth, managed PostgreSQL)                                                                                                                      | We don't build an authentication of our own. The database is outside our server, so every access goes over the network. Availability and latency also depend on Supabase.                                                                                                     |
+| C-03 | Technical      | A message broker (Redis Streams) carries the market events, and nobody in the team has experience with it                                                                         | The broker stays hidden behind Event Producer and Event Consumer, so we can replace it. We keep the number of streams small and plan time to learn it.                                                                                                                                                                    |
+| C-04 | Organizational | 4 members, about 4 h per week each, until the end of semester 4 (about 06. 2027), excluding the practical phase from 21.12.26 until 28.03.27.                                                                                                          | Few components, and no technology that we cannot operate ourselves. A new service is added only if its benefit clearly outweighs the effort.                                                                                                                                                                |
+| C-05 | Economic       | No budget: frontend on Vercel (free tier), backend on the server of a team member, database on Supabase (free tier)                                                                         | All backend containers (API, broker, game server) run on one machine, with no redundancy and no automatic scaling. If the server fails, the backend fails.The Supabase free tier only offers 500 MB of storage, so the data of the pricing history can't take up too much space.                  |
+| C-06 | Technical      | Frontend (Vercel) and backend (member's server) run on different hosts and domains                                                                                                          | The server must be reachable from the internet over HTTPS/WSS with a valid certificate, otherwise the browser blocks the connection from the HTTPS page. The backend needs a CORS configuration for the Vercel domain.                    |
+| C-07 | Legal          | We store user name, password, and the stock holdings of an account, but no real money and no bank connection. The DSGVO still applies to personal data.                                      | Passwords are stored only by Supabase Auth, never in our own tables. Each user sees only their own portfolio. We store only the data we need, and users must be able to delete their account.                                                                                                                              |
 
 ## 4 Use-case view
 
