@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {getAsset} from "../scripts/asset.ts";
+import {getAssets} from "../scripts/asset.ts";
 import {computed, onMounted, ref} from 'vue'
 import {type Asset} from "../types/asset.ts";
 import AssetItem from "../components/AssetItem.vue";
@@ -16,7 +16,7 @@ const filteredData = computed(() => {
 
 
 onMounted(() => {
-  getAsset().then((response) => {
+  getAssets().then((response) => {
     data.value = response;
   });
 })
@@ -32,7 +32,7 @@ onMounted(() => {
   </div>
   <div class="max-h-[85vh]  overflow-y-auto">
     <div v-for="asset in filteredData" :key="asset.id" class="px-8 py-4 ">
-      <AssetItem :asset="asset"/>
+      <AssetItem :asset="asset" />
     </div>
   </div>
   </div>

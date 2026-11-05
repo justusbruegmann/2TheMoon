@@ -5,7 +5,7 @@ import {supabase} from "../lib/supabaseClient.ts";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export async function getAsset(): Promise<Asset[]> {
+export async function getAssets(): Promise<Asset[]> {
     const url = `${BACKEND_URL}/assets/`;
     const authToken = supabase.auth.getSession().then((session) => session.data.session?.access_token);
     const response = await fetch(url, {
@@ -23,5 +23,4 @@ export async function getAsset(): Promise<Asset[]> {
       notify.error("Failed to fetch assets",`Failed to fetch assets: ${response.status} ${data.message}`);
       return [];
     }
-
 }

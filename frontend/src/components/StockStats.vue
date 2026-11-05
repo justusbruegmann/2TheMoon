@@ -21,8 +21,8 @@ const performance = computed(() => {
     <p :class="performance >=0 ? 'text-buy' : 'text-sell'">Performance: {{ performance.toFixed(2) }}%</p>
     <p>Minimum: {{ stats.calculateStockAnalyze(props.candleData).min }}</p>
     <p>Maximum: {{ stats.calculateStockAnalyze(props.candleData).max }}</p>
-    <p>Open: {{props.candleData[0].open}}</p>
-    <p>Close: {{props.candleData[candleData.length - 1].close}}</p>
+    <p>Open: {{ props.candleData[0]?.open ?? '-' }}</p>
+    <p>Close: {{ props.candleData[props.candleData.length - 1]?.close ?? '-' }}</p>
   </div>
 </template>
 
