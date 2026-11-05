@@ -6,8 +6,21 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "numpy>=2.5.3",
+    "pydantic-settings>=2.16.2",
+    "redis>=8.1.0",
     "shared",
 ]
 
 [tool.uv.sources]
 shared = { path = "../shared", editable = true }
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "pytest-asyncio>=1.4.1.post1",
+]
