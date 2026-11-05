@@ -1,13 +1,12 @@
 from pathlib import Path
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.config.exception_handlers import exception_handler
 from shared.database.models.api_response import ApiErrorResponse
-from .dependencies import get_user_db
-from .exception_handlers import exception_handler
-from .routers import asset_router, holding_router, price_history_router, portfolio_router
+from .config.fastapi import register_routers
 
 
 
@@ -47,33 +46,7 @@ app.add_middleware(
 # Routers
 ####################################################
 
-app.include_router(
-    asset_router.router,
-    prefix="/assets",
-    tags=["Asset"],
-    dependencies=[Depends(get_user_db)],
-)
-
-app.include_router(
-    price_history_router.router,
-    prefix="/price_history",
-    tags=["Pricce History"],
-    dependencies=[Depends(get_user_db)],
-)
-
-app.include_router(
-    portfolio_router.router,
-    prefix="/portfolios",
-    tags=["Portfolio"],
-    dependencies=[Depends(get_user_db)],
-)
-
-app.include_router(
-    holding_router.router,
-    prefix="/holdings",
-    tags=["Holding"],
-    dependencies=[Depends(get_user_db)],
-)
+register_routers(app)
 
 ####################################################
 # Health Check

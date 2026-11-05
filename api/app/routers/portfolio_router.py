@@ -2,7 +2,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, status
 
-from app.dependencies import UserDb
+from app.config.dependencies import UserDb
 from app.domain.portfolio import portfolio_post_one, portfolio_get_one
 from app.util.response import api_response
 from shared.database.models import Portfolio, PortfolioInsert

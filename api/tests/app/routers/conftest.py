@@ -2,8 +2,8 @@ from contextlib import contextmanager
 
 from fastapi.testclient import TestClient
 
-from app.config import settings
-from app.dependencies import get_user_db
+from app.config.config import settings
+from app.config.dependencies import get_user_db
 from app.main import app
 from ..conftest import FakeTable
 

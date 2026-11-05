@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from app.dependencies import UserDb
+from app.config.dependencies import UserDb
 from app.util.response import DomainError
 
 

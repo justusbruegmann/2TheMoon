@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 from fastapi import APIRouter, status
 
-from app.dependencies import UserDb
+from app.config.dependencies import UserDb
 from app.domain.price_history import price_history_get_all
 from app.util.response import api_response
 from shared.database.models import PriceHistory

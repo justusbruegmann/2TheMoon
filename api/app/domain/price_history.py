@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from app.dependencies import UserDb
+from app.config.dependencies import UserDb
 from app.util.response import DomainError
 
 # We interpret the history entry's 'recorded_at' field as the end of the candle.

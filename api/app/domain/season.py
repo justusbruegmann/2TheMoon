@@ -1,6 +1,6 @@
 from datetime import UTC, datetime
 
-from app.dependencies import UserDb
+from app.config.dependencies import UserDb
 from shared.database.models import Season
 
 
