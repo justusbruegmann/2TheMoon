@@ -13,7 +13,7 @@ from shared.database.models.api_response import ApiResponse
 #####################
 # RLS
 #
-# - GET /holdings     Only the owning user may see their own holding
+# - GET /holdings/:id       Only the owning user may see their own holding
 #####################
 
 router = APIRouter()
