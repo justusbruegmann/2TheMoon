@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import {ref, computed} from "vue";
 import type {ApexOptions} from "apexcharts";
 import TabSwitch from "./ui-components/TabSwitch.vue";
 import type {CandleChartData, LineChartData} from "../types/chart.ts";
@@ -12,17 +12,24 @@ const isCandleChart = ref<string>("Candle Chart")
 const timeframe = ref<string>("1D")
 
 // ApexCharts candles as { x: timestamp, y: [open, high, low, close] }
-const seriesCandle = ref([{
+const seriesCandle = computed(() => [{
   name: "Stock Price",
-  data: props.chartCandleData.map(c => ({x: c.timestamp, y: [c.open, c.high, c.low, c.close]})),
-}])
+  data: props.chartCandleData.map(c => ({
+    x: c.timestamp,
+    y: [c.open, c.high, c.low, c.close]
+  })),
+}]);
 
-const seriesLine = ref([{
+const seriesLine = computed(() => [{
   name: "Stock Price",
-  data: getMockLineChartData().map(c => ({x: c.timestamp, y: c.value})),
-}])
+  data: getMockLineChartData().map(c => ({
+    x: c.timestamp,
+    y: c.value
+  })),
+}]);
 
- function getMockLineChartData(): LineChartData[] {
+
+function getMockLineChartData(): LineChartData[] {
   return props.chartCandleData.map(c => ({
     timestamp: c.timestamp,
     value: +((c.open + c.high + c.low + c.close) / 4).toFixed(2),
@@ -49,7 +56,7 @@ const optionsCandle = ref<ApexOptions>({
         zoomout: false,
       }
     },
-    zoom: {enabled: true},
+    zoom: {enabled: true, autoScaleYaxis: true},
     animations: {enabled: true},
   },
   theme: {mode: "dark"},
@@ -108,10 +115,10 @@ const optionsLine = ref<ApexOptions>({
         zoomout: false,
       }
     },
-    zoom: {enabled: true},
+    zoom: {enabled: true, autoScaleYaxis: true},
     animations: {enabled: true},
   },
-  colors: [getLineColor(undefined, undefined)],  theme: {mode: "dark"},
+  colors: [getLineColor(undefined, undefined)], theme: {mode: "dark"},
   stroke: {
     width: 2,
     curve: "straight",
@@ -171,13 +178,17 @@ function getLineColor(min: number | undefined, max: number | undefined): string 
 const tabSwitchOptions = ref(["Candle Chart", "Line Chart"])
 const tabTimeOptions = ref(["1D", "1W", "1M", "3M"])
 
+
+defineEmits(["update:timeframe"])
+
 </script>
 
 <template>
   <div class="stock-chart">
     <div class="flex flex-row justify-between items-center mb-4">
       <TabSwitch v-model="isCandleChart" :options="tabSwitchOptions"/>
-      <TabSwitch v-model="timeframe" :options="tabTimeOptions"/>
+      <TabSwitch v-model="timeframe" :options="tabTimeOptions"
+                 @update:modelValue="tf => $emit('update:timeframe', tf)"/>
     </div>
 
     <apexchart v-if="isCandleChart === 'Candle Chart'" width="100%" height="350" type="candlestick"
