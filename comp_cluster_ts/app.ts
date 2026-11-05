@@ -1,8 +1,32 @@
 import express from "express";
+import {drizzle} from "drizzle-orm/postgres-js";
+import postgres from "postgres";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
+import {asset} from "./db/schema.js";
 
 app.use(express.json());
+
+const DATABASE_URL = process.env.DATABASE_URL;
+if (!DATABASE_URL) {
+    console.error("DATABASE_URL is not defined in the environment variables.");
+    process.exit(1);
+}
+
+const client = postgres(DATABASE_URL, {ssl: "require"});
+const db = drizzle({client});
+
+async function tryConnection() {
+    try {
+        await db.select().from(asset).limit(1)
+        console.log("Database connection successful.");
+    } catch (error) {
+        console.error("Database connection failed:", error);
+    }
+}
 
 
 app.get("/", (req, res) => {
@@ -10,5 +34,7 @@ app.get("/", (req, res) => {
 })
 
 app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+    tryConnection().then(() => {
+        console.log("Server is running on port 3000");
+    })
 })

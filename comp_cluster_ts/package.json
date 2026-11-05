@@ -8,7 +8,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx tsc && node dist/app.js"
+    "dev": "npx tsc && node dist/app.js",
+    "start": "node dist/app.js",
+    "build": "npx tsc"
   },
   "dependencies": {
     "dotenv": "^18.0.9",
