@@ -13,21 +13,21 @@ from shared.database.models.api_response import ApiResponse
 #####################
 # RLS
 #
-# - GET /holdings/:id     Only the owning user may see their own holding
+# - GET /holdings     Only the owning user may see their own holding
 #####################
 
 router = APIRouter()
 
 
 @router.get(
-    path="/{holding_id}",
+    path="/{user_id}",
     status_code=status.HTTP_200_OK,
     response_model=ApiResponse[Holding],
-    description="Returns the holding with the specified id"
+    description="Returns the holding for the specified user"
 )
 @api_response
-def handle_get_one(db: UserDb, holding_id: UUID):
-    return holdings_get_one(db, holding_id)
+def handle_get_one(db: UserDb, user_id: UUID):
+    return holdings_get_one(db, user_id)
 
 
 

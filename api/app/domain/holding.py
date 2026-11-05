@@ -5,10 +5,10 @@ from app.util.response import DomainError
 from shared.database.models import Holding, HoldingUpdate
 
 
-def holdings_get_one(db: UserDb, holding_id: UUID):
-    holding: Holding = db.holdings.get(id=holding_id)
+def holdings_get_one(db: UserDb, user_id: UUID):
+    holding: Holding = db.holdings.get(user_id=user_id)
     if holding is None:
-        raise DomainError(status_code=404, message="Found no holding with this id")
+        raise DomainError(status_code=404, message="Found no holding for this user")
     return holding
 
 
