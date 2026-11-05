@@ -8,10 +8,10 @@ from pydantic import BaseModel
 #################################################################
 
 class FakeTable:
-    def __init__(self, model: type[BaseModel], extra_fields=lambda: {}):
+    def __init__(self, model: type[BaseModel], extra_fields=lambda: {}, rows=()):
         self.model = model
         self.extra_fields = extra_fields
-        self._rows: dict[str, BaseModel] = {}
+        self._rows: dict[str, BaseModel] = {str(row.id): row for row in rows}
 
     def find(self, limit=None, gt=None, lt=None, **filters):
         rows = list(self._rows.values())
@@ -43,3 +43,19 @@ class FakeTable:
         updated = row.model_copy(update=values)
         self._rows[key] = updated
         return [updated]
+
+    #################################
+    # Mock the select_query().or_(...).limit(...) chain that e.g. get_current_season()
+    # queries for requests that are more complex than what find() can provide.
+    #################################
+    def select_query(self):
+        return self
+
+    def or_(self, *_args, **_kwargs):
+        return self
+
+    def limit(self, *_args, **_kwargs):
+        return self
+
+    def run(self, _query):
+        return list(self._rows.values())
