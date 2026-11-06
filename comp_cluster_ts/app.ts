@@ -2,13 +2,16 @@ import express from "express";
 import {drizzle} from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import dotenv from "dotenv";
+import {asset} from "./db/schema.js";
+import cors from "cors";
+import portfolioHistoryRouter from "./router/portfolioHistory.js";
 
 dotenv.config();
-
 const app = express();
-import {asset} from "./db/schema.js";
+app.use(cors());
 
 app.use(express.json());
+app.use("/portfolioHistory", portfolioHistoryRouter);
 
 const DATABASE_URL = process.env.DATABASE_URL;
 if (!DATABASE_URL) {
@@ -17,7 +20,7 @@ if (!DATABASE_URL) {
 }
 
 const client = postgres(DATABASE_URL, {ssl: "require"});
-const db = drizzle({client});
+export const db = drizzle({client});
 
 async function tryConnection() {
     try {
@@ -27,6 +30,9 @@ async function tryConnection() {
         console.error("Database connection failed:", error);
     }
 }
+
+import portfolioRouter from "./router/portfolioHistory.js"
+app.use("/portfolioHistory", portfolioRouter);
 
 
 app.get("/", (req, res) => {
