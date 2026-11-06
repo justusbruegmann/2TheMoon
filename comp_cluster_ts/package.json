@@ -1,0 +1,27 @@
+{
+  "name": "comp_cluster_ts",
+  "version": "1.0.0",
+  "description": "Computation cluster for 2themoon",
+  "license": "MIT",
+  "author": "justus bruegmann",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tsc && node dist/app.js",
+    "start": "node dist/app.js",
+    "build": "npx tsc"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "drizzle-orm": "^1.0.0-rc.5",
+    "express": "^5.3.0",
+    "postgres": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "drizzle-kit": "^1.0.0-rc.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
