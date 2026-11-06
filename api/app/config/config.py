@@ -1,8 +1,9 @@
-from pydantic_settings import BaseSettings
-
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=".env")
+
     # Login data for the test user in supabase. These are used for the auth token generating script in
     # /scripts/get_test_token.py
     supabase_url: str | None = None
@@ -14,8 +15,5 @@ class Settings(BaseSettings):
     # endpoints that should not be callable from the frontend.
     gameserver_shared_secret: str
 
-
-    class Config:
-        env_file = ".env"
 
 settings = Settings()

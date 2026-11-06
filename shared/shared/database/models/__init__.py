@@ -8,7 +8,7 @@ from .price_history import PriceHistory, PriceHistoryInsert
 from .profile import Profile
 from .season import Season, SeasonInsert
 from .trade import Trade, TradeInsert
-from .holding import Holding
+from .holding import Holding, HoldingUpdate
 
 __all__ = [
         "Asset",
@@ -31,4 +31,5 @@ __all__ = [
         "TradeInsert",
         "TradeOperation",
         "Holding",
+        "HoldingUpdate",
 ]

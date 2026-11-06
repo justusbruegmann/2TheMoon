@@ -24,6 +24,10 @@ testpaths = ["tests"]
 markers = [
     "integration: hits a live Supabase project (requires TEST_USER_EMAIL/TEST_USER_PASSWORD)",
 ]
+filterwarnings = [
+    # Originates inside supabase_auth library: nothing we can/need to fix.
+    "ignore:'asyncio.iscoroutinefunction' is deprecated:DeprecationWarning:supabase_auth",
+]
 
 [dependency-groups]
 dev = [
