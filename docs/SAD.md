@@ -129,7 +129,7 @@ architecture reaches each scenario follows in section 11.
 |-------|------------|--------------|-------------------------------------------|:-----:|:----:|--------------|
 | QS-01 | Relibility | NFR-R-02     | Trade data → every Trade changed 3 tables |  [H]  | [L]  | Justus       |
 | QS-02 | [quality]  | [refinement] | [stimulus] → [response measure]           |  [H]  | [M]  | [first name] |
-| QS-03 | [quality]  | [refinement] | [stimulus] → [response measure]           |  [M]  | [M]  | [first name] |
+| QS-03 | Performance  | NFR-P-05 | Initial page request (cold cache) → Page load time < 3 s at the 95th percentile           |  [M]  | [M]  | Max |
 
 [One or two sentences: which scenario comes first, and why. (H, H) comes before everything else.]
 
