@@ -120,19 +120,18 @@ architecture reaches each scenario follows in section 11.
 
 ### 3.1 Quality goals
 
-*Author: [first name]*
+*Author: [Mika]*
 
 <!-- The utility tree as a table. One row per scenario. Value and risk: H, M or L.
      The short form: stimulus → response measure. -->
 
 | ID    | Quality    | Refinement   | Scenario, short                           | Value | Risk | Author       |
 |-------|------------|--------------|-------------------------------------------|:-----:|:----:|--------------|
-| QS-01 | Relibility | NFR-R-02     | Trade data → every Trade changed 3 tables |  [H]  | [L]  | Justus       |
-| QS-02 | [quality]  | [refinement] | [stimulus] → [response measure]           |  [H]  | [M]  | [first name] |
-| QS-03 | Performance  | NFR-P-05 | Initial page request (cold cache) → Page load time < 3 s at the 95th percentile           |  [M]  | [M]  | Max |
+| QS-01 | Relibility | Atomic trades (NFR-R-02)   | Trade data → every Trade changed 3 tables |  H  | L  | Justus       |
+| QS-02 | Data integrity | Trade log (NFR-S-02)         | User confirms a buy or sell → exactly one immutable log entry with executed price, in all trades |   H   |  M   | Sebastian |
+| QS-03 | Performance  | Initial page load (NFR-P-05) | Initial page request → Page load time < 3 s at the 95th percentile  of request         |  M  | M  | Max |
 
-[One or two sentences: which scenario comes first, and why. (H, H) comes before everything else.]
-
+No scenario is (H, H). QS-02 comes first: its value is high, and it shapes the architecture the most, because the trade log needs a lot of storage while the Supabase free tier only offers 500 MB.
 
 
 #### QS-01 Postgres Transaction
