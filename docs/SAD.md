@@ -169,18 +169,20 @@ Technical risk M: Removing the trade_log table is a simple change in the databas
 history of portfolio values, we would need to keep track of fine-grained price developments, which would immensely
 inflate the required storage space in the database.
 
-#### QS-03 [Name]
+#### QS-03 Fast Initial Page Load
 
-| QS-03 [Name]     | *Author: [first name]* · Refines [NFR-ID] |
+| QS-03 Fast Initial Page Load     | *Author: Maximilian* · Refines NFR-P-05 |
 |------------------|-------------------------------------------|
-| Source           | [who or what triggers it]                 |
-| Stimulus         | [what arrives at the system]              |
-| Artifact         | [which part of the system is hit]         |
-| Environment      | [in which state the system is]            |
-| Response         | [what the system does]                    |
-| Response measure | [the number that tells you it worked]     |
+| Source           | User opening the website                                      |
+| Stimulus         | Opens the page and requests the initial HTML and JS bundle            |
+| Artifact         | Frontend Server        |
+| Environment      | Normal operation, standard internet connection 25 Mbit/s          |
+| Response         | The frontend server delivers the HTML and JS and the browser renders the start page            |
+| Response measure | In 95% of the time the page loads in under 3 seconds  |
 
-Business value [H/M/L]: [one sentence why]. Technical risk [H/M/L]: [one sentence why].
+Business value H: The first load is the user's first impression of 2TheMoon, a slow start drives novice traders away before they reach the trading simulation.
+Technical risk M: A Vue.js SPA bundle grows with every feature (charting, chat, portfolio views). The target is achievable with code splitting, lazy-loaded routes and gzip/brotli compression, but it needs continuous bundle-size monitoring
+
 
 ### 3.2 Constraints
 
