@@ -104,6 +104,30 @@ by view, following the RUP template.
 | Deployment view     | What runs where, and how is it connected? | Deployment diagram                      | 7       |
 | Implementation view | Which parts is the code made of?          | Component diagram, package diagram      | 8       |
 
+### 2.1 Architectural style
+
+*Author: [first name]*
+
+<!-- Three short paragraphs, together rarely longer than half a page.
+     Every reason names a scenario or a constraint from section 3 by its ID. -->
+
+**Main style.** Our backend is service-based, with three services that are deployed independently. The API (FastAPI), the Game Server (Market Simulation and Seasons) and the Computation Cluster (Performance heavy Portfolio History calculations). They all work together on one shared Supabase PostreSQL database. The python services both access the database through our package ´shared´, so we only need to develop it once. Browser and backend form a client-server system, REST for requests, WebSocket for live prices. Between Game Server and API we have a event-driven link, the Game Server publishes price events to the redis stream, the API consumes them and pushes them to the browsers via the WebSocket.
+
+**Why.** (1) A trade changes three tables and writes one immutable trade log entry (QS-01, QS-02). Because all
+services share one database, this stays one local PostgreSQL transaction. With one database per service, a trade would
+need a distributed transaction and a half-finished trade could reach the portfolio charts. (2) The market
+simulation ticks continuously, independent of any request. As its own service behind Redis Streams (C-03), it never
+blocks the request handling of the API, and a redeploy or crash of the API does not stop the market. (3) Separate
+services cost us little, all containers run on one Machine via Docker Compose (C-05), so there is no extra host, no extra
+bill and no cold start per service, and `shared` keeps the Python services on one data model (C-01).
+
+
+**Rejected alternative.** A modular monolith, with the simulation as a background task inside the FastAPI process.
+With it, we would only deploy and monitor one process and would not have to learn Redis Streams. We did not choose it because the CPU-heavy tick loop would compete with request handling
+in the same event loop, and a crash in the simulation would take the trade endpoints down with it, so no trade could
+be committed (QS-01). We would merge the Game Server back into the API if Redis Streams costs us more time than it
+saves before the practical phase (C-04, C-03).
+
 ## 3 Architectural goals and constraints
 
 <!--
@@ -284,7 +308,7 @@ independently.
 
 ## 8 Implementation view
 
-### 8.1 Overview3
+### 8.1 Overview
 
 *Author: Justus*
 
@@ -292,7 +316,7 @@ independently.
      services, and the interfaces between them (ball = provides, socket = requires). Two to five
      components inside the backend are a good size. -->
 
-We have an semi-microservice architecture with a frontend, a api layer, a game server and a database. Furthermore we
+We have an service-based architecture with a frontend, a api layer, a game server and a database. Furthermore we
 have a computation cluster which will be used to perform heavy calculations for portfolio value and price analysis.
 The shared part can be easily used by the other components because it's a python package.
 
