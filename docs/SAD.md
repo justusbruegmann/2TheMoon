@@ -106,7 +106,7 @@ by view, following the RUP template.
 
 ### 2.1 Architectural style
 
-*Author: [first name]*
+*Author: Max*
 
 <!-- Three short paragraphs, together rarely longer than half a page.
      Every reason names a scenario or a constraint from section 3 by its ID. -->
