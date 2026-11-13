@@ -111,19 +111,27 @@ by view, following the RUP template.
 <!-- Three short paragraphs, together rarely longer than half a page.
      Every reason names a scenario or a constraint from section 3 by its ID. -->
 
-**Main style.** Our backend is service-based layered architecture, with three services that are deployed independently and work on the same Supabase PostgreSQL databse. Our services are cut by technique, the API answers all requests from the browser, the Game Server runs the market simulation and season scheduler and the Computation Cluster does heavy portfolio price history calculations. The API itself is also cut by technique: `routers` for HTTP, `domain` for business rules, and the library `shared` for database access, which the Python services use so the data models exist only once. Browser and backend form a client-server system, REST for requests, WebSocket for live prices. Between Game Server and API we have a event-driven link, the Game Server publishes price events to the redis stream, the API consumes them and pushes them to the browsers via the WebSocket.
+**Main style.** Our backend is service-based layered architecture, with three services that are deployed independently
+and work on the same Supabase PostgreSQL databse. Our services are cut by technique, the API answers all requests from
+the browser, the Game Server runs the market simulation and season scheduler and the Computation Cluster does heavy
+portfolio price history calculations. The API itself is also cut by technique: `routers` for HTTP, `domain` for business
+rules, and the library `shared` for database access, which the Python services use so the data models exist only once.
+Browser and backend form a client-server system, REST for requests, WebSocket for live prices. Between Game Server and
+API we have a event-driven link, the Game Server publishes price events to the redis stream, the API consumes them and
+pushes them to the browsers via the WebSocket.
 
 **Why.** (1) A trade changes three tables and writes one immutable trade log entry (QS-01, QS-02). Because all
 services share one database, this stays one local PostgreSQL transaction. With one database per service, a trade would
 need a distributed transaction and a half-finished trade could reach the portfolio charts. (2) The market
 simulation ticks continuously, independent of any request. As its own service behind Redis Streams (C-03), it never
 blocks the request handling of the API, and a redeploy or crash of the API does not stop the market. (3) Separate
-services cost us little, all containers run on one Machine via Docker Compose (C-05), so there is no extra host, no extra
+services cost us little, all containers run on one Machine via Docker Compose (C-05), so there is no extra host, no
+extra
 bill and no cold start per service, and `shared` keeps the Python services on one data model (C-01).
 
-
 **Rejected alternative.** A modular monolith, with the simulation as a background task inside the FastAPI process.
-With it, we would only deploy and monitor one process and would not have to learn Redis Streams. We did not choose it because the CPU-heavy tick loop would compete with request handling
+With it, we would only deploy and monitor one process and would not have to learn Redis Streams. We did not choose it
+because the CPU-heavy tick loop would compete with request handling
 in the same event loop, and a crash in the simulation would take the trade endpoints down with it, so no trade could
 be committed (QS-01). We would merge the Game Server back into the API if Redis Streams costs us more time than it
 saves before the practical phase (C-04, C-03).
@@ -149,14 +157,14 @@ architecture reaches each scenario follows in section 11.
 <!-- The utility tree as a table. One row per scenario. Value and risk: H, M or L.
      The short form: stimulus → response measure. -->
 
-| ID    | Quality    | Refinement   | Scenario, short                           | Value | Risk | Author       |
-|-------|------------|--------------|-------------------------------------------|:-----:|:----:|--------------|
-| QS-01 | Relibility | Atomic trades (NFR-R-02)   | Trade data → every Trade changed 3 tables |  H  | L  | Justus       |
+| ID    | Quality        | Refinement                   | Scenario, short                                                                                  | Value | Risk | Author    |
+|-------|----------------|------------------------------|--------------------------------------------------------------------------------------------------|:-----:|:----:|-----------|
+| QS-01 | Relibility     | Atomic trades (NFR-R-02)     | Trade data → every Trade changed 3 tables                                                        |   H   |  L   | Justus    |
 | QS-02 | Data integrity | Trade log (NFR-S-02)         | User confirms a buy or sell → exactly one immutable log entry with executed price, in all trades |   H   |  M   | Sebastian |
-| QS-03 | Performance  | Initial page load (NFR-P-05) | Initial page request → Page load time < 3 s at the 95th percentile  of request         |  M  | M  | Max |
+| QS-03 | Performance    | Initial page load (NFR-P-05) | Initial page request → Page load time < 3 s at the 95th percentile  of request                   |   M   |  M   | Max       |
 
-No scenario is (H, H). QS-02 comes first: its value is high, and it shapes the architecture the most, because the trade log needs a lot of storage while the Supabase free tier only offers 500 MB.
-
+No scenario is (H, H). QS-02 comes first: its value is high, and it shapes the architecture the most, because the trade
+log needs a lot of storage while the Supabase free tier only offers 500 MB.
 
 #### QS-01 Postgres Transaction
 
@@ -194,18 +202,20 @@ inflate the required storage space in the database.
 
 #### QS-03 Fast Initial Page Load
 
-| QS-03 Fast Initial Page Load     | *Author: Maximilian* · Refines NFR-P-05 |
-|------------------|-------------------------------------------|
-| Source           | User opening the website                                      |
-| Stimulus         | Opens the page and requests the initial HTML and JS bundle            |
-| Artifact         | Frontend Server        |
-| Environment      | Normal operation, standard internet connection 25 Mbit/s          |
-| Response         | The frontend server delivers the HTML and JS and the browser renders the start page            |
-| Response measure | In 95% of the time the page loads in under 3 seconds  |
+| QS-03 Fast Initial Page Load | *Author: Maximilian* · Refines NFR-P-05                                             |
+|------------------------------|-------------------------------------------------------------------------------------|
+| Source                       | User opening the website                                                            |
+| Stimulus                     | Opens the page and requests the initial HTML and JS bundle                          |
+| Artifact                     | Frontend Server                                                                     |
+| Environment                  | Normal operation, standard internet connection 25 Mbit/s                            |
+| Response                     | The frontend server delivers the HTML and JS and the browser renders the start page |
+| Response measure             | In 95% of the time the page loads in under 3 seconds                                |
 
-Business value H: The first load is the user's first impression of 2TheMoon, a slow start drives novice traders away before they reach the trading simulation.
-Technical risk M: A Vue.js SPA bundle grows with every feature (charting, chat, portfolio views). The target is achievable with code splitting, lazy-loaded routes and gzip/brotli compression, but it needs continuous bundle-size monitoring
-
+Business value H: The first load is the user's first impression of 2TheMoon, a slow start drives novice traders away
+before they reach the trading simulation.
+Technical risk M: A Vue.js SPA bundle grows with every feature (charting, chat, portfolio views). The target is
+achievable with code splitting, lazy-loaded routes and gzip/brotli compression, but it needs continuous bundle-size
+monitoring
 
 ### 3.2 Constraints
 
@@ -214,15 +224,15 @@ Technical risk M: A Vue.js SPA bundle grows with every feature (charting, chat, 
 <!-- At least three. Kinds: technical, organizational, economic, legal.
      Your stack is in SRS 3.6 — link it instead of copying it. -->
 
-| ID   | Kind           | Constraint                                               | What it means for our architecture |
-|------|----------------|----------------------------------------------------------|------------------------------------|
-| C-01 | Technical      | Frontend in TypeScript/Vue, backend in Python/FastAPI, database PostgreSQL                                                     | Two languages, so no code can be shared between frontend and backend. Backend components share code only through the Python package "shared".                                                                                                                                                                              |
-| C-02 | Technical      | Login and database run on Supabase (Supabase Auth, managed PostgreSQL)                                                                                                                      | We don't build an authentication of our own. The database is outside our server, so every access goes over the network. Availability and latency also depend on Supabase.                                                                                                     |
-| C-03 | Technical      | A Redis server provides the message broker (Redis Streams) for market events and also serves as the cache for current prices. Nobody in the team has experience with Redis Streams.                                                                         | The broker stays hidden behind Event Producer and Event Consumer, so we can replace it. We keep the number of streams small and plan time to learn it.                                                                                                                                                                    |
-| C-04 | Organizational | 4 members, about 4 h per week each, until the end of semester 4 (about 06. 2027), excluding the practical phase from 21.12.26 until 28.03.27.                                                                                                          | Few components, and no technology that we cannot operate ourselves. A new service is added only if its benefit clearly outweighs the effort.                                                                                                                                                                |
-| C-05 | Economic       | No budget: frontend on Vercel (free tier), backend on the server of a team member, database on Supabase (free tier)                                                                         | All backend containers (API, broker, game server) run on one machine, with no redundancy and no automatic scaling. If the server fails, the backend fails.The Supabase free tier only offers 500 MB of storage, so the data of the pricing history can't take up too much space.                  |
-| C-06 | Technical      | Frontend (Vercel) and backend (member's server) run on different hosts and domains                                                                                                          | The server must be reachable from the internet over HTTPS/WSS with a valid certificate, otherwise the browser blocks the connection from the HTTPS page. The backend needs a CORS configuration for the Vercel domain.                    |
-| C-07 | Legal          | We store user name, password, and the stock holdings of an account, but no real money and no bank connection. The DSGVO still applies to personal data.                                      | Passwords are stored only by Supabase Auth, never in our own tables. Each user sees only their own portfolio. We store only the data we need, and users must be able to delete their account.                                                                                                                              |
+| ID   | Kind           | Constraint                                                                                                                                                                          | What it means for our architecture                                                                                                                                                                                                                                               |
+|------|----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| C-01 | Technical      | Frontend in TypeScript/Vue, backend in Python/FastAPI, database PostgreSQL                                                                                                          | Two languages, so no code can be shared between frontend and backend. Backend components share code only through the Python package "shared".                                                                                                                                    |
+| C-02 | Technical      | Login and database run on Supabase (Supabase Auth, managed PostgreSQL)                                                                                                              | We don't build an authentication of our own. The database is outside our server, so every access goes over the network. Availability and latency also depend on Supabase.                                                                                                        |
+| C-03 | Technical      | A Redis server provides the message broker (Redis Streams) for market events and also serves as the cache for current prices. Nobody in the team has experience with Redis Streams. | The broker stays hidden behind Event Producer and Event Consumer, so we can replace it. We keep the number of streams small and plan time to learn it.                                                                                                                           |
+| C-04 | Organizational | 4 members, about 4 h per week each, until the end of semester 4 (about 06. 2027), excluding the practical phase from 21.12.26 until 28.03.27.                                       | Few components, and no technology that we cannot operate ourselves. A new service is added only if its benefit clearly outweighs the effort.                                                                                                                                     |
+| C-05 | Economic       | No budget: frontend on Vercel (free tier), backend on the server of a team member, database on Supabase (free tier)                                                                 | All backend containers (API, broker, game server) run on one machine, with no redundancy and no automatic scaling. If the server fails, the backend fails.The Supabase free tier only offers 500 MB of storage, so the data of the pricing history can't take up too much space. |
+| C-06 | Technical      | Frontend (Vercel) and backend (member's server) run on different hosts and domains                                                                                                  | The server must be reachable from the internet over HTTPS/WSS with a valid certificate, otherwise the browser blocks the connection from the HTTPS page. The backend needs a CORS configuration for the Vercel domain.                                                           |
+| C-07 | Legal          | We store user name, password, and the stock holdings of an account, but no real money and no bank connection. The DSGVO still applies to personal data.                             | Passwords are stored only by Supabase Auth, never in our own tables. Each user sees only their own portfolio. We store only the data we need, and users must be able to delete their account.                                                                                    |
 
 ## 4 Use-case view
 
@@ -298,13 +308,13 @@ independently.
 
 ![Deployment diagram](diagrams/deployment-view.png)
 
-| Node                     | What runs there                                                                                                     | Connected to                                                                                                                                  |
-|--------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| Laptop / Phone           | Web browser running the Vue SPA                                                                                     | Vercel: HTTPS · Backend host (FastAPI): HTTPS / WSS · Supabase Auth: HTTPS                                                                    |
-| Vercel Edge Network      | CDN / static hosting with the frontend build (dist/)                                                                | Browser: HTTPS                                                                                                                                |
+| Node                     | What runs there                                                                                                                         | Connected to                                                                                                                                  |
+|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| Laptop / Phone           | Web browser running the Vue SPA                                                                                                         | Vercel: HTTPS · Backend host (FastAPI): HTTPS / WSS · Supabase Auth: HTTPS                                                                    |
+| Vercel Edge Network      | CDN / static hosting with the frontend build (dist/)                                                                                    | Browser: HTTPS                                                                                                                                |
 | Backend Host (VM)        | Docker Engine with three containers: FastAPI (api-service), Redis (streams and cache) broker (topics config), Game Server (game-server) | Browser: HTTPS / WSS · Supabase PostgreSQL: TCP 5432 · Computation Cluster: HTTPS (REST) · internally FastAPI ↔ Redis ↔ Game Server: TCP 9092 |
-| Supabase (managed cloud) | PostgreSQL (schema.sql) and Supabase Auth (GoTrue / JWT)                                                            | Browser: HTTPS (auth) · FastAPI: TCP 5432 · Computation Cluster: TCP 5432                                                                     |
-| Computation Cluster      | Computation API on Node.js / Python / other (TBD) (deployed on with Docker)                                         | FastAPI: HTTPS (REST) · Supabase PostgreSQL: TCP 5432                                                                                         |
+| Supabase (managed cloud) | PostgreSQL (schema.sql) and Supabase Auth (GoTrue / JWT)                                                                                | Browser: HTTPS (auth) · FastAPI: TCP 5432 · Computation Cluster: TCP 5432                                                                     |
+| Computation Cluster      | Computation API on Node.js / Python / other (TBD) (deployed on with Docker)                                                             | FastAPI: HTTPS (REST) · Supabase PostgreSQL: TCP 5432                                                                                         |
 
 ## 8 Implementation view
 
@@ -322,24 +332,24 @@ The shared part can be easily used by the other components because it's a python
 
 ![Component diagram](diagrams/implementation-view.png)
 
-| Component                | Responsibility                                                     | Classes (Task 5)                                                                      |
-|--------------------------|--------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-| Views                    | Shows the pages and UI; takes user input                           | PortfolioPage, TradePage, StocksOverviewPage, ChatWindow, SeasonIndicator             |
-| Router                   | Resolves URLs to pages, guards protected routes                    | – (vue-router config)                                                                 |
-| Login Helper             | Login, session check                                               | - (technical, no use case)                                                            |
-| API Client               | Calls the REST API, receives live market data via WebSocket        | – (technical, no use case)                                                            |
-| Web                      | Receives HTTP requests, validates input, returns uniform responses | AssetRouter, PortfolioController, TradeController, ChatRouter, SeasonRouter           |
-| Auth                     | Checks the token of every request                                  | – (technical, no use case)                                                            |
-| Services                 | Business logic: trading, portfolio, chat, seasons, market data     | AssetService, PortfolioService, TradeService, ChatService, ChatFilter, SeasonService  |
-| Cache                    | Keeps current prices in memory for fast reads                      | – (technical, no use case)                                                            |
-| Live Market              | Pushes price updates to clients over WebSocket                     | – (technical, no use case)                                                            |
-| Event Consumer           | Reads market events from Redis Streams, fills cache, triggers broadcast    | – (technical, no use case)                                                            |
-| Market Simulation        | Calculates virtual prices from random effects and trades           | – (no actor, runs on its own)                                                         |
-| Season Scheduler         | Ends seasons on time and starts the next one                       | SeasonScheduler                                                                       |
-| Event Producer           | Publishes price events to Redis Streams                                    | – (technical, no use case)                                                            |
-| Database (shared)        | Executes all DB requests, maps errors to DatabaseError             | Database                                                                              |
-| DB Models (shared)       | Data structures of the domain entities                             | TradingAsset, UserProfile, UserHolding, TradingRecord, Portfolio, Season, ChatMessage |
-| Supabase Client (shared) | Connection to Supabase (public/secret client)                      | – (supabase-py)                                                                       |
+| Component                | Responsibility                                                          | Classes (Task 5)                                                                      |
+|--------------------------|-------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| Views                    | Shows the pages and UI; takes user input                                | PortfolioPage, TradePage, StocksOverviewPage, ChatWindow, SeasonIndicator             |
+| Router                   | Resolves URLs to pages, guards protected routes                         | – (vue-router config)                                                                 |
+| Login Helper             | Login, session check                                                    | - (technical, no use case)                                                            |
+| API Client               | Calls the REST API, receives live market data via WebSocket             | – (technical, no use case)                                                            |
+| Web                      | Receives HTTP requests, validates input, returns uniform responses      | AssetRouter, PortfolioController, TradeController, ChatRouter, SeasonRouter           |
+| Auth                     | Checks the token of every request                                       | – (technical, no use case)                                                            |
+| Services                 | Business logic: trading, portfolio, chat, seasons, market data          | AssetService, PortfolioService, TradeService, ChatService, ChatFilter, SeasonService  |
+| Cache                    | Keeps current prices in memory for fast reads                           | – (technical, no use case)                                                            |
+| Live Market              | Pushes price updates to clients over WebSocket                          | – (technical, no use case)                                                            |
+| Event Consumer           | Reads market events from Redis Streams, fills cache, triggers broadcast | – (technical, no use case)                                                            |
+| Market Simulation        | Calculates virtual prices from random effects and trades                | – (no actor, runs on its own)                                                         |
+| Season Scheduler         | Ends seasons on time and starts the next one                            | SeasonScheduler                                                                       |
+| Event Producer           | Publishes price events to Redis Streams                                 | – (technical, no use case)                                                            |
+| Database (shared)        | Executes all DB requests, maps errors to DatabaseError                  | Database                                                                              |
+| DB Models (shared)       | Data structures of the domain entities                                  | TradingAsset, UserProfile, UserHolding, TradingRecord, Portfolio, Season, ChatMessage |
+| Supabase Client (shared) | Connection to Supabase (public/secret client)                           | – (supabase-py)                                                                       |
 
 ### 8.2 Layers
 
@@ -365,7 +375,15 @@ The shared part can be easily used by the other components because it's a python
 
 ## 11 Quality
 
-<!-- Lectures 7 to 9. How your architecture supports the qualities you need: availability,
-     security, maintainability, … Leave this section as it is until then. -->
+*Author: justus*
 
-*Follows with Lectures 7 to 9.*
+How our architecture reaches the scenarios of section 3.1:
+
+| Scenario                          | Tactics                                                            | Where            | Status  | Price                                                                   | Decision |
+|-----------------------------------|--------------------------------------------------------------------|------------------|---------|-------------------------------------------------------------------------|----------|
+| QS-01 Trade data                  | Every trade runs in one database transaction covering all 3 tables | API (Shared), DB | planned | more logic needed to implement the transaction with roleback            | —        |
+| QS-02 User confirms a buy or sell | Only Post and Get Method. No changing of the log.                  | API (Shared), DB | planned | Wrong entries can't be edited or deleted, only corrected by a new entry | —        |
+| QS-03 Initial page request        | Lazy loading of data that is needed on many pages                  | Frontend scripts | planned | more complex loading for needed data                                    | —        |
+
+QS-02 is our highest priority scenario, because a missing trade log entry would make the portfolio charts in the frontend unuseable.
+we will implement it by using a single database transaction for every trade, which writes to all three tables and the trade log in one go. If any of the writes fail, the transaction is rolled back and no changes are made to the database. This ensures that either all changes are made or none at all, maintaining data integrity.
