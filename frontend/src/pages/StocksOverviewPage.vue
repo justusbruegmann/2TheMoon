@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import {getAssets} from "../scripts/asset.ts";
 import {computed, onMounted, ref} from 'vue'
-import {type Asset} from "../types/asset.ts";
 import AssetItem from "../components/AssetItem.vue";
 
 import { storeToRefs } from "pinia";
 import { useAssetStore } from "../stores/assets";
 
 const assetStore = useAssetStore();
-const { assets, loading } = storeToRefs(assetStore); // keeps reactivity when destructuring
+const { assets } = storeToRefs(assetStore); // keeps reactivity when destructuring
 
-const data = ref<Asset[]>([]);
 const searchValue = ref("");
 
 const filteredData = computed(() => {

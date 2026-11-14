@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type {Holding} from '../types/holding'
-import {storeToRefs} from "pinia";
 import {useAssetStore} from "../stores/assets";
 import {computed, onMounted} from "vue";
 import {useRouter} from "vue-router";
@@ -14,7 +13,6 @@ const currentPrice = computed(() => props.currentPrice)
 const router = useRouter()
 
 const assetStore = useAssetStore();
-const {assets, loading} = storeToRefs(assetStore); // keeps reactivity when destructuring
 onMounted(() => assetStore.load());
 
 const asset = assetStore.byId.get(props.holding.assetId);
