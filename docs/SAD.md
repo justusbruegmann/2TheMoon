@@ -136,6 +136,17 @@ in the same event loop, and a crash in the simulation would take the trade endpo
 be committed (QS-01). We would merge the Game Server back into the API if Redis Streams costs us more time than it
 saves before the practical phase (C-04, C-03).
 
+### 2.2 Architecture decisions
+
+*Author: Sebastian*
+
+<!-- One row per ADR in docs/decisions/. An accepted ADR is not rewritten: a new decision gets a
+     new ADR, and the old one gets the status "superseded by ADR-xx". -->
+
+| ADR    | Decision                                       | Status   | Date       |
+|--------|------------------------------------------------|----------|------------|
+| ADR-01 | [[Gameserver]](decisions/ADR-01_gameserver.md) | accepted | 21.10.2026 |
+
 ## 3 Architectural goals and constraints
 
 <!--
@@ -361,11 +372,11 @@ request-scoped database dependency. It must not execute database operations. Dom
 Persistence uses neither of the other layers. The private Table._run method is an implementation detail of
 Persistence and should only be called from there.
 
-| Layer       | Folder                    | Contains                                                                                                                                                                                                                      | May use                                                                                                          |
-|-------------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
-| Web         | api/app/                | FastAPI route registration and endpoints (main.py, routers/), authentication dependency wiring (dependencies.py), HTTP response and exception handling (util/, exception_handlers.py)                              | Domain, shared request/response model types, Persistence only to construct the request-scoped database dependency |
-| Domain      | api/app/domain/         | Use-case and business logic                                                                                                                                                                                                   | Persistence                                                                                                      |
-| Persistence | shared/shared/database/ | Supabase client, database/table access, database errors and shared database models                                                                                                                                            | Supabase/PostgreSQL and its own models                                                                           |
+| Layer       | Folder                  | Contains                                                                                                                                                                              | May use                                                                                                           |
+|-------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| Web         | api/app/                | FastAPI route registration and endpoints (main.py, routers/), authentication dependency wiring (dependencies.py), HTTP response and exception handling (util/, exception_handlers.py) | Domain, shared request/response model types, Persistence only to construct the request-scoped database dependency |
+| Domain      | api/app/domain/         | Use-case and business logic                                                                                                                                                           | Persistence                                                                                                       |
+| Persistence | shared/shared/database/ | Supabase client, database/table access, database errors and shared database models                                                                                                    | Supabase/PostgreSQL and its own models                                                                            |
 
 The layers apply to the Python API. The Game Server depends on the Python package shared, while the TypeScript
 Computation Cluster has its own PostgreSQL client in comp_cluster_ts/app.ts. Redis Streams integration is not
@@ -405,5 +416,8 @@ How our architecture reaches the scenarios of section 3.1:
 | QS-02 User confirms a buy or sell | Only Post and Get Method. No changing of the log.                  | API (Shared), DB | planned | Wrong entries can't be edited or deleted, only corrected by a new entry | —        |
 | QS-03 Initial page request        | Lazy loading of data that is needed on many pages                  | Frontend scripts | planned | more complex loading for needed data                                    | —        |
 
-QS-02 is our highest priority scenario, because a missing trade log entry would make the portfolio charts in the frontend unuseable.
-we will implement it by using a single database transaction for every trade, which writes to all three tables and the trade log in one go. If any of the writes fail, the transaction is rolled back and no changes are made to the database. This ensures that either all changes are made or none at all, maintaining data integrity.
+QS-02 is our highest priority scenario, because a missing trade log entry would make the portfolio charts in the
+frontend unuseable.
+we will implement it by using a single database transaction for every trade, which writes to all three tables and the
+trade log in one go. If any of the writes fail, the transaction is rolled back and no changes are made to the database.
+This ensures that either all changes are made or none at all, maintaining data integrity.
