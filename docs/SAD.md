@@ -353,10 +353,30 @@ The shared part can be easily used by the other components because it's a python
 
 ### 8.2 Layers
 
-<!-- Lectures 8 and 9. The layers of your application and the rules between them. Leave this
-     section as it is until then. -->
+*Author: Mika*
 
-*Follows with Lectures 8 and 9.*
+These layer rules describe the API backend. The dependency direction is Web → Domain → Persistence.
+Web may use Domain, shared request/response model types, and Persistence only to construct the authenticated
+request-scoped database dependency. It must not execute database operations. Domain may use Persistence but not Web.
+Persistence uses neither of the other layers. The private Table._run method is an implementation detail of
+Persistence and should only be called from there.
+
+| Layer       | Folder                    | Contains                                                                                                                                                                                                                      | May use                                                                                                          |
+|-------------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| Web         | api/app/                | FastAPI route registration and endpoints (main.py, routers/), authentication dependency wiring (dependencies.py), HTTP response and exception handling (util/, exception_handlers.py)                              | Domain, shared request/response model types, Persistence only to construct the request-scoped database dependency |
+| Domain      | api/app/domain/         | Use-case and business logic                                                                                                                                                                                                   | Persistence                                                                                                      |
+| Persistence | shared/shared/database/ | Supabase client, database/table access, database errors and shared database models                                                                                                                                            | Supabase/PostgreSQL and its own models                                                                           |
+
+The layers apply to the Python API. The Game Server depends on the Python package shared, while the TypeScript
+Computation Cluster has its own PostgreSQL client in comp_cluster_ts/app.ts. Redis Streams integration is not
+implemented yet: the Game Server write is a placeholder and the API has no consumer.
+
+**Checked in the code.** We followed UC-01 Analyze Portfolio through api/app/main.py,
+api/app/routers/portfolios_router.py (with UserDb from api/app/dependencies.py), api/app/domain/season.py and
+shared/shared/database/database.py. The rules do not fully hold: portfolios_router.py:36 calls db.portfolios.get
+directly (Web executes a database operation), season.py:3 imports UserDb from Web (Domain depends on Web), and
+season.py:18 calls the private Table._run. UC-05 Trade Assets is not yet implemented end to end (no trade router,
+no trade service or transaction), so it could not be checked.
 
 ## 9 Data view
 
