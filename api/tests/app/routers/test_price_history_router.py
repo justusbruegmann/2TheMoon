@@ -105,6 +105,24 @@ def test_get_all_unknown_ticker():
     assert response.status_code == 404
 
 
+def test_get_all_start_after_end_raises_400(fake_db):
+    response = client.get(
+        "/price_history/",
+        params={"start": "2024-01-01T12:00:00Z", "end": "2024-01-01T11:00:00Z"},
+        headers=VALID_HEADERS,
+    )
+    assert response.status_code == 400
+
+
+def test_get_all_start_in_future_raises_400(fake_db):
+    response = client.get(
+        "/price_history/",
+        params={"start": "2999-01-01T00:00:00Z"},
+        headers=VALID_HEADERS,
+    )
+    assert response.status_code == 400
+
+
 # def test_post_valid_payload(fake_db):
 #     response = client.post("/price_history/", json=VALID_PAYLOAD, headers=GAMESERVER_HEADERS)
 #     assert response.status_code == 201

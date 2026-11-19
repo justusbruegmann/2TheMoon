@@ -23,6 +23,7 @@ from .models import (
 from ..config import DbSettings
 
 
+
 class Table[RowT: BaseModel]:
     def __init__(self,
                  client: Client,
@@ -37,6 +38,13 @@ class Table[RowT: BaseModel]:
             for field, info in model.model_fields.items()
         )
 
+    # A shortcut for querying this table.
+    # We can chain other builder methods (.or_, .in_, .order, ...) behind it, and then pass the result to run().
+    # See domain/seasons.py:get_current_season() for details
+    def select_query(self) -> Any:
+        return self.client.table(self.name).select(self.columns)
+
+    # Basically GET multiple (returns a list)
     def find(self,
              order_by: str | None = None,
              desc: bool = False,
@@ -46,7 +54,7 @@ class Table[RowT: BaseModel]:
              **filters: Any
              ) -> list[RowT]:
 
-        query = self.client.table(self.name).select(self.columns)
+        query = self.select_query()
         for column, value in filters.items():
             query = query.eq(column, str(value))
         for column, value in (gt or {}).items():
@@ -57,21 +65,22 @@ class Table[RowT: BaseModel]:
             query = query.order(order_by, desc=desc)
         if limit:
             query = query.limit(limit)
-        return self._run(query)
+        return self.run(query)
 
+    # GET a single entry (returns only one element)
     def get(self, **filters: Any) -> RowT | None:
         rows = self.find(limit=1, **filters)
         return rows[0] if rows else None
 
     def insert(self, *rows: Insert) -> list[RowT]:
         payload = [row.to_payload() for row in rows]
-        return self._run(
+        return self.run(
             self.client.table(self.name).insert(payload, default_to_null=False).select(self.columns)
         )
 
     def upsert(self, row: Insert, on_conflict: str) -> RowT:
         query = self.client.table(self.name).upsert(row.to_payload(), on_conflict=on_conflict)
-        return self._run(query.select(self.columns))[0]
+        return self.run(query.select(self.columns))[0]
 
     def update(self, values: dict[str, Any], **filters: Any) -> list[RowT]:
         if not filters:
@@ -79,7 +88,7 @@ class Table[RowT: BaseModel]:
         query = self.client.table(self.name).update(values)
         for column, value in filters.items():
             query = query.eq(column, str(value))
-        return self._run(query.select(self.columns))
+        return self.run(query.select(self.columns))
 
     def delete(self, **filters: Any) -> list[RowT]:
         if not filters:
@@ -87,9 +96,9 @@ class Table[RowT: BaseModel]:
         query = self.client.table(self.name).delete()
         for column, value in filters.items():
             query = query.eq(column, str(value))
-        return self._run(query.select(self.columns))
+        return self.run(query.select(self.columns))
 
-    def _run(self, query: Any) -> list[RowT]:
+    def run(self, query: Any) -> list[RowT]:
         try:
             response = query.execute()
         except (APIError, httpx.HTTPError) as error:

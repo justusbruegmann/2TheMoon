@@ -4,7 +4,7 @@ from typing import Annotated
 from fastapi import Depends, Header
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
-from app.config import settings
+from app.config.config import settings
 from app.util.response import error_response
 from shared.database import Database, get_public_db
 

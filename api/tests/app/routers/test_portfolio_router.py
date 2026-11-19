@@ -16,38 +16,10 @@ VALID_PAYLOAD = {
 }
 
 
-class FakeSeasonsTable:
-    #################################
-    # get_current_season() bypasses Table.find() and talks to the postgrest client
-    # directly, so this fake mimics that `.client.table(...).select().or_().limit()`
-    # chain instead of the generic FakeTable below.
-    #################################
-    def __init__(self, season):
-        self._season = season
-        self.client = self
-        self.name = "season"
-        self.columns = "id"
-
-    def table(self, _name):
-        return self
-
-    def select(self, *_args, **_kwargs):
-        return self
-
-    def or_(self, *_args, **_kwargs):
-        return self
-
-    def limit(self, *_args, **_kwargs):
-        return self
-
-    def _run(self, _query):
-        return [self._season] if self._season else []
-
-
 class FakeDatabase:
     def __init__(self):
         self.portfolios = FakeTable(Portfolio, lambda: {"id": uuid4(), "created_at": datetime.now(UTC)})
-        self.seasons = FakeSeasonsTable(Season(
+        self.seasons = FakeTable(Season, rows=[Season(
                 id=SEASON_ID,
                 name="Current season",
                 starting_balance=Decimal("1000"),
@@ -55,7 +27,7 @@ class FakeDatabase:
                 ends_at=None,
                 status=SeasonStatus.ACTIVE,
                 created_at=datetime.now(UTC),
-        ))
+        )])
 
 
 @pytest.fixture(scope="module")
