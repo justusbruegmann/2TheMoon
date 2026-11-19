@@ -48,7 +48,11 @@ class FakeTable:
         for row in rows:
             fields = self.extra_fields()
             key = str(fields.get("id", uuid4()))
-            entry = self.model(**row.model_dump(exclude=set(fields)), **fields)
+            # Only pass fields the model declares. Extra DB-only columns (e.g. "id" or "user_id" on Holding)
+            # live in _extra, exactly like the real Table, which only selects the model's columns.
+            # (Models forbid unknown fields, so passing them to the constructor would raise.)
+            model_fields = {k: v for k, v in fields.items() if k in self.model.model_fields}
+            entry = self.model(**row.model_dump(exclude=set(fields)), **model_fields)
             self._rows[key] = entry
             self._extra[key] = fields
             created.append(entry)
