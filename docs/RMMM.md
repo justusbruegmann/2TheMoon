@@ -13,46 +13,52 @@ look at it at every sprint change and change the date of every row we touch.
 | Value | Probability | Impact |
 |:-----:|-------------|--------|
 |   1   | Low         | Low    |
-|   2   | Medium      | Low    |
+|   2   | Medium      | Medium |
 |   3   | High        | High   |
 
 Score = probability × impact.
 
-**Our thresholds:** from [score]: act now · from [score]: plan · below that: watch
+**Our thresholds:** from H: act now · from M: plan · below that: watch
 
 ## Risks
 
 <!-- One row per risk, sorted by score, highest first. Kind: project, technical or business.
      Status: open, occurred or closed. Updated: date of the last change. -->
 
-| ID   | Risk, short                                 | Kind      | P | I | Score | Owner  | Status | Updated    |
-|------|---------------------------------------------|-----------|---|---|-------|--------|--------|------------|
-| R-01 | [a few words]                               | technical |   |   |       | [name] | open   | [DD.MM.YY] |
-| R-02 | [a few words]                               |           |   |   |       | [name] | open   | [DD.MM.YY] |
-| R-03 | Exmatrikulation of one or more team Members | Project   | M | H | 6     | Justus | open   | 19.11.26   |
+| ID   | Risk, short                                  | Kind               | P | I | Score | Owner     | Status | Updated    |
+|------|----------------------------------------------|--------------------|---|---|-------|-----------|--------|------------|
+| R-01 | Overly ambitious goals endanger final result | Project Management | M | M | 4     | Sebastian | open   | 19.11.26   |
+| R-02 | [a few words]                                |                    |   |   |       | [name]    | open   | [DD.MM.YY] |
+| R-03 | Exmatrikulation of one or more team Members  | Project            | M | H | 6     | Justus    | open   | 19.11.26   |
 
 <!-- A risk with impact 5 that you do not write in full: one sentence here on what you would do if
      it occurred. -->
 
 <!-- Copy the following block once for each risk you write in full. -->
 
-### R-01 [Risk, short]
+### R-01 Too ambitious planning
 
-*Owner: [name]*
+*Owner: Sebastian*
 
-**Risk.** Because [cause — what is already true today], [event — what may happen], so [effect —
-what it would cost us].
+**Risk.** Because multiple members of our group are quite excitable about building fun systems, we are at risk of
+setting our goals much higher than strictly necessary, so that the implementation might take more time and resources
+than we will eventually find out to have.
 
-**Rating.** Probability [value] × impact [value] = [score]. [One sentence: why these numbers.]
+**Rating.** Probability 2 × impact 2 = 4. We already have experienced such tendencies in past meetings and are aware of
+them. The impact would threaten the goals we set ourselves, but not the MVP which we expect to complete one semester
+early.
 
-**Mitigation.** [What we do before it happens, so that it becomes less likely or less harmful.
-Or: accepted, because …]
+**Mitigation.** We accept this risk, as our enthusiasm is the main driving factor behind our productivity. Deciding to
+do the bare minimum would kill more motivation and make the project more arduous than overambition might harm our time
+schedule.
 
-**Indicator.** [The warning sign we watch for.]
+**Indicator.** The backlog grows more than it reduces in size after each sprint in the second half of the fourth
+semester.
 
-**Contingency.** [Our plan B: what we do when it has happened anyway.]
+**Contingency.** We will decouple a polished, presentable result for the lecture with overhauled documentation, while
+fun projects can continue to be implemented on the main branch.
 
-### R-01 [Risk, short]
+### R-02 [Risk, short]
 
 *Owner: [name]*
 
@@ -72,12 +78,17 @@ Or: accepted, because …]
 
 *Owner: Justus*
 
-**Risk.** Because some of us still have to pass re-exams this semester, a member may be exmatrikuliert, so their open user stories stay unfinished and nobody else knows that part of the code.
+**Risk.** Because some of us still have to pass re-exams this semester, a member may be exmatrikuliert, so their open
+user stories stay unfinished and nobody else knows that part of the code.
 
-**Rating.** Probability 2 × impact 3 = 6. With the experience of the last semester, we know that this is a realistic risk. Losing one person hurts, but the remaining members can still deliver a smaller product.
+**Rating.** Probability 2 × impact 3 = 6. With the experience of the last semester, we know that this is a realistic
+risk. Losing one person hurts, but the remaining members can still deliver a smaller product.
 
-**Mitigation.** Accepted. Whether someone passes their exams is mostly outside the project’s control, so we do not plan an extra measure for now.
+**Mitigation.** Accepted. Whether someone passes their exams is mostly outside the project’s control, so we do not plan
+an extra measure for now.
 
 **Indicator.** Failed exams or talking about exmatrikulation with the team.
 
-**Contingency.** At the next sprint change, the owner and the team reassign the member's open stories to the remaining members. If the work does not fit into the remaining sprints, we remove the lowest-priority stories from the backlog first.
+**Contingency.** At the next sprint change, the owner and the team reassign the member's open stories to the remaining
+members. If the work does not fit into the remaining sprints, we remove the lowest-priority stories from the backlog
+first.
