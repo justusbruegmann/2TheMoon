@@ -28,7 +28,7 @@ Score = probability × impact.
 | ID   | Risk, short                                  | Kind               | P | I | Score | Owner     | Status | Updated    |
 |------|----------------------------------------------|--------------------|---|---|-------|-----------|--------|------------|
 | R-01 | Overly ambitious goals endanger final result | Project Management | M | M | 4     | Sebastian | open   | 19.11.26   |
-| R-02 | [a few words]                                |                    |   |   |       | [name]    | open   | [DD.MM.YY] |
+| R-02 | External service we depend on goes down      | Technical          | M | H | 6     | Max       | open   | 19.11.26   |
 | R-03 | Exmatrikulation of one or more team Members  | Project            | M | H | 6     | Justus    | open   | 19.11.26   |
 
 <!-- A risk with impact 5 that you do not write in full: one sentence here on what you would do if
@@ -58,21 +58,38 @@ semester.
 **Contingency.** We will decouple a polished, presentable result for the lecture with overhauled documentation, while
 fun projects can continue to be implemented on the main branch.
 
-### R-02 [Risk, short]
+### R-02 External service we depend on goes down
 
-*Owner: [name]*
+*Owner: Max*
 
-**Risk.** Because [cause — what is already true today], [event — what may happen], so [effect —
-what it would cost us].
+**Risk.** Because our demo runs entirely on services we do not control, Vercel for the frontend,
+Supabase for database and auth, GitHub for code and CI, an external API for market data, and
+PyPI/npm for our packages. One of them may be unavailable or unsafe to use when we need it (a provider
+outage, a data centre lost to a flood, fire or war, cut internet cables, sanctions, or a critical
+security flaw in Python or FastAPI), so we cannot show a working demo or cannot deploy for days.
 
-**Rating.** Probability [value] × impact [value] = [score]. [One sentence: why these numbers.]
+**Rating.** Probability M (2) × impact H (3) = 6. Each single event is rare, but we depend on at least
+five providers for two semesters, and large providers do have outages. If one hits the time of the presentation, we
+have no demo.
 
-**Mitigation.** [What we do before it happens, so that it becomes less likely or less harmful.
-Or: accepted, because …]
+**Mitigation.**
+- Justus and Max add a local setup: `docker compose up` starts frontend and backend, `supabase start`
+  starts a local Supabase with seed data; the steps go into the README.
+- Dependencies are pinned in lock files.
+- Every member keeps an up-to-date clone of the repository on their laptop.
+- The day before the presentation, we record a short demo video as a last resort.
 
-**Indicator.** [The warning sign we watch for.]
+**Indicator.** A status page (GitHub, Vercel, Supabase, the market data API) reports an incident, or nobody has started the local setup successfully
+during the last sprint.
 
-**Contingency.** [Our plan B: what we do when it has happened anyway.]
+**Contingency.**
+1. Check the status pages to see which service is down.
+2. Before a demo: pull from your local clone, run `supabase start` and `docker compose up`, and present from localhost.
+3. For a security flaw: update to the patched version, if there is none yet, switch off the affected
+   feature and say so in the demo.
+4. If the local setup fails as well: play the demo video and explain the live parts.
+5. Events that take away our laptops or the university as well (nuclear war) are accepted: then
+   the demo is not our problem.
 
 ### R-03 Exmatrikulation of one or more team members
 
