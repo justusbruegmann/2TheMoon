@@ -1,15 +1,24 @@
 from uuid import UUID
 
-from app.config.dependencies import UserDb
-from app.util.response import DomainError
 from shared.database.models import Holding, HoldingUpdate
 
+from app.config.dependencies import UserDb
+from app.util.response import DomainError
 
-def holdings_get_one(db: UserDb, user_id: UUID):
-    holding: Holding = db.holdings.get(user_id=user_id)
-    if holding is None:
-        raise DomainError(status_code=404, message="Found no holding for this user")
-    return holding
+
+###
+def holdings_get(db: UserDb, user_id: UUID, asset_id: UUID | None = None):
+    # The return codes we have decided on:
+    # If asset_id is requested and not found, return 404
+    # If it is not set and nothing is found for this user, return 200 with payload []
+
+    filters = {"user_id": user_id}
+    if asset_id is not None:
+        filters["asset_id"] = asset_id
+    holdings: list[Holding] = db.holdings.find(**filters)
+    if asset_id is not None and not holdings:
+        raise DomainError(status_code=404, message="Found no holding for this user and asset")
+    return holdings
 
 
 ############################################################

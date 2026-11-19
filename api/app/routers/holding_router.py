@@ -1,12 +1,12 @@
 from uuid import UUID
 
 from fastapi import APIRouter, status
-
-from app.config.dependencies import UserDb
-from app.domain.holding import holdings_get_one
-from app.util.response import api_response
 from shared.database.models import Holding
 from shared.database.models.api_response import ApiResponse
+
+from app.config.dependencies import UserDb
+from app.domain.holding import holdings_get
+from app.util.response import api_response
 
 #####################
 # Information
@@ -22,14 +22,13 @@ router = APIRouter()
 @router.get(
     path="/{user_id}",
     status_code=status.HTTP_200_OK,
-    response_model=ApiResponse[Holding],
-    description="Returns the holding for the specified user"
+    response_model=ApiResponse[list[Holding]],
+    description="Returns holdings for the specified user, but can be filtered for a specific asset_id."
+                "If asset_id is requested and not found, return 404; if it is not set and nothing is found for this user, return 200 with payload []."
 )
 @api_response
-def handle_get_one(db: UserDb, user_id: UUID):
-    return holdings_get_one(db, user_id)
-
-
+def handle_get_one(db: UserDb, user_id: UUID, asset_id: UUID | None = None):
+    return holdings_get(db, user_id, asset_id)
 
 ############################
 # YAGNI – But here they are anyways since I already wrote them
