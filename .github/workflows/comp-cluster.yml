@@ -1,0 +1,78 @@
+name: Comp Cluster
+
+on:
+  pull_request:
+    paths:
+      - "comp_cluster_ts/**"
+      - ".github/workflows/comp-cluster.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "comp_cluster_ts/**"
+      - ".github/workflows/comp-cluster.yml"
+
+env:
+  REGISTRY: docker.how2centeradiv.de
+  IMAGE_NAME: 2themoon/comp-cluster
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: comp_cluster_ts/package-lock.json
+
+      - name: Install dependencies
+        working-directory: comp_cluster_ts
+        run: npm ci
+
+      - name: Typecheck & build
+        working-directory: comp_cluster_ts
+        run: npx tsc
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name != 'pull_request'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Login to registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.REGISTRY_BUILD_USER_NAME }}
+          password: ${{ secrets.REGISTRY_BUILD_USER_PASSWORD }}
+
+      - name: Gen Tags
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=sha
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: comp_cluster_ts
+          file: comp_cluster_ts/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
