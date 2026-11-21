@@ -15,8 +15,7 @@ const router = useRouter()
 const assetStore = useAssetStore();
 onMounted(() => assetStore.load());
 
-const asset = assetStore.byId.get(props.holding.assetId);
-
+const asset = computed(() => assetStore.byId.get(props.holding.assetId));
 </script>
 
 <template>
