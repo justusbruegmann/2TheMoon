@@ -5,7 +5,7 @@ Integration test against the live database. It is skipped if test_user_email or 
 import pytest
 from fastapi.testclient import TestClient
 
-from app.dependencies import get_user_db
+from app.config.dependencies import get_user_db
 from app.main import app
 from shared.config import DbSettings
 from shared.database import DatabaseError

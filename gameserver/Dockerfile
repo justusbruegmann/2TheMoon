@@ -37,7 +37,7 @@ ENV PATH="/app/gameserver/.venv/bin:$PATH" \
 WORKDIR /app/gameserver
 USER app
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD python -c "import os,sys,time; sys.exit(0 if time.time()-os.path.getmtime('/tmp/healthcheck')<30 else 1)"
+HEALTHCHECK --interval=10s --timeout=3s --start-period=30s --retries=3 \
+    CMD python -c "import os,sys,time; sys.exit(0 if time.time()-os.path.getmtime('/tmp/healthcheck')<10 else 1)"
 
 CMD ["python", "-m", "gameserver"]
