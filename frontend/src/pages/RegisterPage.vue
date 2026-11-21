@@ -5,6 +5,7 @@ import Button from "../components/ui-components/Button.vue"
 import {useRouter} from "vue-router";
 import { ref} from 'vue'
 import {supabase} from "../lib/supabaseClient.ts";
+//import {postPortfolio} from "../scripts/portfolio.ts";
 
 const email = ref<string>('')
 const password = ref<string>('')
@@ -29,7 +30,11 @@ async function signUpNewUser() {
        return;
      }
      errorRef.value = false
-    router.push('/portfolio')
+    /*
+     postPortfolio().then(() => {
+      router.push('/portfolio')
+    })*/
+     router.push('/portfolio')
    }).catch(e => {
      console.log(e)
    })

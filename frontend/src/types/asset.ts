@@ -1,6 +1,6 @@
 // @ts-ignore
 
-export type AssetKind = 'Stock' | 'Crypto' | 'CustomCrypto'
+export type AssetKind = 'stock' | 'crypto' | 'customCrypto'
 
 export type Industry =
   | 'Technology'

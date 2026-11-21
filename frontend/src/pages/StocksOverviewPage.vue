@@ -1,25 +1,23 @@
 <script setup lang="ts">
-import {getAssets} from "../scripts/asset.ts";
 import {computed, onMounted, ref} from 'vue'
-import {type Asset} from "../types/asset.ts";
 import AssetItem from "../components/AssetItem.vue";
 
-const data = ref<Asset[]>([]);
+import { storeToRefs } from "pinia";
+import { useAssetStore } from "../stores/assets";
+
+const assetStore = useAssetStore();
+const { assets } = storeToRefs(assetStore); // keeps reactivity when destructuring
+
 const searchValue = ref("");
 
 const filteredData = computed(() => {
   const query = searchValue.value.trim().toLowerCase();
-  return data.value.filter(entry =>
+  return assets.value.filter(entry =>
       entry.name.toLowerCase().includes(query) || entry.ticker.toLowerCase().includes(query)
   );
 });
 
-
-onMounted(() => {
-  getAssets().then((response) => {
-    data.value = response;
-  });
-})
+onMounted(() => assetStore.load());
 
 </script>
 
