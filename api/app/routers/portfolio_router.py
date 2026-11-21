@@ -5,10 +5,9 @@ from fastapi import APIRouter, status
 from app.config.dependencies import UserDb
 from app.domain.portfolio import portfolio_post_one, portfolio_get_one
 from app.util.response import api_response
-from shared.database.models import Portfolio, PortfolioInsert
+from shared.database.models import Portfolio
 from shared.database.models.api_response import ApiResponse
-
-
+from shared.database.models.portfolio import PortfolioInsertExternalPayload
 
 #####################
 # Documentation for RLS
@@ -39,5 +38,5 @@ def handle_get_one_portfolio(db: UserDb, user_id: UUID, season_id: UUID | None =
     description="Creates a new type of portfolio"
 )
 @api_response
-def handle_post_one_portfolio(db: UserDb, payload: PortfolioInsert):
-    return portfolio_post_one(db, payload)
+def handle_post_one_portfolio(db: UserDb, payload: PortfolioInsertExternalPayload):
+    return portfolio_post_one(db, payload.user_id)
