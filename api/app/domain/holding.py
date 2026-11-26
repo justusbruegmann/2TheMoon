@@ -4,15 +4,20 @@ from shared.database.models import Holding, HoldingUpdate
 
 from app.config.dependencies import UserDb
 from app.util.response import DomainError
+from app.domain.portfolio import portfolio_get_one
 
 
 ###
 def holdings_get(db: UserDb, user_id: UUID, asset_id: UUID | None = None):
     # The return codes we have decided on:
+    # If the user has no portfolio in the current season, the 404 raised by portfolio_get_one is handed through
     # If asset_id is requested and not found, return 404
-    # If it is not set and nothing is found for this user, return 200 with payload []
+    # If it is not set and the portfolio holds no assets (holdings), return 200 with payload []
 
-    filters = {"user_id": user_id}
+    # Holdings carry no user_id, so we need to retrieve the user's portfolio for the current season.
+    portfolio = portfolio_get_one(db, user_id, None)
+
+    filters = {"portfolio_id": portfolio.id}
     if asset_id is not None:
         filters["asset_id"] = asset_id
     holdings: list[Holding] = db.holdings.find(**filters)
